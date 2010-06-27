@@ -98,7 +98,7 @@ W następnym rozdziale nauczymy się jak pracować z wyrażeniami tekstowymi. Py
 
 \section{Ewaluacja wyrażeń}
 
-Kiedy komputer rozwiązuje wyrażenie 10+5 i otrzymuje wartość 15, mówimy że {\bf ewaluuje\footnote{oblicza}} wyrażenie. Ewaluacja wyrażenia redukuje je do pojedynczej wartości, podobnie jak rozwiązanie zadania matematycznego redukuje zadanie do pojedynczej liczby: rozwiązania.
+Kiedy komputer rozwiązuje wyrażenie 10+5 i otrzymuje wartość 15, mówimy że {\bf ewaluuje\footnote{oblicza}} wyrażenie. Ewaluacja wyrażenia zamienia je w pojedynczą wartość, podobnie jak rozwiązanie zadania matematycznego zamienia je w pojedynczą liczbę: rozwiązanie.
 
 Wyrażenia 10+5 oraz 10+3+2 mają tą samą wartość, ponieważ oba są ewaluowane do 15. Nawet pojedyncze wartości są wyrażeniami: wyrażenie 15 ewaluuje się do wartośći 15.
 
@@ -108,6 +108,51 @@ Jeśli jednak wpiszesz w interaktywnym shellu tylko 5+, dostaniesz wiadomość o
 >>> 5 +
 SyntaxError: invalid syntax
 \end{lstlisting}
+
+Ten błąd zdarzył się ponieważ 5+ nie jest wyrażeniem. Wyrażenia mają wartości połączone operatorami, a operator + zawsze spodziewa się dwóch warttości. My podaliśmy mu tylko jedną. Dlatego właśnie pojawił się komunikat o błędzie. Błąd składni (Syntax Error) oznacza że komputer nie rozumie instrukcji którą mu podałeś ponieważ wpisałeś ją nieprawidłowo. Python zawsze wyświetli błąd jeśli wprowadzisz instrukcję której nie zrozumie.
+
+To może nie wydawać się ważne, ale duża część programowania polega nie tylko na mówieniu komputerowi co ma zrobić, ale też na wiedzeniu jak dokładnie powiedzieć komputerowi żeby to zrobił.
+
+\subsection{Wyrażenia wewnątrz innych wyrażeń}
+
+% Różni się od oryginału - krótsze zdania.
+Wyrażenia mogą również zawierać inne wyrażenia. Na przykład, wyrażenie 2+5+8 zawiera dwa operatory +, co powoduje że składa się z dwóch mniejszych wyrażeń. Python najpierw ewaluuje 2+5, wynikiem jest 7. Następnie oblicza 7+8 i wynikiem jest 15.
+
+% TODO: przykład jest idiotyczny
+Pomyśl o wyrażeniu jak o stosie naleśników: jeśli położysz dwa stosy naleśników jeden na drugim, będziesz miał znów stos naleśników (tyle, że większy). Duży stos naleśników oże być złożony z mniejszych stosów złożonych razem. Wyrażenia mogą być składane razem i w ten sam sposób tworzyć większe wyrażenia. Ale niezależnie od tego jak duże jest wyrażenie, zawsze będzie się ewaluowało do pojedynczej odpowiedzi, podobnie jak 2+5+8 ewaluuje się do 15.
+
+\section{Przechowywanie wartości w zmiennych}
+
+Kiedy programujemy, często chcielibyśmy zachować wyniki ewaluacji naszych wyrażeń żeby móc ich później używać w programie. Możemy przechowywać wartości w {\bf zmiennych}.
+
+Pomyśl że zmienna to pudełko które możę przechowywać wartość. Możesz przechować wartość w zmiennej używając znaku = (nazywanego {\bf operatorem przypisania}). na przykład, żeby przechować wartość 15 w zmiennej o nazwie "liczba", wpisz w shellu liczba=15:
+
+\lstset{language=python}
+\begin{lstlisting}{}
+>>> liczba = 15
+>>>
+\end{lstlisting}
+
+\begin{figure}
+\centerline{
+%	\includegraphics[width=2cm]{idle-wyrazenia.png}
+}
+\caption{Zmienne są jak pudełka które przechowują wartości}
+\label{idle-zmienna}
+\end{figure}
+
+Ta zmienna jest jak pudełko z wartością 15 w środku (jak na rysunku \ref{idle-zmienna}). Nazwa zmiennej ("liczba") jest jak etykieta na pudełku (żeby można było rozróżnić jedną zmienną od drugiej), a wartość przechowywana przez zmienną jest jak karteczka w środku pudełka.
+
+Kiewy wciśniesz Enter, nie zobaczysz żadnej odpowiedzi od Pythona. O ile nie zobaczysz wiadomości o błędzie, możesz założyć że instrukcja została wykonana poprawnie. Pojawi się następny znak zachęty >>> żebyś mógł wpisać kolejną instrukcję.
+
+Ta instrukcja (nazywana {\bf instrukcją przypisania}) tworzy zmienną "liczba" i przechowuje w niej wartość 15. W przeciwieństwie do wyrażeń, {\bf instrukcje} nie są ewaluowane do żadnej wartości. Dlatego właśnie shell nie wyświetlił żadnej wartości w odpowiedzi.
+
+Może nie być łatwo zapamiętać które polecenia są wyrażeniami a które instrukcjami. Po prostu zapamiętaj że jeśli polecenie ewaluuje się do jakiejś wartości, jest wyrażeniem. Jeśli nie, jest instrukcją.
+
+Instrukcja przypisania jest zapisana jako zmienna, znak = oraz wyrażenie. Wartość do której ewaluuje się to wyrażenie jest przechowywana w zmiennej. Wartość 15 sama w sobie jest wyrażeniem. Wyrażenia złożone z pojedynczej wartości są proste do ewaluacji. Takie wyrażenia ewaluują się po prostu do tej samej wartości. Na przykład, wyrażenie 15 ewaluuje się do 15.
+
+Pemiętaj, zmienne przechowują wartości, nie wyrażenia. Na przykład, jeśli mielibyśmy wyrażenie liczba=10+5, to wyrażenie 10+5 zostałoby wpierw obliczone, a następnie wynik (15) zostałby przechowany w zmiennej "liczba".
+
 
 
 
