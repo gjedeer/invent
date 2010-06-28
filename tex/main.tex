@@ -187,7 +187,153 @@ Instrukcja przypisania jest zapisana w następujący sposób: nazwa zmiennej, p�
 
 Pemiętaj, zmienne przechowują wartości, nie wyrażenia. Na przykład, jeśli mielibyśmy wyrażenie liczba=10+5, to wyrażenie 10+5 zostałoby wpierw obliczone, a~następnie wynik (15) zostałby przechowany w~zmiennej ,,liczba''.
 
+Kiedy zapisujesz wartość do zmiennej po raz pierwszy używając instrukcji przypisania, Python stworzy tą zmienną. Za każdym następnym razem, operator przypisania zamieni wartość zapamiętaną w tej zmiennej.
+
+Sprawdźmy czy zmienna stworzyła się poprawnie. Jeśli wpiszemy w shellu tylko "liczba", powinniśmy zobaczyć jaka wartość jest przechowywana w zmiennej o tej nazwie:
+
+\begin{lstlisting}
+>>> liczba = 15
+>>> liczba
+15
+>>> 
+\end{lstlisting}
+
+W tej chwili wyrażenie "liczba" jest ewaluowane do wartości przechowywaną przez zmienną "liczba", czyli 15.
+
+Wiedząc to wszystko, możemy zrobić ciekawą rzecz. Jeśli teraz wpiszemy do shella "liczba + 5", otrzymamy wartość 20:
+
+\begin{lstlisting}
+>>> liczba+5
+20
+>>> 
+\end{lstlisting}
+
+Może się to wydawać dziwne, ale ma sens jeśli przypomnimy sobie że ustawiliśmy wartość "liczba" na 15. Z tego powodu, napisanie "liczba + 5" jest zupełnie jak napisanie "15 + 5".
+
+Jeśli spróbujesz użyć zmiennej zanim została stworzona, Python zwróci ci komunikat błędu ponieważ taka zmienna jeszcze nie istnieje. Zdarzy się to również jeśli zrobisz literówkę w nazwie istniejącej zmiennej:
 
 
+\begin{lstlisting}
+>>> lcibza
+
+Traceback (most recent call last):
+  File "<pyshell#10>", line 1, in <module>
+      lcibza
+NameError: name 'lcibza' is not defined
+>>> 
+\end{lstlisting}
+
+Możemy zmienić wartość przechowywaną w zmiennej wprowadzając jeszcze jedną instrukcję przypisania. Spróbuj na przykład tego:
+
+\begin{lstlisting}
+>>> liczba=15
+>>> liczba + 5
+20
+>>> liczba = 3
+>>> liczba + 5
+8
+>>> 
+\end{lstlisting}
+
+Za pierwszym razem kiedy wpisałeś "liczba + 5", wartością wyrażenia było 20, ponieważ zmienna "liczba" przechowywała wartość 15. Ale kiedy wpisałeś "liczba = 3", wartość 15 została zamieniona (nadpisana) wartością 3. Z tego powodu, jeśli wpisałeś później "liczba + 5", wartością wyrażenia było 8.
+
+Aby dowiedzieć się jaką wartość przechowuje zmienna, wpisz jej nazwę w shellu.
+
+Ponieważ zmienna jest tylko nazwą dla wartości, możemy robić też takie działania jak poniżej:
+
+\begin{lstlisting}
+>>> liczba = 15
+>>> liczba + liczba
+30
+>>> liczba - liczba
+0
+>>> 
+\end{lstlisting}
+
+Kiedy zmienna "liczba" przechowuje wartość 15, wpisanie "liczba + liczba" odpowiada wpisaniu "15 + 15". Wartością takiego wyrażenia jest 30. Z kolei wyrażenie "liczba - liczba" ma wartość 0 ponieważ odpowiada wyrażeniu "15 - 15". Wyrażenia powyżej używają zmiennej "liczba" dwa razy. Możesz używać zmiennych w wyrażeniach ile tylko razy chcesz. Pamiętaj że Python będzie ewaluował nazwę zmiennej do wartości w niej przechowywanej za każdym razem kiedy zmienna będzie użyta.
+
+Możemy nawet użyć wartości zmiennej "liczba" aby przypisać zmiennej "liczba" nową wartość!
+
+\begin{lstlisting}
+>>> liczba = 15
+>>> liczba = liczba + 5
+>>> liczba
+20
+\end{lstlisting}
+
+Wyrażenie przypisania "liczba = liczba + 5" jest jak powiedzenie "nowa wartość zmiennej liczba będzie równa obecnej wartości plus pięć". Pamiętaj że do zmiennej po lewej stronie znaku = będzie przypisana wartość do której ewaluuje się wyrażenie po prawej stronie znaku. Możemy też zwiększać wartość zmiennej liczba kilka razy:
+
+\begin{lstlisting}
+>>> liczba = 15
+>>> liczba = liczba + 5
+>>> liczba = liczba + 5
+>>> liczba = liczba + 5
+>>> liczba
+30
+\end{lstlisting}
+
+\section{Używanie więcej niż jednej zmiennej}
+
+Kiedy piszesz program, nie jesteś ograniczony do używania jednej zmiennej. Często będziesz potrzebował używać wielu zmiennych.
+
+Na przykład, przypiszmy różne wartości do dwóch zmiennych o nazwach "foo" oraz "bar":
+
+\begin{lstlisting}
+>>> foo = 10
+>>> bar = 15
+\end{lstlisting}
+
+Teraz zmienna foo ma wartość 10, a zmienna bar - 15.
+
+\img{idle-zmienne}{Zmienne "foo" i "bar" przechowują różne wartości}{10cm}
+
+Spróbujmy zmienić teraz zmienną "liczba". Wpisz "liczba = foo + bar" do okna shella i sprawdź jaka będzie nowa wartość zmiennej "liczba". Czy potrafisz zgadnąć jaka?
+
+\begin{lstlisting}
+>>> foo = 10
+>>> bar = 15
+>>> liczba = foo + bar
+>>> liczba
+25
+\end{lstlisting}
+
+Wartość zmiennej "liczba" wynosi teraz 25, ponieważ kiedy dodajemy "foo" i "bar", dodajemy wartości przechowywane w "foo" (10) i "bar" (15).
+
+\subsection{Nadpisywanie zmiennych}
+
+Zmiana wartości przechowywanej w zmiennej jest prosta. Po prostu przypisz jej nową wartość. Sprawdź co się stanie po wprowadzeniu następującego kodu do shella:
+
+\begin{lstlisting}
+>>> foo = 42
+>>> foo
+42
+>>> foo = 'Czesc'
+>>> foo
+'Czesc'
+\end{lstlisting}
+
+Na początku, zmienna "foo" przechowywała liczbę 42. Dlatego właśnie za pierwszym razem po wpisaniu "foo" komputer zwrócił "42". Ale po wykonaniu "spam='Czesc'", wartość 42 została usunięta ze zmiennej i zapomniana w momencie kiedy tekst "Czesc" został w niej zapamiętany.
+
+Zmiana wartości zmiennej na nową wartość nazywana jest {\bf nadpisywaniem} jej wartości. Ważne jest żeby wiedzieć, że stara wartość zostanie na zawsze zapomniana. Jeśli chcesz zapamiętać tą wartość żeby użyć jej później, możesz zapamiętać ją w innej zmiennej przed zmianą wartości.
+
+\begin{lstlisting}
+>>> foo = 42
+>>> foo
+42
+>>> stareFoo = foo
+>>> foo = 'Czesc'
+>>> foo
+'Czesc'
+>>> stareFoo
+42
+\end{lstlisting}
+
+W powyższym przykładzie, przed nadpisaniem wartości zmiennej "foo", skopiowaliśmy jej wartość do zmiennej o nazwie "stareFoo". W tym momencie, zarówno "foo" jak i "stareFoo" mają wartość 42. W następnej linii, w zmiennej "foo" zapamiętany zostaje tekst "Czesc", ale zmienna stareFoo pozostaje nietknięta.
+
+\section{Podsumowanie}
+
+W tym rozdziale nauczyłeś się podstaw pisania instrukcji Pythona. Musisz mówić Pythonowi bardzo dokładnie i ściśle co ma zrobić ponieważ komputery nie potrafią myśleć i rozumieją tylko bardzo proste rozkazy. Nauczyłeś się że Python potrafi ewaluować wyrażenia (to znaczy, zamienić całe wyrażenie na pojedynczą wartość), i że wyrażenia to wartości (takie jak 2 czy 5) połączone operatorami (takimi jak + lub -). Dowiedziałeś się także, że możesz przechowywać wartości w zmiennych, żeby twój program je zapamiętał a ty użył ich później.
+
+W następnym rozdziale, poznasz trochę więcej podstawowych pojęć, a później napiszesz swój pierwszy program!
 
 \end{document}
