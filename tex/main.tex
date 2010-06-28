@@ -26,13 +26,16 @@
 \chapter{Shell interaktywny}
 % TODO Topics covered
 
-Zanim rozpoczniemy pisać gry komputerowe, powinniśmy poznać kilka pojęć związanych z programowaniem. Chodzi o wartości, operatory, wyrażenia i zmienne. Nie zaczniemy w tym rozdziale programować, ale poznanie tych pojęć i różnych nazw bardzo uprości naukę programowania. To dlatego, że większa część programowania to tylko kilka prostych pomysłów połączonych w całość i tworzących duże programy.
+Zanim rozpoczniemy pisać gry komputerowe, powinniśmy poznać kilka pojęć związanych z~programowaniem. Chodzi o~wartości, operatory, wyrażenia i~zmienne. Nie zaczniemy jeszcze w~tym rozdziale pisać programów, ale poznanie tych pojęć i~różnych nazw bardzo uprości dalszą naukę. To dlatego, że większa część programowania to tylko kilka prostych pomysłów połączonych w~całość i~tworzących duże programy.
 
 Zacznijmy od nauczenia się jak używać interaktywnego shella Pythona.
 
 \section{Trochę prostej matematyki}
 
-Żeby otworzyć IDLE na Windowsie, kliknij na Start, Programy, Python 3.1 a potem IDLE (Python GUI). Zaczniemy od kilku prostych obliczeń w Pythonie. Interaktywny shell może działać jak kalkulator. Wpisz w okno shella 2+2 i wciśnij Enter na klawiaturze (na niektórych klawiaturach ten klawisz to Return). Jak widzisz na rysunku~\ref{idle-dwaplusdwa}, komputer powinien odpowiedzieć liczbą 4, sumą 2+2.
+% Tego akapitu nie było w oryginale
+Python posiada interaktywnego shella o nazwie IDLE. Interaktywność oznacza że reaguje on na wszystkie twoje polecenia zaraz po ich wpisaniu (nieinterkatywny tryb pracy to taki w którym wpierw wpisujesz wszystkie polecenia do pliku, a dopiero potem są one wykonywane po kolei). Shell\footnote{Shell jest przez niektórych nazywany również "powłoką". Zabawne, prawda?} to miejsce gdzie wpisujesz polecenia - zgłasza się znakiem >>> nazywanym znakiem zachęty (lub promptem).
+
+Żeby otworzyć IDLE na Windowsie, kliknij na Start, Programy, Python 3.1 a~potem IDLE (Python GUI). Zaczniemy od kilku prostych obliczeń w~Pythonie. Interaktywny shell może działać jak kalkulator. Wpisz w~okno shella 2+2 i~wciśnij Enter na klawiaturze (na niektórych klawiaturach ten klawisz to Return). Jak widzisz na rysunku~\ref{idle-dwaplusdwa}, komputer powinien odpowiedzieć liczbą 4, sumą 2+2.
 
 \begin{figure}
 \centerline{
@@ -42,10 +45,10 @@ Zacznijmy od nauczenia się jak używać interaktywnego shella Pythona.
 \label{idle-dwaplusdwa}
 \end{figure}
 
-Jak widzisz, możemy używać shella Pythona jak kalkulatora. To nie jest jeszcze program ponieważ w tej chwili uczymy się dopiero podstaw. Znak + każe komputerowi dodać liczby 2 i 2. Aby udjąć liczby, użyj znaku -, żeby je pomnożyć użyj gwiazdki (*), w ten sposób:
+Jak widzisz, możemy używać shella Pythona jako kalkulatora. To co zrobiłeś nie jest jeszcze programem, ponieważ dopiero uczymy się podstaw. Znak + każe komputerowi dodać liczby 2 i~2. Aby odjąć liczby, użyj znaku -, żeby je pomnożyć użyj gwiazdki (*), i tak dalej:
 
 \begin{table}[here]
-\caption{Różne operatory matematyczne w Pythonie}
+\caption{Różne operatory matematyczne w~Pythonie}
 \centerline{
 \begin{tabular}{| c | c | }
 \hline
@@ -62,15 +65,15 @@ Jak widzisz, możemy używać shella Pythona jak kalkulatora. To nie jest jeszcz
 \label{hops-algo}
 \end{table}
 
-Znaki +, -, * i / kiedy używa się ich w ten sposób, są nazywane {\bf operatorami} ponieważ mówią komputerowi żeby wykonał jakąś operację na liczbach które je otaczają.
+Znaki +, -, * i~/ kiedy używa się ich w~ten sposób, są nazywane {\bf operatorami} ponieważ mówią komputerowi żeby wykonał jakąś operację na liczbach które je otaczają.
 
-\subsection{Liczby całkowite i zmiennoprzecinkowe}
+\subsection{Liczby całkowite i~zmiennoprzecinkowe}
 
-W programowaniu (a także matematyce), liczby takie jak 4, 0 czy 99 nazywane są {\bf całkowitymi}. Liczby z ułamkami bądź kropką dziesiętną\footnote{W matematyce do oddzielania części całkowitej od ułamkowej używa się przecinka, w programowaniu - zazwyczaj jest to kropka.} (jak 3.5, 42.1, 5.0) nie są całkowite. W Pythonie, liczba 5 jest całkowita, ale jeśli zapiszemy ją jako 5.0 - już nie. Liczby z kropką dziesiętną nazywają się {\bf liczbami zmiennoprzecinkowymi}. W matematyce, 5.0 ciągle pozostaje liczbą całkowitą i taką samą liczbą jak 5, ale w programowaniu - komputer nie traktuje liczb z kropką dziesiątną jako całkowitych.
+W programowaniu (a~także matematyce), liczby takie jak 4, 0 czy 99 nazywane są {\bf całkowitymi}. Liczby z~ułamkami bądź kropką dziesiętną\footnote{W matematyce do oddzielania części całkowitej od ułamkowej używa się przecinka, w~programowaniu - zazwyczaj jest to kropka.} (jak 3.5, 42.1, 5.0) nie są całkowite. W~Pythonie, liczba 5 jest całkowita, ale jeśli zapiszemy ją jako 5.0 - już nie. Liczby z~kropką dziesiętną nazywają się {\bf liczbami zmiennoprzecinkowymi}. W~matematyce, 5.0 ciągle pozostaje liczbą całkowitą i ma tą samą wartość co 5, ale komputer traktuje liczby całkowite i zmiennoprzecinkowe inaczej.
 
 \subsection{Wyrażenia}
 
-Spróbuj wpisać któreś z tych działań do shella, wciskając po każdym z nich Enter.
+Spróbuj wpisać któreś z~tych działań do shella, wciskając po każdym z~nich Enter.
 
 \lstset{language=python}
 \begin{lstlisting}{}
@@ -89,47 +92,48 @@ Spróbuj wpisać któreś z tych działań do shella, wciskając po każdym z ni
 \end{figure}
 
 % TODO rysunek o wyrażeniu
-Te działania matematyczne nazywane są wyrażeniami. Komputery potrafią rozwiązać miliony tego typu zadań w ciągu sekundy. Wyrażenia są złożone z {\bf wartości} (liczb) połączonych {\bf operatorami} (symbolami matematycznymi). Dowiedzmy się czym dokładnie są wartości i operatory.
+Te działania matematyczne nazywane są wyrażeniami. Komputery potrafią rozwiązać miliony tego typu zadań w~ciągu sekundy. Wyrażenia są złożone z~{\bf wartości} (liczb) połączonych {\bf operatorami} (symbolami matematycznymi). Dowiedzmy się czym dokładnie są wartości i~operatory.
 
-%TODO straszliwie są napisane te dwa akapity
-Jak widzisz w ostatnim wyrażeniu w powyższym przykładzie, możesz użyć dowolnej ilości spacji pomiędzy liczbami a operatorami (ale pamiętaj żeby zawsze zaczynać od samego początku linii, bez spacji na początku).
+W ostatnim wyrażeniu w przykładach wyżej mogłeś się przekonać, że można użyć dowolnej ilości spacji (odstępów) pomiędzy liczbami oraz operatorami. Pamiętaj jednak, żeby zawsze zaczynać pisać od samego początku linii, nie wstawiając dodatkowych odstępów przed pierwszą liczbą.
 
-Liczba jest rodzajem wartości. Liczba całkowita jest rodzajem liczby. Ale, chociaż liczby całkowite są liczbami, nie wszystkie liczby są liczbami całkowitymi (na przykład, ułamki i liczby z kropką dziesiętną jak 2.5 są liczbami ale nie są całkowite).
+Liczba jest rodzajem wartości. Liczba całkowita jest rodzajem liczby. Ale, chociaż liczby całkowite są liczbami, nie wszystkie liczby są liczbami całkowitymi (na przykład, ułamki i~liczby z~kropką dziesiętną jak 2.5 są liczbami ale nie są całkowite).
 
-To podobnie jak kot jest rodzajem zwierzęcia domowego, ale nie wszystkie zwierzęta domowe są kotami. Są przecież ludzie którzy mają psy lub kraby. {\bf Wyrażenie} składa się z wartości (na przykład liczb całkowitych takich jak 8 czy 6) połączonych operatorem (takim jak znak mnożenia *). Pojedyńcza wartość bez operatorów też traktowana jest jak wyrażenie.
+To podobnie jak kot jest rodzajem zwierzęcia domowego, ale nie wszystkie zwierzęta domowe są kotami. Są przecież ludzie którzy mają psy lub kraby. 
 
-W następnym rozdziale nauczymy się jak pracować z wyrażeniami tekstowymi. Python nie jest ograniczony do liczb. Umie wiele więcej niż zwykły kalkulator.
+{\bf Wyrażenie} składa się z~wartości (na przykład liczb całkowitych takich jak 8 czy 6) połączonych operatorem (takim jak znak mnożenia *). Pojedyńcza wartość bez operatorów też traktowana jest jak wyrażenie.
+
+W następnym rozdziale nauczymy się jak pracować z~wyrażeniami tekstowymi. Python nie jest ograniczony do liczb. Umie wiele więcej niż zwykły kalkulator.
 
 \section{Ewaluacja wyrażeń}
 
-Kiedy komputer rozwiązuje wyrażenie 10+5 i otrzymuje wartość 15, mówimy że {\bf ewaluuje\footnote{oblicza}} wyrażenie. Ewaluacja wyrażenia zamienia je w pojedynczą wartość, podobnie jak rozwiązanie zadania matematycznego zamienia je w pojedynczą liczbę: rozwiązanie.
+Kiedy komputer rozwiązuje wyrażenie 10+5 i~otrzymuje wartość 15, mówimy że {\bf ewaluuje\footnote{oblicza}} wyrażenie. Ewaluacja wyrażenia zamienia je w~pojedynczą wartość, podobnie jak rozwiązanie zadania matematycznego zamienia je w~pojedynczą liczbę: rozwiązanie.
 
 Wyrażenia 10+5 oraz 10+3+2 mają tą samą wartość, ponieważ oba są ewaluowane do 15. Nawet pojedyncze wartości są wyrażeniami: wyrażenie 15 ewaluuje się do wartośći 15.
 
-Jeśli jednak wpiszesz w interaktywnym shellu tylko 5+, dostaniesz wiadomość o błędzie.
+Jeśli jednak wpiszesz w~interaktywnym shellu tylko 5+, dostaniesz wiadomość o~błędzie.
 \lstset{language=python}
 \begin{lstlisting}{}
 >>> 5 +
 SyntaxError: invalid syntax
 \end{lstlisting}
 
-Ten błąd zdarzył się ponieważ 5+ nie jest wyrażeniem. Wyrażenia mają wartości połączone operatorami, a operator + zawsze spodziewa się dwóch warttości. My podaliśmy mu tylko jedną. Dlatego właśnie pojawił się komunikat o błędzie. Błąd składni (Syntax Error) oznacza że komputer nie rozumie instrukcji którą mu podałeś ponieważ wpisałeś ją nieprawidłowo. Python zawsze wyświetli błąd jeśli wprowadzisz instrukcję której nie zrozumie.
+Ten błąd zdarzył się ponieważ 5+ nie jest wyrażeniem. Wyrażenia to wartości połączone operatorami, a~operator + zawsze spodziewa się dwóch wartości. My podaliśmy mu tylko jedną. Dlatego właśnie pojawił się komunikat o~błędzie. Błąd składni (Syntax Error) oznacza, że komputer nie rozumie instrukcji którą mu podałeś ponieważ wpisałeś ją nieprawidłowo. Python zawsze wyświetli błąd jeśli wprowadzisz instrukcję której nie zrozumie.
 
-To może nie wydawać się ważne, ale duża część programowania polega nie tylko na mówieniu komputerowi co ma zrobić, ale też na wiedzeniu jak dokładnie powiedzieć komputerowi żeby to zrobił.
+To może nie wydawać się w tej chwili ważne, ale duża część programowania polega nie tylko na mówieniu komputerowi co ma zrobić, ale też na posiadaniu wiedzy jak dokładnie powiedzieć komputerowi żeby to zrobił.
 
 \subsection{Wyrażenia wewnątrz innych wyrażeń}
 
 % Różni się od oryginału - krótsze zdania.
-Wyrażenia mogą również zawierać inne wyrażenia. Na przykład, wyrażenie 2+5+8 zawiera dwa operatory +, co powoduje że składa się z dwóch mniejszych wyrażeń. Python najpierw ewaluuje 2+5, wynikiem jest 7. Następnie oblicza 7+8 i wynikiem jest 15.
+Wyrażenia mogą również zawierać inne wyrażenia. Na przykład, wyrażenie 2+5+8 zawiera dwa operatory +, co powoduje że składa się z~dwóch mniejszych wyrażeń.~Python najpierw oblicza 2+5, wynikiem jest 7. Następnie oblicza 7+8 i~wynikiem jest 15.
 
 % TODO: przykład jest idiotyczny
-Pomyśl o wyrażeniu jak o stosie naleśników: jeśli położysz dwa stosy naleśników jeden na drugim, będziesz miał znów stos naleśników (tyle, że większy). Duży stos naleśników oże być złożony z mniejszych stosów złożonych razem. Wyrażenia mogą być składane razem i w ten sam sposób tworzyć większe wyrażenia. Ale niezależnie od tego jak duże jest wyrażenie, zawsze będzie się ewaluowało do pojedynczej odpowiedzi, podobnie jak 2+5+8 ewaluuje się do 15.
+Pomyśl o~wyrażeniu jak o~stosie cukierków: jeśli położysz dwa stosy cukierków jeden na drugim, będziesz miał znów stos cukierków (tyle, że większy). Duży stos cukierków może być złożony z~mniejszych stosów wysypanych jeden na drugi. Wyrażenia mogą być składane razem i~w~ten sam sposób tworzyć większe wyrażenia. Ale niezależnie od tego jak duże jest wyrażenie, zawsze będzie się ewaluowało do pojedynczej odpowiedzi, podobnie jak 2+5+8 ewaluuje się do 15.
 
-\section{Przechowywanie wartości w zmiennych}
+\section{Przechowywanie wartości w~zmiennych}
 
-Kiedy programujemy, często chcielibyśmy zachować wyniki ewaluacji naszych wyrażeń żeby móc ich później używać w programie. Możemy przechowywać wartości w {\bf zmiennych}.
+Kiedy piszemy program, często chcielibyśmy zachować wyniki ewaluacji naszych wyrażeń żeby móc ich używać w~dalszej części programu. Możemy przechowywać wartości w~{\bf zmiennych}.
 
-Pomyśl że zmienna to pudełko które możę przechowywać wartość. Możesz przechować wartość w zmiennej używając znaku = (nazywanego {\bf operatorem przypisania}). na przykład, żeby przechować wartość 15 w zmiennej o nazwie "liczba", wpisz w shellu liczba=15:
+Pomyśl że zmienna to pudełko które może przechowywać wartość. Możesz przechować wartość w~zmiennej używając znaku = (nazywanego {\bf operatorem przypisania}). na przykład, żeby przechować wartość 15 w~zmiennej o~nazwie ,,liczba'', wpisz w~shellu liczba=15:
 
 \lstset{language=python}
 \begin{lstlisting}{}
@@ -139,23 +143,23 @@ Pomyśl że zmienna to pudełko które możę przechowywać wartość. Możesz p
 
 \begin{figure}
 \centerline{
-%	\includegraphics[width=2cm]{idle-wyrazenia.png}
+%	\includegraphics[width=2cm]{idle-zmienna.png}
 }
 \caption{Zmienne są jak pudełka które przechowują wartości}
 \label{idle-zmienna}
 \end{figure}
 
-Ta zmienna jest jak pudełko z wartością 15 w środku (jak na rysunku \ref{idle-zmienna}). Nazwa zmiennej ("liczba") jest jak etykieta na pudełku (żeby można było rozróżnić jedną zmienną od drugiej), a wartość przechowywana przez zmienną jest jak karteczka w środku pudełka.
+Zmienna którą stworzyłeś jest jak pudełko z~wartością 15 w~środku (jak na rysunku \ref{idle-zmienna}). Nazwa zmiennej (,,liczba'') jest jak etykieta na pudełku (żeby można było rozróżnić jedną zmienną od drugiej), a~wartość przechowywana przez zmienną jest jak karteczka w~środku pudełka.
 
-Kiewy wciśniesz Enter, nie zobaczysz żadnej odpowiedzi od Pythona. O ile nie zobaczysz wiadomości o błędzie, możesz założyć że instrukcja została wykonana poprawnie. Pojawi się następny znak zachęty >>> żebyś mógł wpisać kolejną instrukcję.
+Kiewy wciśniesz Enter, nie zobaczysz żadnej odpowiedzi od Pythona. O~ile nie zobaczysz wiadomości o~błędzie, możesz założyć że instrukcja została wykonana poprawnie. Pojawi się następny znak zachęty >>> żebyś mógł wpisać kolejną instrukcję.
 
-Ta instrukcja (nazywana {\bf instrukcją przypisania}) tworzy zmienną "liczba" i przechowuje w niej wartość 15. W przeciwieństwie do wyrażeń, {\bf instrukcje} nie są ewaluowane do żadnej wartości. Dlatego właśnie shell nie wyświetlił żadnej wartości w odpowiedzi.
+Ta instrukcja (nazywana {\bf instrukcją przypisania}) tworzy zmienną ,,liczba'' i~przechowuje w~niej wartość 15. W~przeciwieństwie do wyrażeń, {\bf instrukcje} nie są ewaluowane do żadnej wartości. Dlatego właśnie shell nie wyświetlił żadnej wartości w~odpowiedzi.
 
-Może nie być łatwo zapamiętać które polecenia są wyrażeniami a które instrukcjami. Po prostu zapamiętaj że jeśli polecenie ewaluuje się do jakiejś wartości, jest wyrażeniem. Jeśli nie, jest instrukcją.
+Może nie być łatwo zapamiętać które polecenia są wyrażeniami a~które instrukcjami. Po prostu pamiętaj że jeśli polecenie ewaluuje się do jakiejś wartości, jest wyrażeniem. Jeśli nie, jest instrukcją.
 
-Instrukcja przypisania jest zapisana jako zmienna, znak = oraz wyrażenie. Wartość do której ewaluuje się to wyrażenie jest przechowywana w zmiennej. Wartość 15 sama w sobie jest wyrażeniem. Wyrażenia złożone z pojedynczej wartości są proste do ewaluacji. Takie wyrażenia ewaluują się po prostu do tej samej wartości. Na przykład, wyrażenie 15 ewaluuje się do 15.
+Instrukcja przypisania jest zapisana w następujący sposób: nazwa zmiennej, później znak = oraz wyrażenie. Wartość do której ewaluuje się to wyrażenie jest przechowywana w~zmiennej. Wartość 15 sama w~sobie jest wyrażeniem. Wyrażenia złożone z~pojedynczej wartości są proste do ewaluacji. Takie wyrażenia ewaluują się po prostu do tej samej wartości. Na przykład, wyrażenie 15 ewaluuje się do wartości 15.
 
-Pemiętaj, zmienne przechowują wartości, nie wyrażenia. Na przykład, jeśli mielibyśmy wyrażenie liczba=10+5, to wyrażenie 10+5 zostałoby wpierw obliczone, a następnie wynik (15) zostałby przechowany w zmiennej "liczba".
+Pemiętaj, zmienne przechowują wartości, nie wyrażenia. Na przykład, jeśli mielibyśmy wyrażenie liczba=10+5, to wyrażenie 10+5 zostałoby wpierw obliczone, a~następnie wynik (15) zostałby przechowany w~zmiennej ,,liczba''.
 
 
 
