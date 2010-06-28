@@ -1,10 +1,12 @@
 \documentclass{book}
+\usepackage[pdftex,plainpages=false,pdfpagelabels,pdfstartpage=1,pdfstartview=FitH]{}
 \usepackage[utf8]{inputenc}
 \usepackage{polski}
 \usepackage[polish]{babel}
 \usepackage{setspace}
 \usepackage{graphicx}
 \usepackage{listings}
+\usepackage{color}
 
 % Original author: Al Sweigart, http://inventwithpython.com/
 % License: BY-NC-SA, http://creativecommons.org/licenses/by-nc-sa/3.0/us/
@@ -20,11 +22,54 @@
                                                            \arabic{subsubsection}.}
 % It's customary (depends on publisher) to indent first paragraph in sections and chapters:
 \usepackage{indentfirst}
+\lstset{extendedchars=false}
+
+% Fixes a bug in lstlisting
+\lstset{extendedchars=false}
+
+% Image macro
+\newcommand{\img}[3]{
+\begin{figure}
+\centerline{
+	\includegraphics[width=#3]{#1.png}
+}
+\caption{#2}
+\label{#1}
+\end{figure}
+}
+
+% Topics covered 
+\definecolor{topicscoveredbg}{gray}{0.9}
+          
+\makeatletter\newenvironment{graybox}{%
+\begin{lrbox}{\@tempboxa}\begin{minipage}{\columnwidth}}{\end{minipage}\end{lrbox}%
+\colorbox{topicscoveredbg}{\usebox{\@tempboxa}}
+}\makeatother
+
+\newcommand{\btopicscovered}{
+	\begin{graybox}
+	\begin{itemize}
+}
+\newcommand{\etopicscovered}{
+	\end{itemize}
+	\end{graybox}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
 
 \chapter{Shell interaktywny}
 % TODO Topics covered
+\btopicscovered
+	\item Liczby całkowite i zmiennoprzecinkowe
+	\item Wyrażenia
+	\item Wartości
+	\item Operatory
+	\item Ewaluacja wyrażeń
+	\item Przechowywanie wartości w zmiennych
+	\item Nadpisywanie zmiennych
+\etopicscovered
 
 Zanim rozpoczniemy pisać gry komputerowe, powinniśmy poznać kilka pojęć związanych z~programowaniem. Chodzi o~wartości, operatory, wyrażenia i~zmienne. Nie zaczniemy jeszcze w~tym rozdziale pisać programów, ale poznanie tych pojęć i~różnych nazw bardzo uprości dalszą naukę. To dlatego, że większa część programowania to tylko kilka prostych pomysłów połączonych w~całość i~tworzących duże programy.
 
@@ -37,13 +82,7 @@ Python posiada interaktywnego shella o nazwie IDLE. Interaktywność oznacza że
 
 Żeby otworzyć IDLE na Windowsie, kliknij na Start, Programy, Python 3.1 a~potem IDLE (Python GUI). Zaczniemy od kilku prostych obliczeń w~Pythonie. Interaktywny shell może działać jak kalkulator. Wpisz w~okno shella 2+2 i~wciśnij Enter na klawiaturze (na niektórych klawiaturach ten klawisz to Return). Jak widzisz na rysunku~\ref{idle-dwaplusdwa}, komputer powinien odpowiedzieć liczbą 4, sumą 2+2.
 
-\begin{figure}
-\centerline{
-%	\includegraphics[width=2cm]{idle-dwaplusdwa.png}
-}
-\caption{Wpisz w okno shella 2+2}
-\label{idle-dwaplusdwa}
-\end{figure}
+\img{idle-dwaplusdwa}{Wpisz w okno shella 2+2}{7cm}
 
 Jak widzisz, możemy używać shella Pythona jako kalkulatora. To co zrobiłeś nie jest jeszcze programem, ponieważ dopiero uczymy się podstaw. Znak + każe komputerowi dodać liczby 2 i~2. Aby odjąć liczby, użyj znaku -, żeby je pomnożyć użyj gwiazdki (*), i tak dalej:
 
@@ -75,21 +114,14 @@ W programowaniu (a~także matematyce), liczby takie jak 4, 0 czy 99 nazywane są
 
 Spróbuj wpisać któreś z~tych działań do shella, wciskając po każdym z~nich Enter.
 
-\lstset{language=python}
-\begin{lstlisting}{}
+\begin{lstlisting}
 2+2+2+2+2
 8*6
 10-5+6
-2  +       2
+2  +       2      
 \end{lstlisting}
 
-\begin{figure}
-\centerline{
-%	\includegraphics[width=2cm]{idle-wyrazenia.png}
-}
-\caption{Okno IDLE po wykonaniu wyrażeń}
-\label{idle-dwaplusdwa}
-\end{figure}
+\img{idle-wyrazenia}{Okno IDLE po wykonaniu wyrażeń}{7cm}
 
 % TODO rysunek o wyrażeniu
 Te działania matematyczne nazywane są wyrażeniami. Komputery potrafią rozwiązać miliony tego typu zadań w~ciągu sekundy. Wyrażenia są złożone z~{\bf wartości} (liczb) połączonych {\bf operatorami} (symbolami matematycznymi). Dowiedzmy się czym dokładnie są wartości i~operatory.
@@ -141,13 +173,7 @@ Pomyśl że zmienna to pudełko które może przechowywać wartość. Możesz pr
 >>>
 \end{lstlisting}
 
-\begin{figure}
-\centerline{
-%	\includegraphics[width=2cm]{idle-zmienna.png}
-}
-\caption{Zmienne są jak pudełka które przechowują wartości}
-\label{idle-zmienna}
-\end{figure}
+\img{idle-zmienna}{Zmienne są jak pudełka które przechowują wartości}{4cm}
 
 Zmienna którą stworzyłeś jest jak pudełko z~wartością 15 w~środku (jak na rysunku \ref{idle-zmienna}). Nazwa zmiennej (,,liczba'') jest jak etykieta na pudełku (żeby można było rozróżnić jedną zmienną od drugiej), a~wartość przechowywana przez zmienną jest jak karteczka w~środku pudełka.
 

@@ -127,11 +127,11 @@ $(TRG)	: %.dvi : %.tex
 $(PSF)	: %.ps : %.dvi
 	  @$(DVIPS) $< -o $@
 
-$(PDF)  : %.pdf : %.dvi
-	  @$(DVIPDF) -o $@ $<
+#$(PDF)  : %.pdf : %.dvi
+#	  @$(DVIPDF) -o $@ $<
 # To use pdflatex, comment the two lines above and uncomment the lines below
-#$(PDF) : %.pdf : %.tex
-#	@$(run-pdflatex)
+$(PDF) : %.pdf : %.tex
+	@$(run-pdflatex)
 
 
 show	: $(TRG)
