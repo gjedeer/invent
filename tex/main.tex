@@ -340,7 +340,7 @@ W powyższym przykładzie, przed nadpisaniem wartości zmiennej "foo", skopiowal
 
 \section{Podsumowanie}
 
-W tym rozdziale nauczyłeś się podstaw pisania instrukcji Pythona. Musisz mówić Pythonowi bardzo dokładnie i ściśle co ma zrobić ponieważ komputery nie potrafią myśleć i rozumieją tylko bardzo proste rozkazy. Nauczyłeś się że Python potrafi ewaluować wyrażenia (to znaczy, zamienić całe wyrażenie na pojedynczą wartość), i że wyrażenia to wartości (takie jak 2 czy 5) połączone operatorami (takimi jak + lub -). Dowiedziałeś się także, że możesz przechowywać wartości w zmiennych, żeby twój program je zapamiętał a ty użył ich później.
+W tym rozdziale nauczyłeś się podstaw pisania instrukcji Pythona. Musisz mówić Pythonowi bardzo dokładnie i ściśle co ma zrobić ponieważ komputery nie potrafią myśleć i rozumieją tylko bardzo proste rozkazy. Nauczyłeś się że Python potrafi ewaluować wyrażenia (to znaczy, zamienić całe wyrażenie na pojedynczą wartość), i że wyrażenia to wartości (takie jak 2 czy 5) połączone operatorami (takimi jak + lub -). Dowiedziałeś się także, że możesz przechowywać wartości w zmiennych, żeby twój program je zapamiętał a ty żebyś mógł użyć ich później.
 
 W następnym rozdziale, poznasz trochę więcej podstawowych pojęć, a później napiszesz swój pierwszy program!
 
@@ -544,6 +544,27 @@ Milo mi cie poznac, kupa
 >>> 
 \end{lstlisting}
 
+\section{Nazwy zmiennych}
 
+Komputerowi jest wszystko jedno jak nazwiesz zmienne, ale tobie nie powinno to być obojętne. Dawanie zmiennym nazw mówiących o tym, co przechowują sprawia że łatwiej zrozumieć co program robi. Zamiast \lstinline{imie}, mogliśmy nazwać zmienną jaroslawKaczynski lub iMiE. Komputer uruchomi program tak samo (o ile nadal będziesz używał nazwy jarosławKaczyński lub iMiE).
+
+Nazwy zmiennych, podobnie jak wszystko inne w Pythonie, rozróżniają pomiędzy małymi i wielkimi literami (ang. Case-sensitive). Oznacza to, że ta sama nazwa zmiennej pisana inną wielkością liter uważana jest za zupełnie inną zmienną. Zatem foo, FOO, Foo i fOO są w Pythonie czterema różnymi zmiennymi. Każda z nich może przechowywać inną wartość.
+
+Nie jest najlepszym pomysłem trzymanie zmiennych o tej samej nazwie różniących się tylko wielkością liter. Jeśli przechowujesz imię użytkownika w zmiennej \lstinline{IMIE}, a imię jego psa w zmiennej \lstinline{imie}, parę tygodni później czytając swój kod nie będziesz wiedział o co chodzi. Czy \lstinline{IMIE} oznacza imię psa, czy człowieka?
+
+Jeśli przez przypadek zamienisz miejscami zmienne \lstinline{imie} i \lstinline{IMIE}, twój program będzie działał (to znaczy, nie będzie miał błędów składni), ale będzie się zachowywał nieprawidłowo (zwracając się do użytkownika per Fafik). Ten typ błędu w kodzie to {\bf bug}. Często zdarza się przez przypadek pozostawiać w programie bugi podczas ich pisania. Dlatego właśnie ważne jest, żeby wybierać sensowne nazwy dla zmiennych.
+
+Jeśli nazwa zmiennej składa się z więcej niż jednego słowa, dobrze jest zaczynać kolejne słowa od wielkiej litery. Jeśli przechowujesz string mówiący o tym co zjadłeś na śniadanie, nazwa zmiennej \lstinline{coJadlemNaSniadanie} będzie znacznie łatwiejsza do odczytania niż \lstinline{cojadlemnasniadanie}. W programowaniu to {\bf konwencja} - reguła której nie musisz przestrzegać, ale dla własnego dobra powinienneś. (Jeszcze lepiej byłoby nazwać zmienną prościej - dzisiejszeSniadanie). Używanie wielkiej litery na początku każdego słowa sprawia, że program jest czytelniejszy.
+
+% Paragraph about not using national characters in names - not in original
+Zauważyłeś pewnie, że popełniłem błąd w nazwie zmiennej - słowo imię pisze się z "ę" na końcu, nie "e". Zrobiłem to jednak celowo. Chociaż możesz używać nazw zmiennych i funkcji z polskimi literami (takimi jak ą, ć, ę, ó, ł, ż, ź, ń, ś), najlepiej zastępuj je ich angielskimi odpowiednikami (a, c, e, o, l itp.). Python w najnowszej wersji radzi sobie z takimi nazwami dość dobrze, ale nie wszyscy używają najnowszych wersji. Kiedyś prawdopodobnie nauczysz się innego niż Python języka programowania - większość z nich nie pozwala na polskie znaki w nazwach zmiennych i funkcji, będzie ci ciężko zmienić przyzwyczajenia.
+
+\section{Podsumowanie}
+
+Teraz wiesz już jak radzić sobie z tekstem, więc możemy zacząć tworzyć programy które użytkownik może uruchamiać i komunikować się z nimi. To ważne, ponieważ tekst jest głównym sposobem w który użytkownik będzie się komunikował z komputerem. Gracz będzie wprowadzał tekst na ekran poprzez klawiaturę z pomocą funkcji input(), a komputer będzie wyświetlał tekst kiedy będzie wykonywana funkcja print().
+
+Stringi są po prostu jeszcze jednym typem danych, który możemy używać w programach. Możemy używać operatora + do złączenia stringów razem. Używanie operatora + do konkatenacji dwóch stringów i stworzenia nowego stringa działa tak samo jak użycie operatora + do dodania dwóch liczb, z których uzyskujemy nową liczbę (sumę).
+
+W następnym rozdziale, nauczymy się więcej o zmiennych i nasz program będzie zapamiętywał tekst i liczby wprowadzone przez gracza. Wiedząc jak używać tekstu, liczb i zmiennych, będziemy gotowi żeby zacząć tworzyć gry.
 
 \end{document}
