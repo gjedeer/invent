@@ -30,6 +30,9 @@
 \definecolor{codebg}{gray}{0.9}
 \newcommand{\bnl}[1]{\lstset{language=Python,numbers=left,backgroundcolor=\color{codebg},#1}}
 
+% Non-numbered listing
+\newcommand{\bl}[1]{\lstset{language=Python,numbers=none,backgroundcolor=\color{codebg},#1}}
+
 % Image macro
 \newcommand{\img}[3]{
 \begin{figure}
@@ -476,7 +479,7 @@ Podążanie programu od instrukcji do instrukcji nazywamy {\bf przepływem wykon
 Spojrzmy teraz na program linia po linii żeby zobaczyć co robi. Zacznijmy od linii pierwszej.
 
 \subsection{Komentarze}
-\bnl{caption=}
+\bnl{caption=,name=hello}
 \lstinputlisting[firstline=1,lastline=1]{python/hello.py}
 
 Ta linia nazywana jest {\bf komentarzem}. Każdy tekst za znakiem \lstinline{#} (znak ten nazywany jest {\bf hashem}) jest komentarzem. Komentarze nie są dla komputera, ale ciebie - programisty. Komputer je ignoruje. Używane są do przypominania ci co program robi, lub do mówienia innym ludziom którzy mogą oglądać twój kod co próbujesz w nim osiągnąć.
@@ -484,6 +487,63 @@ Ta linia nazywana jest {\bf komentarzem}. Każdy tekst za znakiem \lstinline{#} 
 Programiści zazwyczaj dodają komentarz na samym początku kodu żeby nadać programowi tytuł. Program IDLE wyświetla komentarze na czerwono żeby bardziej się wyróżniały.
 
 \subsection{Funkcje}
+
+{\bf Funkcja} jest rodzajem mini-programu wewnątrz twojego programu. Zawiera linie kodu który jest wykonywany od góry do dołu. Python dostarcza kilku wbudowanych funkcji, których możemy używać. Najlepszą rzeczą w funkcjach jest to, że wystarczy że wiemy co dana funkcja robi, nie jak to robi. Jedyne co musisz wiedzieć o funkcji print() to to, że wyświetla tekst na ekranie, ale nie musisz wiedzieć jak to robi.
+
+{\bf Wywołanie funkcji} jest fragmentem kodu który mówi naszemu programowi żeby uruchomił kod wewnątrz funkcji. Na przykład, twój program może wywołać funkcję print() kiedykolwiek chcesz wyświetlić tekst na ekranie. Funkcja print() pobiera stringa który wpisujesz jej pomiędzy nawiasami i drukuje tekst na ekranie. ponieważ chcemy wyświetlić na ekranie tekst Witaj Świecie, piszemy nazwę funkcji, otwierający nawias, string 'Witaj Świecie!' i nawias zamykający.
+
+\subsection{Funkcja print()}
+
+\bnl{name=hello}
+\lstinputlisting[firstline=2,lastline=3,firstnumber=2]{python/hello.py}
+
+Te linie wywołują funkcję {\bf print}, zazwyczaj zapisywaną jako print() (string który chcemy wydrukować na ekranie jest umieszczony pomiędzy nawiasami).
+
+Nawiasy do końca nazwy funkcji dodaje się po to, żeby było wiadomo że mówimy o funkcji o nazwie print(), nie zmiennej print. Nawiasy na końcu funkcji przypominają nam że mówimy o funkcji tak samo, jak cudzysłowie dookoła '42' przypominają nam że mówimy o stringu '42', nie o liczbie 42.
+
+Linia 3 to kolejne wywołanie funkcji print(). Tym razem, program pisze "Jak się nazywasz?".
+
+\subsection{Funkcja input()}
+
+\bnl{name=hello}
+\lstinputlisting[firstline=4,lastline=4,firstnumber=4]{python/hello.py}
+
+Ta linia zawiera instrukcję przypisania, zmienną (imie) i wywołanie funkcji (input()). Kiedy wywoływane jest input(), program czeka na tekst od użytkownika. Tekst który wprowadzi użytkownik (czyli twoje imię) staje się wartością zwracaną przez funkcję.
+
+Podobnie jak wyrażenia, wywołania funkcji są ewaluowane do pojedynczej wartości. Wartość do której wywołanie funkcji jest ewaluowane nazywa się {\bf wartością zwracaną}. (W zasadzie, możemy używać słowa "zwraca" zamiast "ewaluuje".) W tym wypadku, wartość zwracana przez funkcję input() to string który zawiera imię wpisane przez użytkownika. Jeśli użytkownik wpisał Albert, wywołanie funkcji input() jest ewaluowane do stringa 'Albert'.
+
+Funkcja o nazwie input() nie potrzebuje (w przeciwiństwie do print()) od programu żadnych danych, dlatego nie umieściliśmy nic pomiędzy jej nawiasami.
+
+\bnl{name=hello}
+\lstinputlisting[firstline=5,lastline=5,firstnumber=5]{python/hello.py}
+
+W ostatniej linii mamy znów funkcję print(). Tym razem, używamy operatora plus (+) aby skonkatenować stringa 'Miło mi cię poznać, ' i stringa przechowywanego w zmiennej o nazwie \lstinline{imie}, która przechowuje imię które użytkownik wprowadził do programu. W ten sposób nauczyliśmy program pozdrawiać nas po imieniu.
+
+\subsection{Kończenie programu}
+Kiedy program wykona ostatnią linię, zatrzymuje się. W tym momencie jest {\bf zakończony} bądź {\bf wyszedł} i wszelkie zmienne są zapominane przez komputer, włączając stringa przechowywanego w \lstinline{imie}. Jeśli spróbujesz uruchomić program ponownie podając inne imię, na przykład Gosia, pomyśli że to twoje imię.
+
+\bl{}
+\begin{lstlisting}
+Witaj swiecie!
+Jak sie nazywasz??
+Gosia
+Milo mi cie poznac, Gosia
+>>> 
+\end{lstlisting}
+
+Pamiętaj, komputer robi tylko dokładnie to, co mu powiesz. Tutaj, w naszym pierwszym programie, jest zaprogramowany by spytać cię o imię, pozwala ci wpisać tekst, a potem mówi cześć i wyświetla tekst który wpisałeś.
+
+Ale komputery są głupie. Program nie ma pojęcia czy wpisujesz swoje imię, imię kogoś innego, czy po prostu coś głupiego. Możesz wpisać cokolwiek chcesz i komputer potraktuje to w ten sam sposób:
+
+\bl{}
+\begin{lstlisting}
+Witaj swiecie!
+Jak sie nazywasz??
+kupa
+Milo mi cie poznac, kupa
+>>> 
+\end{lstlisting}
+
 
 
 \end{document}
