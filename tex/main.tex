@@ -338,4 +338,80 @@ W tym rozdziale nauczyłeś się podstaw pisania instrukcji Pythona. Musisz mów
 
 W następnym rozdziale, poznasz trochę więcej podstawowych pojęć, a później napiszesz swój pierwszy program!
 
+\chapter{Tekst}
+
+\btopicscovered
+	\item Wykonanie programu
+	\item Stringi
+	\item Łączenie stringów
+	\item Typy danych (takie jak stringi czy liczby całkowite)
+	\item Używanie IDLE do pisania kodu źródłowego
+	\item Zapisywanie i uruchamianie programów w IDLE
+	\item Funkcja print()
+	\item Funkcja input()
+	\item Komentarze
+	\item Wielkie litery w nazwach zmiennych
+	\item Rozróżnianie wielkości liter
+\etopicscovered
+
+Wystarczy już liczb i matematyki. Python jest znacznie więcej niż tylko kalkulatorem. Sprawdźmy teraz co Python potrafi robić z tekstem. W tym rozdziale, nauczymy się jak przechowywać tekst w zmiennych, łączyć teksty i wyświetlać je na ekranie. Wiele z naszych programów będzie używało tekstu do wyświetlania gier na ekranie gracza, a gracz będzie wprowadzał tekst do naszych programów za pomocą klawiatury. Napiszemy też nasz pierwszy program, który pozdrowi jego użytkownika tekstem "Witaj, świecie!" i spyta użytkownika o imię.
+
+\section{Stringi}
+
+W Pythonie używamy małych fragmentów tekstu nazywanych {\bf stringami}\footnote{Niektórzy nazywają je także łańcuchami tekstowymi}. Możemy przechowywać stringi w zmiennych dokładnie tak, jak robiliśmy to z liczbami. Kiedy wpisujemy stringi, otaczamy je dwoma apostrofami (') w ten sposób:
+
+\begin{lstlisting}
+>>> foo = 'czesc'
+>>>
+\end{lstlisting}
+
+Apostrofów używa się tylko po to, żeby komputer wiedział gdzie tekst się zaczyna i kończy. Nie są one częścią tekstu.
+
+Jeśli teraz wpiszesz w shellu \lstinline{foo}, powinienneś zobaczyć zawartość zmiennej \lstinline{foo} (string 'czesc'). 
+
+
+\begin{lstlisting}
+>>> foo = 'czesc'
+>>> foo
+'czesc'
+>>>
+\end{lstlisting}
+
+Stało się tak dlatego, że Python ewaluuje zmienną \lstinline{foo} do wartości przez nią przechowywanej (w tym wypadku, do tekstu 'czesc').
+
+Stringi mogą zawierać prawie każdy znak na klawiaturze (nie mogą zawierać apostrofów bez wcześniejszego ich wyescapowania. Escapowanie będzie opisane dalej). Poniżej są przykłady prawidłowych stringów:
+
+
+\begin{lstlisting}
+'czesc'
+'Jak się masz?'
+'ALAMAKOTA'
+'7 jabłek, 14 pomarańczy, 3 cytryny'
+'Słuchaj, jeszcze chwila i otworzę wytwórnię salami.'
+'Dawno, dawno temu w odległej galaktyce...'
+'O*&#wY%*&OCfsdYO*&gfC%YO*&%3yc8r2'
+\end{lstlisting}
+
+Podobnie jak w poprzednim rozdziale robiliśmy to z liczbami, stringi również możemy łączyć razem operatorami tworząc wyrażenia.
+
+\section{Konkatenacja stringów}
+
+Możesz dodać jednego stringa na koniec drugiego używając operatora +. Operacja taka nazywa się konkatenacją (łączeniem) stringów. Spróbuj wpisać w shellu \lstinline{'Witaj' + 'Świecie!'}
+
+\begin{lstlisting}
+>>> 'Witaj' + 'Świecie!'
+'WitajŚwiecie!'
+>>>
+\end{lstlisting}
+
+Żeby oddzielić słowa, dopisz spację po stringu 'Witaj' przed zamykającym apostrofem, w ten sposób:
+
+\begin{lstlisting}
+>>> 'Witaj ' + 'Świecie!'
+'Witaj Świecie!'
+>>> 
+\end{lstlisting}
+
+Operator + działa w różny sposób dla stringów i liczb, ponieważ są one różnymi {\bf typami danych}. Każda wartość posiada typ (jest jakiegoś typu). Typem wartości 'Cześć' jest string. Typem wartości 5 jest liczba całkowita. Typ wartości mówi nam (i komputerowi) jaki rodzaj danych jest w niej przechowywany. 
+
 \end{document}
