@@ -1,11 +1,12 @@
 \documentclass{book}
+\usepackage{ucs}
 \usepackage[pdftex,plainpages=false,pdfpagelabels,pdfstartpage=1,pdfstartview=FitH]{}
 \usepackage[utf8]{inputenc}
 \usepackage{polski}
 \usepackage[polish]{babel}
 \usepackage{setspace}
 \usepackage{graphicx}
-\usepackage{listings}
+\usepackage{listingsutf8}
 \usepackage{color}
 
 % Original author: Al Sweigart, http://inventwithpython.com/
@@ -24,7 +25,8 @@
 \usepackage{indentfirst}
 
 % Fixes a bug in lstlisting
-\lstset{extendedchars=false,showspaces=false}
+\lstset{extendedchars=\false,inputencoding=utf8x,showspaces=false}
+\lstset{literate={ą}{{\k{a}}}1 {ł}{{\l{}}}1 {ń}{{\'n}}1 {ę}{{\k{e}}}1 {ś}{{\'s}}1 {ż}{{\.z}}1 {ó}{{\'o}}1 {ź}{{\'z}}1 {Ą}{{\k{A}}}1 {Ł}{{\L{}}}1 {Ń}{{\'N}}1 {Ę}{{\k{E}}}1 {Ś}{{\'S}}1 {Ż}{{\.Z}}1 {Ó}{{\'O}}1 {Ź}{{\'Z}}1 }
 
 % Numbered listing
 \definecolor{codebg}{gray}{0.9}
@@ -69,12 +71,12 @@
 
 \chapter{Shell interaktywny}
 \btopicscovered
-	\item Liczby całkowite i zmiennoprzecinkowe
+	\item Liczby całkowite i~zmiennoprzecinkowe
 	\item Wyrażenia
 	\item Wartości
 	\item Operatory
 	\item Ewaluacja wyrażeń
-	\item Przechowywanie wartości w zmiennych
+	\item Przechowywanie wartości w~zmiennych
 	\item Nadpisywanie zmiennych
 \etopicscovered
 
@@ -85,13 +87,13 @@ Zacznijmy od nauczenia się jak używać interaktywnego shella Pythona.
 \section{Trochę prostej matematyki}
 
 % Tego akapitu nie było w oryginale
-Python posiada interaktywnego shella o nazwie IDLE. Interaktywność oznacza że reaguje on na wszystkie twoje polecenia zaraz po ich wpisaniu (nieinterkatywny tryb pracy to taki w którym wpierw wpisujesz wszystkie polecenia do pliku, a dopiero potem są one wykonywane po kolei). Shell\footnote{Shell jest przez niektórych nazywany również "powłoką". Zabawne, prawda?} to miejsce gdzie wpisujesz polecenia - zgłasza się znakiem \lstinline{>>>} nazywanym znakiem zachęty (lub promptem).
+Python posiada interaktywnego shella o~nazwie IDLE.~Interaktywność oznacza że reaguje on na wszystkie twoje polecenia zaraz po ich wpisaniu (nieinterkatywny tryb pracy to taki w~którym wpierw wpisujesz wszystkie polecenia do pliku, a~dopiero potem są one wykonywane po kolei). Shell\footnote{Shell jest przez niektórych nazywany również ,,powłoką''. Zabawne, prawda?} to miejsce gdzie wpisujesz polecenia - zgłasza się znakiem \lstinline{>>>} nazywanym znakiem zachęty (lub promptem).
 
 Żeby otworzyć IDLE na Windowsie, kliknij na Start, Programy, Python 3.1 a~potem IDLE (Python GUI). Zaczniemy od kilku prostych obliczeń w~Pythonie. Interaktywny shell może działać jak kalkulator. Wpisz w~okno shella 2+2 i~wciśnij Enter na klawiaturze (na niektórych klawiaturach ten klawisz to Return). Jak widzisz na rysunku~\ref{idle-dwaplusdwa}, komputer powinien odpowiedzieć liczbą 4, sumą 2+2.
 
-\img{idle-dwaplusdwa}{Wpisz w okno shella 2+2}{7cm}
+\img{idle-dwaplusdwa}{Wpisz w~okno shella 2+2}{7 cm}
 
-Jak widzisz, możemy używać shella Pythona jako kalkulatora. To co zrobiłeś nie jest jeszcze programem, ponieważ dopiero uczymy się podstaw. Znak + każe komputerowi dodać liczby 2 i~2. Aby odjąć liczby, użyj znaku -, żeby je pomnożyć użyj gwiazdki (*), i tak dalej:
+Jak widzisz, możemy używać shella Pythona jako kalkulatora. To co zrobiłeś nie jest jeszcze programem, ponieważ dopiero uczymy się podstaw. Znak + każe komputerowi dodać liczby 2 i~2. Aby odjąć liczby, użyj znaku -, żeby je pomnożyć użyj gwiazdki (*), i~tak dalej:
 
 \begin{table}[here]
 \caption{Różne operatory matematyczne w~Pythonie}
@@ -115,7 +117,7 @@ Znaki +, -, * i~/ kiedy używa się ich w~ten sposób, są nazywane {\bf operato
 
 \subsection{Liczby całkowite i~zmiennoprzecinkowe}
 
-W programowaniu (a~także matematyce), liczby takie jak 4, 0 czy 99 nazywane są {\bf całkowitymi}. Liczby z~ułamkami bądź kropką dziesiętną\footnote{W matematyce do oddzielania części całkowitej od ułamkowej używa się przecinka, w~programowaniu - zazwyczaj jest to kropka.} (jak 3.5, 42.1, 5.0) nie są całkowite. W~Pythonie, liczba 5 jest całkowita, ale jeśli zapiszemy ją jako 5.0 - już nie. Liczby z~kropką dziesiętną nazywają się {\bf liczbami zmiennoprzecinkowymi}. W~matematyce, 5.0 ciągle pozostaje liczbą całkowitą i ma tą samą wartość co 5, ale komputer traktuje liczby całkowite i zmiennoprzecinkowe inaczej.
+W programowaniu (a~także matematyce), liczby takie jak 4, 0 czy 99 nazywane są {\bf całkowitymi}. Liczby z~ułamkami bądź kropką dziesiętną\footnote{W matematyce do oddzielania części całkowitej od ułamkowej używa się przecinka, w~programowaniu - zazwyczaj jest to kropka.} (jak 3.5, 42.1, 5.0) nie są całkowite. W~Pythonie, liczba 5 jest całkowita, ale jeśli zapiszemy ją jako 5.0 - już nie. Liczby z~kropką dziesiętną nazywają się {\bf liczbami zmiennoprzecinkowymi}. W~matematyce, 5.0 ciągle pozostaje liczbą całkowitą i~ma tą samą wartość co 5, ale komputer traktuje liczby całkowite i~zmiennoprzecinkowe inaczej.
 
 \subsection{Wyrażenia}
 
@@ -128,13 +130,13 @@ Spróbuj wpisać któreś z~tych działań do shella, wciskając po każdym z~ni
 2  +       2      
 \end{lstlisting}
 
-\img{idle-wyrazenia}{Okno IDLE po wykonaniu wyrażeń}{7cm}
+\img{idle-wyrazenia}{Okno IDLE po wykonaniu wyrażeń}{7 cm}
 
 Te działania matematyczne nazywane są wyrażeniami. Komputery potrafią rozwiązać miliony tego typu zadań w~ciągu sekundy. Wyrażenia są złożone z~{\bf wartości} (liczb) połączonych {\bf operatorami} (symbolami matematycznymi). Dowiedzmy się czym dokładnie są wartości i~operatory.
 
-\img{idle-wyroperwart}{Wyrażenie składa się z wartośći i operatorów}{3cm}
+\img{idle-wyroperwart}{Wyrażenie składa się z~wartośći i~operatorów}{3 cm}
 
-W ostatnim wyrażeniu w przykładach wyżej mogłeś się przekonać, że można użyć dowolnej ilości spacji (odstępów) pomiędzy liczbami oraz operatorami. Pamiętaj jednak, żeby zawsze zaczynać pisać od samego początku linii, nie wstawiając dodatkowych odstępów przed pierwszą liczbą.
+W ostatnim wyrażeniu w~przykładach wyżej mogłeś się przekonać, że można użyć dowolnej ilości spacji (odstępów) pomiędzy liczbami oraz operatorami. Pamiętaj jednak, żeby zawsze zaczynać pisać od samego początku linii, nie wstawiając dodatkowych odstępów przed pierwszą liczbą.
 
 Liczba jest rodzajem wartości. Liczba całkowita jest rodzajem liczby. Ale, chociaż liczby całkowite są liczbami, nie wszystkie liczby są liczbami całkowitymi (na przykład, ułamki i~liczby z~kropką dziesiętną jak 2.5 są liczbami ale nie są całkowite).
 
@@ -159,14 +161,13 @@ SyntaxError: invalid syntax
 
 Ten błąd zdarzył się ponieważ 5+ nie jest wyrażeniem. Wyrażenia to wartości połączone operatorami, a~operator + zawsze spodziewa się dwóch wartości. My podaliśmy mu tylko jedną. Dlatego właśnie pojawił się komunikat o~błędzie. Błąd składni (Syntax Error) oznacza, że komputer nie rozumie instrukcji którą mu podałeś ponieważ wpisałeś ją nieprawidłowo. Python zawsze wyświetli błąd jeśli wprowadzisz instrukcję której nie zrozumie.
 
-To może nie wydawać się w tej chwili ważne, ale duża część programowania polega nie tylko na mówieniu komputerowi co ma zrobić, ale też na posiadaniu wiedzy jak dokładnie powiedzieć komputerowi żeby to zrobił.
+To może nie wydawać się w~tej chwili ważne, ale duża część programowania polega nie tylko na mówieniu komputerowi co ma zrobić, ale też na posiadaniu wiedzy jak dokładnie powiedzieć komputerowi żeby to zrobił.
 
 \subsection{Wyrażenia wewnątrz innych wyrażeń}
 
 % Różni się od oryginału - krótsze zdania.
 Wyrażenia mogą również zawierać inne wyrażenia. Na przykład, wyrażenie 2+5+8 zawiera dwa operatory +, co powoduje że składa się z~dwóch mniejszych wyrażeń.~Python najpierw oblicza 2+5, wynikiem jest 7. Następnie oblicza 7+8 i~wynikiem jest 15.
 
-% TODO: przykład jest idiotyczny
 Pomyśl o~wyrażeniu jak o~stosie cukierków: jeśli położysz dwa stosy cukierków jeden na drugim, będziesz miał znów stos cukierków (tyle, że większy). Duży stos cukierków może być złożony z~mniejszych stosów wysypanych jeden na drugi. Wyrażenia mogą być składane razem i~w~ten sam sposób tworzyć większe wyrażenia. Ale niezależnie od tego jak duże jest wyrażenie, zawsze będzie się ewaluowało do pojedynczej odpowiedzi, podobnie jak 2+5+8 ewaluuje się do 15.
 
 \section{Przechowywanie wartości w~zmiennych}
@@ -181,23 +182,23 @@ Pomyśl że zmienna to pudełko które może przechowywać wartość. Możesz pr
 >>>
 \end{lstlisting}
 
-\img{idle-zmienna}{Zmienne są jak pudełka które przechowują wartości}{4cm}
+\img{idle-zmienna}{Zmienne są jak pudełka które przechowują wartości}{4 cm}
 
 Zmienna którą stworzyłeś jest jak pudełko z~wartością 15 w~środku (jak na rysunku \ref{idle-zmienna}). Nazwa zmiennej (,,liczba'') jest jak etykieta na pudełku (żeby można było rozróżnić jedną zmienną od drugiej), a~wartość przechowywana przez zmienną jest jak karteczka w~środku pudełka.
 
-Kiewy wciśniesz Enter, nie zobaczysz żadnej odpowiedzi od Pythona. O~ile nie zobaczysz wiadomości o~błędzie, możesz założyć że instrukcja została wykonana poprawnie. Pojawi się następny znak zachęty >>> żebyś mógł wpisać kolejną instrukcję.
+Kiewy wciśniesz Enter, nie zobaczysz żadnej odpowiedzi od Pythona. O~ile nie zobaczysz wiadomości o~błędzie, możesz założyć że instrukcja została wykonana poprawnie. Pojawi się następny znak zachęty \lstinline{>>>} żebyś mógł wpisać kolejną instrukcję.
 
 Ta instrukcja (nazywana {\bf instrukcją przypisania}) tworzy zmienną ,,liczba'' i~przechowuje w~niej wartość 15. W~przeciwieństwie do wyrażeń, {\bf instrukcje} nie są ewaluowane do żadnej wartości. Dlatego właśnie shell nie wyświetlił żadnej wartości w~odpowiedzi.
 
 Może nie być łatwo zapamiętać które polecenia są wyrażeniami a~które instrukcjami. Po prostu pamiętaj że jeśli polecenie ewaluuje się do jakiejś wartości, jest wyrażeniem. Jeśli nie, jest instrukcją.
 
-Instrukcja przypisania jest zapisana w następujący sposób: nazwa zmiennej, później znak = oraz wyrażenie. Wartość do której ewaluuje się to wyrażenie jest przechowywana w~zmiennej. Wartość 15 sama w~sobie jest wyrażeniem. Wyrażenia złożone z~pojedynczej wartości są proste do ewaluacji. Takie wyrażenia ewaluują się po prostu do tej samej wartości. Na przykład, wyrażenie 15 ewaluuje się do wartości 15.
+Instrukcja przypisania jest zapisana w~następujący sposób: nazwa zmiennej, później znak = oraz wyrażenie. Wartość do której ewaluuje się to wyrażenie jest przechowywana w~zmiennej. Wartość 15 sama w~sobie jest wyrażeniem. Wyrażenia złożone z~pojedynczej wartości są proste do ewaluacji. Takie wyrażenia ewaluują się po prostu do tej samej wartości. Na przykład, wyrażenie 15 ewaluuje się do wartości 15.
 
 Pemiętaj, zmienne przechowują wartości, nie wyrażenia. Na przykład, jeśli mielibyśmy wyrażenie liczba=10+5, to wyrażenie 10+5 zostałoby wpierw obliczone, a~następnie wynik (15) zostałby przechowany w~zmiennej ,,liczba''.
 
-Kiedy zapisujesz wartość do zmiennej po raz pierwszy używając instrukcji przypisania, Python stworzy tą zmienną. Za każdym następnym razem, operator przypisania zamieni wartość zapamiętaną w tej zmiennej.
+Kiedy zapisujesz wartość do zmiennej po raz pierwszy używając instrukcji przypisania, Python stworzy tą zmienną. Za każdym następnym razem, operator przypisania zamieni wartość zapamiętaną w~tej zmiennej.
 
-Sprawdźmy czy zmienna stworzyła się poprawnie. Jeśli wpiszemy w shellu tylko "liczba", powinniśmy zobaczyć jaka wartość jest przechowywana w zmiennej o tej nazwie:
+Sprawdźmy czy zmienna stworzyła się poprawnie. Jeśli wpiszemy w~shellu tylko ,,liczba'', powinniśmy zobaczyć jaka wartość jest przechowywana w~zmiennej o~tej nazwie:
 
 \begin{lstlisting}
 >>> liczba = 15
@@ -206,9 +207,9 @@ Sprawdźmy czy zmienna stworzyła się poprawnie. Jeśli wpiszemy w shellu tylko
 >>> 
 \end{lstlisting}
 
-W tej chwili wyrażenie "liczba" jest ewaluowane do wartości przechowywaną przez zmienną "liczba", czyli 15.
+W tej chwili wyrażenie ,,liczba'' jest ewaluowane do wartości przechowywaną przez zmienną ,,liczba'', czyli 15.
 
-Wiedząc to wszystko, możemy zrobić ciekawą rzecz. Jeśli teraz wpiszemy do shella "liczba + 5", otrzymamy wartość 20:
+Wiedząc to wszystko, możemy zrobić ciekawą rzecz. Jeśli teraz wpiszemy do shella ,,liczba + 5", otrzymamy wartość 20:
 
 \begin{lstlisting}
 >>> liczba+5
@@ -216,22 +217,22 @@ Wiedząc to wszystko, możemy zrobić ciekawą rzecz. Jeśli teraz wpiszemy do s
 >>> 
 \end{lstlisting}
 
-Może się to wydawać dziwne, ale ma sens jeśli przypomnimy sobie że ustawiliśmy wartość "liczba" na 15. Z tego powodu, napisanie "liczba + 5" jest zupełnie jak napisanie "15 + 5".
+Może się to wydawać dziwne, ale ma sens jeśli przypomnimy sobie że ustawiliśmy wartość ,,liczba'' na 15. Z~tego powodu, napisanie ,,liczba + 5'' jest zupełnie jak napisanie ,,15 + 5".
 
-Jeśli spróbujesz użyć zmiennej zanim została stworzona, Python zwróci ci komunikat błędu ponieważ taka zmienna jeszcze nie istnieje. Zdarzy się to również jeśli zrobisz literówkę w nazwie istniejącej zmiennej:
+Jeśli spróbujesz użyć zmiennej zanim została stworzona, Python zwróci ci komunikat błędu ponieważ taka zmienna jeszcze nie istnieje. Zdarzy się to również jeśli zrobisz literówkę w~nazwie istniejącej zmiennej:
 
 
 \begin{lstlisting}
 >>> lcibza
 
 Traceback (most recent call last):
-  File "<pyshell#10>", line 1, in <module>
+  File ,,<pyshell#10>", line 1, in <module>
       lcibza
 NameError: name 'lcibza' is not defined
 >>> 
 \end{lstlisting}
 
-Możemy zmienić wartość przechowywaną w zmiennej wprowadzając jeszcze jedną instrukcję przypisania. Spróbuj na przykład tego:
+Możemy zmienić wartość przechowywaną w~zmiennej wprowadzając jeszcze jedną instrukcję przypisania. Spróbuj na przykład tego:
 
 \begin{lstlisting}
 >>> liczba=15
@@ -243,9 +244,9 @@ Możemy zmienić wartość przechowywaną w zmiennej wprowadzając jeszcze jedn�
 >>> 
 \end{lstlisting}
 
-Za pierwszym razem kiedy wpisałeś "liczba + 5", wartością wyrażenia było 20, ponieważ zmienna "liczba" przechowywała wartość 15. Ale kiedy wpisałeś "liczba = 3", wartość 15 została zamieniona (nadpisana) wartością 3. Z tego powodu, jeśli wpisałeś później "liczba + 5", wartością wyrażenia było 8.
+Za pierwszym razem kiedy wpisałeś ,,liczba + 5", wartością wyrażenia było 20, ponieważ zmienna ,,liczba'' przechowywała wartość 15. Ale kiedy wpisałeś ,,liczba = 3", wartość 15 została zamieniona (nadpisana) wartością 3. Z~tego powodu, jeśli wpisałeś później ,,liczba + 5", wartością wyrażenia było 8.
 
-Aby dowiedzieć się jaką wartość przechowuje zmienna, wpisz jej nazwę w shellu.
+Aby dowiedzieć się jaką wartość przechowuje zmienna, wpisz jej nazwę w~shellu.
 
 Ponieważ zmienna jest tylko nazwą dla wartości, możemy robić też takie działania jak poniżej:
 
@@ -258,9 +259,9 @@ Ponieważ zmienna jest tylko nazwą dla wartości, możemy robić też takie dzi
 >>> 
 \end{lstlisting}
 
-Kiedy zmienna "liczba" przechowuje wartość 15, wpisanie "liczba + liczba" odpowiada wpisaniu "15 + 15". Wartością takiego wyrażenia jest 30. Z kolei wyrażenie "liczba - liczba" ma wartość 0 ponieważ odpowiada wyrażeniu "15 - 15". Wyrażenia powyżej używają zmiennej "liczba" dwa razy. Możesz używać zmiennych w wyrażeniach ile tylko razy chcesz. Pamiętaj że Python będzie ewaluował nazwę zmiennej do wartości w niej przechowywanej za każdym razem kiedy zmienna będzie użyta.
+Kiedy zmienna ,,liczba'' przechowuje wartość 15, wpisanie ,,liczba + liczba'' odpowiada wpisaniu ,,15 + 15". Wartością takiego wyrażenia jest 30. Z~kolei wyrażenie ,,liczba - liczba'' ma wartość 0 ponieważ odpowiada wyrażeniu ,,15 - 15". Wyrażenia powyżej używają zmiennej ,,liczba'' dwa razy. Możesz używać zmiennych w~wyrażeniach ile tylko razy chcesz. Pamiętaj że Python będzie ewaluował nazwę zmiennej do wartości w~niej przechowywanej za każdym razem kiedy zmienna będzie użyta.
 
-Możemy nawet użyć wartości zmiennej "liczba" aby przypisać zmiennej "liczba" nową wartość!
+Możemy nawet użyć wartości zmiennej ,,liczba'' aby przypisać zmiennej ,,liczba'' nową wartość!
 
 \begin{lstlisting}
 >>> liczba = 15
@@ -269,7 +270,7 @@ Możemy nawet użyć wartości zmiennej "liczba" aby przypisać zmiennej "liczba
 20
 \end{lstlisting}
 
-Wyrażenie przypisania "liczba = liczba + 5" jest jak powiedzenie "nowa wartość zmiennej liczba będzie równa obecnej wartości plus pięć". Pamiętaj że do zmiennej po lewej stronie znaku = będzie przypisana wartość do której ewaluuje się wyrażenie po prawej stronie znaku. Możemy też zwiększać wartość zmiennej liczba kilka razy:
+Wyrażenie przypisania ,,liczba = liczba + 5'' jest jak powiedzenie ,,nowa wartość zmiennej liczba będzie równa obecnej wartości plus pięć''. Pamiętaj że do zmiennej po lewej stronie znaku = będzie przypisana wartość do której ewaluuje się wyrażenie po prawej stronie znaku. Możemy też zwiększać wartość zmiennej liczba kilka razy:
 
 \begin{lstlisting}
 >>> liczba = 15
@@ -284,18 +285,18 @@ Wyrażenie przypisania "liczba = liczba + 5" jest jak powiedzenie "nowa wartoś�
 
 Kiedy piszesz program, nie jesteś ograniczony do używania jednej zmiennej. Często będziesz potrzebował używać wielu zmiennych.
 
-Na przykład, przypiszmy różne wartości do dwóch zmiennych o nazwach "foo" oraz "bar":
+Na przykład, przypiszmy różne wartości do dwóch zmiennych o~nazwach ,,foo'' oraz ,,bar'':
 
 \begin{lstlisting}
 >>> foo = 10
 >>> bar = 15
 \end{lstlisting}
 
-Teraz zmienna foo ma wartość 10, a zmienna bar - 15.
+Teraz zmienna foo ma wartość 10, a~zmienna bar - 15.
 
-\img{idle-zmienne}{Zmienne "foo" i "bar" przechowują różne wartości}{10cm}
+\img{idle-zmienne}{Zmienne ,,foo'' i~,,bar'' przechowują różne wartości}{10 cm}
 
-Spróbujmy zmienić teraz zmienną "liczba". Wpisz "liczba = foo + bar" do okna shella i sprawdź jaka będzie nowa wartość zmiennej "liczba". Czy potrafisz zgadnąć jaka?
+Spróbujmy zmienić teraz zmienną ,,liczba''. Wpisz ,,liczba = foo + bar'' do okna shella i~sprawdź jaka będzie nowa wartość zmiennej ,,liczba''. Czy potrafisz zgadnąć jaka?
 
 \begin{lstlisting}
 >>> foo = 10
@@ -305,11 +306,11 @@ Spróbujmy zmienić teraz zmienną "liczba". Wpisz "liczba = foo + bar" do okna 
 25
 \end{lstlisting}
 
-Wartość zmiennej "liczba" wynosi teraz 25, ponieważ kiedy dodajemy "foo" i "bar", dodajemy wartości przechowywane w "foo" (10) i "bar" (15).
+Wartość zmiennej ,,liczba'' wynosi teraz 25, ponieważ kiedy dodajemy ,,foo'' i~,,bar'', dodajemy wartości przechowywane w~,,foo'' (10) i~,,bar'' (15).
 
 \subsection{Nadpisywanie zmiennych}
 
-Zmiana wartości przechowywanej w zmiennej jest prosta. Po prostu przypisz jej nową wartość. Sprawdź co się stanie po wprowadzeniu następującego kodu do shella:
+Zmiana wartości przechowywanej w~zmiennej jest prosta. Po prostu przypisz jej nową wartość. Sprawdź co się stanie po wprowadzeniu następującego kodu do shella:
 
 \begin{lstlisting}
 >>> foo = 42
@@ -320,9 +321,9 @@ Zmiana wartości przechowywanej w zmiennej jest prosta. Po prostu przypisz jej n
 'Czesc'
 \end{lstlisting}
 
-Na początku, zmienna "foo" przechowywała liczbę 42. Dlatego właśnie za pierwszym razem po wpisaniu "foo" komputer zwrócił "42". Ale po wykonaniu "spam='Czesc'", wartość 42 została usunięta ze zmiennej i zapomniana w momencie kiedy tekst "Czesc" został w niej zapamiętany.
+Na początku, zmienna ,,foo'' przechowywała liczbę 42. Dlatego właśnie za pierwszym razem po wpisaniu ,,foo'' komputer zwrócił ,,42". Ale po wykonaniu ,,spam='Czesc'", wartość 42 została usunięta ze zmiennej i~zapomniana w~momencie kiedy tekst ,,Czesc'' został w~niej zapamiętany.
 
-Zmiana wartości zmiennej na nową wartość nazywana jest {\bf nadpisywaniem} jej wartości. Ważne jest żeby wiedzieć, że stara wartość zostanie na zawsze zapomniana. Jeśli chcesz zapamiętać tą wartość żeby użyć jej później, możesz zapamiętać ją w innej zmiennej przed zmianą wartości.
+Zmiana wartości zmiennej na nową wartość nazywana jest {\bf nadpisywaniem} jej wartości. Ważne jest żeby wiedzieć, że stara wartość zostanie na zawsze zapomniana. Jeśli chcesz zapamiętać tą wartość żeby użyć jej później, możesz zapamiętać ją w~innej zmiennej przed zmianą wartości.
 
 \begin{lstlisting}
 >>> foo = 42
@@ -336,13 +337,13 @@ Zmiana wartości zmiennej na nową wartość nazywana jest {\bf nadpisywaniem} j
 42
 \end{lstlisting}
 
-W powyższym przykładzie, przed nadpisaniem wartości zmiennej "foo", skopiowaliśmy jej wartość do zmiennej o nazwie "stareFoo". W tym momencie, zarówno "foo" jak i "stareFoo" mają wartość 42. W następnej linii, w zmiennej "foo" zapamiętany zostaje tekst "Czesc", ale zmienna stareFoo pozostaje nietknięta.
+W powyższym przykładzie, przed nadpisaniem wartości zmiennej ,,foo'', skopiowaliśmy jej wartość do zmiennej o~nazwie ,,stareFoo''. W~tym momencie, zarówno ,,foo'' jak i~,,stareFoo'' mają wartość 42. W~następnej linii, w~zmiennej ,,foo'' zapamiętany zostaje tekst ,,Czesc'', ale zmienna stareFoo pozostaje nietknięta.
 
 \section{Podsumowanie}
 
-W tym rozdziale nauczyłeś się podstaw pisania instrukcji Pythona. Musisz mówić Pythonowi bardzo dokładnie i ściśle co ma zrobić ponieważ komputery nie potrafią myśleć i rozumieją tylko bardzo proste rozkazy. Nauczyłeś się że Python potrafi ewaluować wyrażenia (to znaczy, zamienić całe wyrażenie na pojedynczą wartość), i że wyrażenia to wartości (takie jak 2 czy 5) połączone operatorami (takimi jak + lub -). Dowiedziałeś się także, że możesz przechowywać wartości w zmiennych, żeby twój program je zapamiętał a ty żebyś mógł użyć ich później.
+W tym rozdziale nauczyłeś się podstaw pisania instrukcji Pythona. Musisz mówić Pythonowi bardzo dokładnie i~ściśle co ma zrobić ponieważ komputery nie potrafią myśleć i~rozumieją tylko bardzo proste rozkazy. Nauczyłeś się że Python potrafi ewaluować wyrażenia (to znaczy, zamienić całe wyrażenie na pojedynczą wartość), i~że wyrażenia to wartości (takie jak 2 czy 5) połączone operatorami (takimi jak + lub -). Dowiedziałeś się także, że możesz przechowywać wartości w~zmiennych, żeby twój program je zapamiętał a~ty żebyś mógł użyć ich później.
 
-W następnym rozdziale, poznasz trochę więcej podstawowych pojęć, a później napiszesz swój pierwszy program!
+W następnym rozdziale, poznasz trochę więcej podstawowych pojęć, a~później napiszesz swój pierwszy program!
 
 \chapter{Tekst}
 
@@ -352,28 +353,28 @@ W następnym rozdziale, poznasz trochę więcej podstawowych pojęć, a późnie
 	\item Łączenie stringów
 	\item Typy danych (takie jak stringi czy liczby całkowite)
 	\item Używanie IDLE do pisania kodu źródłowego
-	\item Zapisywanie i uruchamianie programów w IDLE
+	\item Zapisywanie i~uruchamianie programów w~IDLE
 	\item Funkcja print()
 	\item Funkcja input()
 	\item Komentarze
-	\item Wielkie litery w nazwach zmiennych
+	\item Wielkie litery w~nazwach zmiennych
 	\item Rozróżnianie wielkości liter
 \etopicscovered
 
-Wystarczy już liczb i matematyki. Python jest znacznie więcej niż tylko kalkulatorem. Sprawdźmy teraz co Python potrafi robić z tekstem. W tym rozdziale, nauczymy się jak przechowywać tekst w zmiennych, łączyć teksty i wyświetlać je na ekranie. Wiele z naszych programów będzie używało tekstu do wyświetlania gier na ekranie gracza, a gracz będzie wprowadzał tekst do naszych programów za pomocą klawiatury. Napiszemy też nasz pierwszy program, który pozdrowi jego użytkownika tekstem "Witaj, świecie!" i spyta użytkownika o imię.
+Wystarczy już liczb i~matematyki. Python jest znacznie więcej niż tylko kalkulatorem. Sprawdźmy teraz co Python potrafi robić z~tekstem. W~tym rozdziale, nauczymy się jak przechowywać tekst w~zmiennych, łączyć teksty i~wyświetlać je na ekranie. Wiele z~naszych programów będzie używało tekstu do wyświetlania gier na ekranie gracza, a~gracz będzie wprowadzał tekst do naszych programów za pomocą klawiatury. Napiszemy też nasz pierwszy program, który pozdrowi jego użytkownika tekstem ,,Witaj, świecie!'' i~spyta użytkownika o~imię.
 
 \section{Stringi}
 
-W Pythonie używamy małych fragmentów tekstu nazywanych {\bf stringami}\footnote{Niektórzy nazywają je także łańcuchami tekstowymi}. Możemy przechowywać stringi w zmiennych dokładnie tak, jak robiliśmy to z liczbami. Kiedy wpisujemy stringi, otaczamy je dwoma apostrofami (') w ten sposób:
+W Pythonie używamy małych fragmentów tekstu nazywanych {\bf stringami}\footnote{Niektórzy nazywają je także łańcuchami tekstowymi}. Możemy przechowywać stringi w~zmiennych dokładnie tak, jak robiliśmy to z~liczbami. Kiedy wpisujemy stringi, otaczamy je dwoma apostrofami (') w~ten sposób:
 
 \begin{lstlisting}
 >>> foo = 'czesc'
 >>>
 \end{lstlisting}
 
-Apostrofów używa się tylko po to, żeby komputer wiedział gdzie tekst się zaczyna i kończy. Nie są one częścią tekstu.
+Apostrofów używa się tylko po to, żeby komputer wiedział gdzie tekst się zaczyna i~kończy. Nie są one częścią tekstu.
 
-Jeśli teraz wpiszesz w shellu \lstinline{foo}, powinienneś zobaczyć zawartość zmiennej \lstinline{foo} (string 'czesc'). 
+Jeśli teraz wpiszesz w~shellu \lstinline{foo}, powinienneś zobaczyć zawartość zmiennej \lstinline{foo} (string 'czesc'). 
 
 
 \begin{lstlisting}
@@ -383,7 +384,7 @@ Jeśli teraz wpiszesz w shellu \lstinline{foo}, powinienneś zobaczyć zawartoś
 >>>
 \end{lstlisting}
 
-Stało się tak dlatego, że Python ewaluuje zmienną \lstinline{foo} do wartości przez nią przechowywanej (w tym wypadku, do tekstu 'czesc').
+Stało się tak dlatego, że Python ewaluuje zmienną \lstinline{foo} do wartości przez nią przechowywanej (w~tym wypadku, do tekstu 'czesc').
 
 Stringi mogą zawierać prawie każdy znak na klawiaturze (nie mogą zawierać apostrofów bez wcześniejszego ich wyescapowania. Escapowanie będzie opisane dalej). Poniżej są przykłady prawidłowych stringów:
 
@@ -398,11 +399,11 @@ Stringi mogą zawierać prawie każdy znak na klawiaturze (nie mogą zawierać a
 'O*&#wY%*&OCfsdYO*&gfC%YO*&%3yc8r2'
 \end{lstlisting}
 
-Podobnie jak w poprzednim rozdziale robiliśmy to z liczbami, stringi również możemy łączyć razem operatorami tworząc wyrażenia.
+Podobnie jak w~poprzednim rozdziale robiliśmy to z~liczbami, stringi również możemy łączyć razem operatorami tworząc wyrażenia.
 
 \section{Konkatenacja stringów}
 
-Możesz dodać jednego stringa na koniec drugiego używając operatora +. Operacja taka nazywa się konkatenacją (łączeniem) stringów. Spróbuj wpisać w shellu \lstinline{'Witaj' + 'Świecie!'}
+Możesz dodać jednego stringa na koniec drugiego używając operatora +. Operacja taka nazywa się konkatenacją (łączeniem) stringów. Spróbuj wpisać w~shellu \lstinline{'Witaj' + 'Świecie!'}
 
 \begin{lstlisting}
 >>> 'Witaj' + 'Swiecie!'
@@ -410,7 +411,7 @@ Możesz dodać jednego stringa na koniec drugiego używając operatora +. Operac
 >>>
 \end{lstlisting}
 
-Żeby oddzielić słowa, dopisz spację po stringu 'Witaj' przed zamykającym apostrofem, w ten sposób:
+Żeby oddzielić słowa, dopisz spację po stringu 'Witaj' przed zamykającym apostrofem, w~ten sposób:
 
 \begin{lstlisting}
 >>> 'Witaj ' + 'Swiecie!'
@@ -418,61 +419,61 @@ Możesz dodać jednego stringa na koniec drugiego używając operatora +. Operac
 >>> 
 \end{lstlisting}
 
-Operator + działa w różny sposób dla stringów i liczb, ponieważ są one różnymi {\bf typami danych}. Każda wartość posiada typ (jest jakiegoś typu). Typem wartości 'Cześć' jest string. Typem wartości 5 jest liczba całkowita. Typ wartości mówi nam (i komputerowi) jaki rodzaj danych jest w niej przechowywany. 
+Operator + działa w~różny sposób dla stringów i~liczb, ponieważ są one różnymi {\bf typami danych}. Każda wartość posiada typ (jest jakiegoś typu). Typem wartości 'Cześć' jest string. Typem wartości 5 jest liczba całkowita. Typ wartości mówi nam (i~komputerowi) jaki rodzaj danych jest w~niej przechowywany. 
 
-\section{Pisanie programów w edytorze IDLE}
+\section{Pisanie programów w~edytorze IDLE}
 
-Do teraz pisaliśmy instrukcje jedna po drugiej w interaktywnym shellu. Ale kiedy piszemy program, wpierw wpisujemy kilka instrukcji, a następnie uruchamiamy je wszystkie razem. Napiszmy więc pierwszy program!
+Do teraz pisaliśmy instrukcje jedna po drugiej w~interaktywnym shellu. Ale kiedy piszemy program, wpierw wpisujemy kilka instrukcji, a~następnie uruchamiamy je wszystkie razem. Napiszmy więc pierwszy program!
 
-Program który pokazywał okno interaktywnego shella w którym działaliśmy do tej pory nazywał się IDLE (Interactive DeveLopment Environment - Interaktywne Środowisko Programistyczne). IDLE ma także inną funkcję - edytor plików.
+Program który pokazywał okno interaktywnego shella w~którym działaliśmy do tej pory nazywał się IDLE (Interactive DeveLopment Environment - Interaktywne Środowisko Programistyczne). IDLE ma także inną funkcję - edytor plików.
 
-Kliknij na menu File (Plik) na górze okna, wybierz New Window (Nowe Okno). Pojawi sie nowe puste okno w którym będziemy mogli pisać program. To okno to {\bf edytor plików}.
+Kliknij na menu File (Plik) na górze okna, wybierz New Window (Nowe Okno). Pojawi sie nowe puste okno w~którym będziemy mogli pisać program. To okno to {\bf edytor plików}.
 
-\img{strings-fileeditor}{Okno edytora plików}{7cm}
+\img{strings-fileeditor}{Okno edytora plików}{7 cm}
 
 \section{Witaj Świecie!}
 
-Tradycją przy nauce programowania w nowym języku jest tworzenie pierwszego programu wyświetlającego na ekranie tekst "Witaj, Świecie!" ("Hello, World!"). Stworzymy teraz swój własny program Hello World.
+Tradycją przy nauce programowania w~nowym języku jest tworzenie pierwszego programu wyświetlającego na ekranie tekst ,,Witaj, Świecie!'' (,,Hello, World!"). Stworzymy teraz swój własny program Hello World.
 
-Kiedy wprowadzasz program, nie wpisuj liczb po lewej stronie kodu. Są tam jedynie po to, żeby omawiając kod można było się odnieść do konkretnej linii po numerze. Jeśli spojrzysz w prawy dolny róg edytora, zobaczysz w której linii kursor znajduje się w danym momencie.
+Kiedy wprowadzasz program, nie wpisuj liczb po lewej stronie kodu. Są tam jedynie po to, żeby omawiając kod można było się odnieść do konkretnej linii po numerze. Jeśli spojrzysz w~prawy dolny róg edytora, zobaczysz w~której linii kursor znajduje się w~danym momencie.
 
-\img{strings-nrlinii}{Prawy dolny róg okna edytora powie ci w której linii znajduje się kursor. Tutaj znajduje się w linii 12.}{3cm}
+\img{strings-nrlinii}{Prawy dolny róg okna edytora powie ci w~której linii znajduje się kursor. Tutaj znajduje się w~linii 12.}{3 cm}
 
 Wprowadź tekst poniżej do nowego okna edytora plików. Nazywamy ten tekst kodem źródłowym programu ponieważ zawiera instrukcje które Python będzie wykonywał żeby wiedzieć dokładnie jak program powinien się zachować.
 
-{\bf Uwaga!} Ten program działa tylko z Pythonem w wersji 3, więc jeśli masz zainstalowanego Pythona 2.6 lub jakąkowiek inną wersję z serii 2.x, program nie będzie działał. Świadczy o tym błąd: \lstinline{NameError: name is not defined}.
+{\bf Uwaga!} Ten program działa tylko z~Pythonem w~wersji 3, więc jeśli masz zainstalowanego Pythona 2.6 lub jakąkowiek inną wersję z~serii 2.x, program nie będzie działał. Świadczy o~tym błąd: \lstinline{NameError: name is not defined}.
 
 \bnl{caption=hello.py}
 \lstinputlisting{python/hello.py}
 % TODO URL
 
-Okno programu w IDLE będzie pokazywało instrukcje w różnych kolorach. Kiedy skończysz przepisywać kod, okno powinno wyglądać tak, jak na rysunku \ref{strings-idle}.
+Okno programu w~IDLE będzie pokazywało instrukcje w~różnych kolorach. Kiedy skończysz przepisywać kod, okno powinno wyglądać tak, jak na rysunku \ref{strings-idle}.
 
-\img{strings-idle}{Okno edytora plików powinno po wprowadzeniu kodu  wyglądać w ten sposób}{10cm}
+\img{strings-idle}{Okno edytora plików powinno po wprowadzeniu kodu  wyglądać w~ten sposób}{10 cm}
 
 \subsection{Zapisywanie programu}
 
-\img{strings-saveas}{Zapisywanie programu}{7cm}
+\img{strings-saveas}{Zapisywanie programu}{7 cm}
 
-Po wprowadzeniu kodu źródłowego programu, zapisz go żebyś nie musiał wpisywać go od nowa za każdym razem kiedy startujesz IDLE. Aby to zrobić, w menu File (Plik) wybierz opcję Save As (Zapisz Jako). Powinno pokazać się okno wyboru pliku. Wpisz (jak na rysunku \ref{strings-saveas}) "hello.py" w miejsce nazwy pliku i wciśnij Save (Zapisz).
+Po wprowadzeniu kodu źródłowego programu, zapisz go żebyś nie musiał wpisywać go od nowa za każdym razem kiedy startujesz IDLE.~Aby to zrobić, w~menu File (Plik) wybierz opcję Save As (Zapisz Jako). Powinno pokazać się okno wyboru pliku. Wpisz (jak na rysunku \ref{strings-saveas}) ,,hello.py'' w~miejsce nazwy pliku i~wciśnij Save (Zapisz).
 
-Kiedy wpisujesz program, powinenneś zapisywać go raz na jakiś czas. W ten sposób, jeśli komputer przypadkowo się wyłączy lub niechcąco wyjdziesz z IDLE, zgubi się tylko część tekstu. Wciskając Ctrl-S, szybko zapiszesz plik bez użycia myszki.
+Kiedy wpisujesz program, powinenneś zapisywać go raz na jakiś czas. W~ten sposób, jeśli komputer przypadkowo się wyłączy lub niechcąco wyjdziesz z~IDLE, zgubi się tylko część tekstu. Wciskając Ctrl-S, szybko zapiszesz plik bez użycia myszki.
 
 %TODO mention about python2?
 
 \subsection{Otwieranie zapisanych programów}
 
-Aby wczytać zapisany program, wybierz w menu File (Plik) opcję Open (Otwórz). W oknie które się pojawi, wybierz "hello.py" i wciśnij przycisk Open (Otwórz). Program hello.py który zapisałeś otworzy się w oknie edytora plików.
+Aby wczytać zapisany program, wybierz w~menu File (Plik) opcję Open (Otwórz). W~oknie które się pojawi, wybierz ,,hello.py'' i~wciśnij przycisk Open (Otwórz). Program hello.py który zapisałeś otworzy się w~oknie edytora plików.
 
-A teraz - czas na uruchomienie programu! Z menu Run (Uruchom) wybierz opcję Run Module (Uruchom Moduł) lub po prostu wciśnij klawisz F5 na klawiaturze. Twój program powinien uruchomić się w oknie shella które pokazało się kiedy wystartowałeś IDLE po raz pierwszy. Pamiętaj, musisz wcisnąć F5 w oknie edytora plików, nie w oknie interaktywnego shella.
+A teraz - czas na uruchomienie programu! Z~menu Run (Uruchom) wybierz opcję Run Module (Uruchom Moduł) lub po prostu wciśnij klawisz F5 na klawiaturze. Twój program powinien uruchomić się w~oknie shella które pokazało się kiedy wystartowałeś IDLE po raz pierwszy. Pamiętaj, musisz wcisnąć F5 w~oknie edytora plików, nie w~oknie interaktywnego shella.
 
-\img{strings-hello}{Tak powinno wyglądać okno shella po uruchomieniu programu "Hello World"}{7cm}
+\img{strings-hello}{Tak powinno wyglądać okno shella po uruchomieniu programu ,,Hello World''}{7 cm}
 
-Kiedy program spyta cię o imię, wpisz je a potem wciśnij Enter jak na rysunku \ref{strings-hello}.
+Kiedy program spyta cię o~imię, wpisz je a~potem wciśnij Enter jak na rysunku \ref{strings-hello}.
 
 \section{Jak działa program Witaj Świecie}
 
-W jaki sposób nasz program działa? Każda z linii którą wprowadziliśmy jest instrukcją którą Python wykonuje tak, żeby komputer ją zrozumiał. Program komputerowy jest jak przepis kucharski. Najpierw wykonaj pierwszy krok, potem drugi i tak dalej, aż dotrzesz do końca. Każda instrukcja jest wykonywana jedna po drugiej, zaczynając od góry programu i idąc instrukcja po instrukcji. Po tym jak program wykona instrukcje z pierwszej linii, zaczyna wykonywać drugą linię, potem trzecią i tak dalej.
+W jaki sposób nasz program działa? Każda z~linii którą wprowadziliśmy jest instrukcją którą Python wykonuje tak, żeby komputer ją zrozumiał. Program komputerowy jest jak przepis kucharski. Najpierw wykonaj pierwszy krok, potem drugi i~tak dalej, aż dotrzesz do końca. Każda instrukcja jest wykonywana jedna po drugiej, zaczynając od góry programu i~idąc instrukcja po instrukcji. Po tym jak program wykona instrukcje z~pierwszej linii, zaczyna wykonywać drugą linię, potem trzecią i~tak dalej.
 
 Podążanie programu od instrukcji do instrukcji nazywamy {\bf przepływem wykonania} lub po prostu {\bf wykonaniem}.
 
@@ -482,15 +483,15 @@ Spojrzmy teraz na program linia po linii żeby zobaczyć co robi. Zacznijmy od l
 \bnl{caption=,name=hello}
 \lstinputlisting[firstline=1,lastline=1]{python/hello.py}
 
-Ta linia nazywana jest {\bf komentarzem}. Każdy tekst za znakiem \lstinline{#} (znak ten nazywany jest {\bf hashem}) jest komentarzem. Komentarze nie są dla komputera, ale ciebie - programisty. Komputer je ignoruje. Używane są do przypominania ci co program robi, lub do mówienia innym ludziom którzy mogą oglądać twój kod co próbujesz w nim osiągnąć.
+Ta linia nazywana jest {\bf komentarzem}. Każdy tekst za znakiem \lstinline{#} (znak ten nazywany jest {\bf hashem}) jest komentarzem. Komentarze nie są dla komputera, ale ciebie - programisty. Komputer je ignoruje. Używane są do przypominania ci co program robi, lub do mówienia innym ludziom którzy mogą oglądać twój kod co próbujesz w~nim osiągnąć.
 
 Programiści zazwyczaj dodają komentarz na samym początku kodu żeby nadać programowi tytuł. Program IDLE wyświetla komentarze na czerwono żeby bardziej się wyróżniały.
 
 \subsection{Funkcje}
 
-{\bf Funkcja} jest rodzajem mini-programu wewnątrz twojego programu. Zawiera linie kodu który jest wykonywany od góry do dołu. Python dostarcza kilku wbudowanych funkcji, których możemy używać. Najlepszą rzeczą w funkcjach jest to, że wystarczy że wiemy co dana funkcja robi, nie jak to robi. Jedyne co musisz wiedzieć o funkcji print() to to, że wyświetla tekst na ekranie, ale nie musisz wiedzieć jak to robi.
+{\bf Funkcja} jest rodzajem mini-programu wewnątrz twojego programu. Zawiera linie kodu który jest wykonywany od góry do dołu. Python dostarcza kilku wbudowanych funkcji, których możemy używać. Najlepszą rzeczą w~funkcjach jest to, że wystarczy że wiemy co dana funkcja robi, nie jak to robi. Jedyne co musisz wiedzieć o~funkcji print() to to, że wyświetla tekst na ekranie, ale nie musisz wiedzieć jak to robi.
 
-{\bf Wywołanie funkcji} jest fragmentem kodu który mówi naszemu programowi żeby uruchomił kod wewnątrz funkcji. Na przykład, twój program może wywołać funkcję print() kiedykolwiek chcesz wyświetlić tekst na ekranie. Funkcja print() pobiera stringa który wpisujesz jej pomiędzy nawiasami i drukuje tekst na ekranie. ponieważ chcemy wyświetlić na ekranie tekst Witaj Świecie, piszemy nazwę funkcji, otwierający nawias, string 'Witaj Świecie!' i nawias zamykający.
+{\bf Wywołanie funkcji} jest fragmentem kodu który mówi naszemu programowi żeby uruchomił kod wewnątrz funkcji. Na przykład, twój program może wywołać funkcję print() kiedykolwiek chcesz wyświetlić tekst na ekranie. Funkcja print() pobiera stringa który wpisujesz jej pomiędzy nawiasami i~drukuje tekst na ekranie. ponieważ chcemy wyświetlić na ekranie tekst Witaj Świecie, piszemy nazwę funkcji, otwierający nawias, string 'Witaj Świecie!' i~nawias zamykający.
 
 \subsection{Funkcja print()}
 
@@ -499,28 +500,28 @@ Programiści zazwyczaj dodają komentarz na samym początku kodu żeby nadać pr
 
 Te linie wywołują funkcję {\bf print}, zazwyczaj zapisywaną jako print() (string który chcemy wydrukować na ekranie jest umieszczony pomiędzy nawiasami).
 
-Nawiasy do końca nazwy funkcji dodaje się po to, żeby było wiadomo że mówimy o funkcji o nazwie print(), nie zmiennej print. Nawiasy na końcu funkcji przypominają nam że mówimy o funkcji tak samo, jak cudzysłowie dookoła '42' przypominają nam że mówimy o stringu '42', nie o liczbie 42.
+Nawiasy do końca nazwy funkcji dodaje się po to, żeby było wiadomo że mówimy o~funkcji o~nazwie print(), nie zmiennej print. Nawiasy na końcu funkcji przypominają nam że mówimy o~funkcji tak samo, jak cudzysłowie dookoła '42' przypominają nam że mówimy o~stringu '42', nie o~liczbie 42.
 
-Linia 3 to kolejne wywołanie funkcji print(). Tym razem, program pisze "Jak się nazywasz?".
+Linia 3 to kolejne wywołanie funkcji print(). Tym razem, program pisze ,,Jak się nazywasz?".
 
 \subsection{Funkcja input()}
 
 \bnl{name=hello}
 \lstinputlisting[firstline=4,lastline=4,firstnumber=4]{python/hello.py}
 
-Ta linia zawiera instrukcję przypisania, zmienną (imie) i wywołanie funkcji (input()). Kiedy wywoływane jest input(), program czeka na tekst od użytkownika. Tekst który wprowadzi użytkownik (czyli twoje imię) staje się wartością zwracaną przez funkcję.
+Ta linia zawiera instrukcję przypisania, zmienną (imie) i~wywołanie funkcji (input()). Kiedy wywoływane jest input(), program czeka na tekst od użytkownika. Tekst który wprowadzi użytkownik (czyli twoje imię) staje się wartością zwracaną przez funkcję.
 
-Podobnie jak wyrażenia, wywołania funkcji są ewaluowane do pojedynczej wartości. Wartość do której wywołanie funkcji jest ewaluowane nazywa się {\bf wartością zwracaną}. (W zasadzie, możemy używać słowa "zwraca" zamiast "ewaluuje".) W tym wypadku, wartość zwracana przez funkcję input() to string który zawiera imię wpisane przez użytkownika. Jeśli użytkownik wpisał Albert, wywołanie funkcji input() jest ewaluowane do stringa 'Albert'.
+Podobnie jak wyrażenia, wywołania funkcji są ewaluowane do pojedynczej wartości. Wartość do której wywołanie funkcji jest ewaluowane nazywa się {\bf wartością zwracaną}. (W~zasadzie, możemy używać słowa ,,zwraca'' zamiast ,,ewaluuje''.) W~tym wypadku, wartość zwracana przez funkcję input() to string który zawiera imię wpisane przez użytkownika. Jeśli użytkownik wpisał Albert, wywołanie funkcji input() jest ewaluowane do stringa 'Albert'.
 
-Funkcja o nazwie input() nie potrzebuje (w przeciwiństwie do print()) od programu żadnych danych, dlatego nie umieściliśmy nic pomiędzy jej nawiasami.
+Funkcja o~nazwie input() nie potrzebuje (w~przeciwiństwie do print()) od programu żadnych danych, dlatego nie umieściliśmy nic pomiędzy jej nawiasami.
 
 \bnl{name=hello}
 \lstinputlisting[firstline=5,lastline=5,firstnumber=5]{python/hello.py}
 
-W ostatniej linii mamy znów funkcję print(). Tym razem, używamy operatora plus (+) aby skonkatenować stringa 'Miło mi cię poznać, ' i stringa przechowywanego w zmiennej o nazwie \lstinline{imie}, która przechowuje imię które użytkownik wprowadził do programu. W ten sposób nauczyliśmy program pozdrawiać nas po imieniu.
+W ostatniej linii mamy znów funkcję print(). Tym razem, używamy operatora plus (+) aby skonkatenować stringa 'Miło mi cię poznać, ' i~stringa przechowywanego w~zmiennej o~nazwie \lstinline{imie}, która przechowuje imię które użytkownik wprowadził do programu. W~ten sposób nauczyliśmy program pozdrawiać nas po imieniu.
 
 \subsection{Kończenie programu}
-Kiedy program wykona ostatnią linię, zatrzymuje się. W tym momencie jest {\bf zakończony} bądź {\bf wyszedł} i wszelkie zmienne są zapominane przez komputer, włączając stringa przechowywanego w \lstinline{imie}. Jeśli spróbujesz uruchomić program ponownie podając inne imię, na przykład Gosia, pomyśli że to twoje imię.
+Kiedy program wykona ostatnią linię, zatrzymuje się. W~tym momencie jest {\bf zakończony} bądź {\bf wyszedł} i~wszelkie zmienne są zapominane przez komputer, włączając stringa przechowywanego w~\lstinline{imie}. Jeśli spróbujesz uruchomić program ponownie podając inne imię, na przykład Gosia, pomyśli że to twoje imię.
 
 \bl{}
 \begin{lstlisting}
@@ -531,9 +532,9 @@ Milo mi cie poznac, Gosia
 >>> 
 \end{lstlisting}
 
-Pamiętaj, komputer robi tylko dokładnie to, co mu powiesz. Tutaj, w naszym pierwszym programie, jest zaprogramowany by spytać cię o imię, pozwala ci wpisać tekst, a potem mówi cześć i wyświetla tekst który wpisałeś.
+Pamiętaj, komputer robi tylko dokładnie to, co mu powiesz. Tutaj, w~naszym pierwszym programie, jest zaprogramowany by spytać cię o~imię, pozwala ci wpisać tekst, a~potem mówi cześć i~wyświetla tekst który wpisałeś.
 
-Ale komputery są głupie. Program nie ma pojęcia czy wpisujesz swoje imię, imię kogoś innego, czy po prostu coś głupiego. Możesz wpisać cokolwiek chcesz i komputer potraktuje to w ten sam sposób:
+Ale komputery są głupie. Program nie ma pojęcia czy wpisujesz swoje imię, imię kogoś innego, czy po prostu coś głupiego. Możesz wpisać cokolwiek chcesz i~komputer potraktuje to w~ten sam sposób:
 
 \bl{}
 \begin{lstlisting}
@@ -546,25 +547,25 @@ Milo mi cie poznac, kupa
 
 \section{Nazwy zmiennych}
 
-Komputerowi jest wszystko jedno jak nazwiesz zmienne, ale tobie nie powinno to być obojętne. Dawanie zmiennym nazw mówiących o tym, co przechowują sprawia że łatwiej zrozumieć co program robi. Zamiast \lstinline{imie}, mogliśmy nazwać zmienną jaroslawKaczynski lub iMiE. Komputer uruchomi program tak samo (o ile nadal będziesz używał nazwy jarosławKaczyński lub iMiE).
+Komputerowi jest wszystko jedno jak nazwiesz zmienne, ale tobie nie powinno to być obojętne. Dawanie zmiennym nazw mówiących o~tym, co przechowują sprawia że łatwiej zrozumieć co program robi. Zamiast \lstinline{imie}, mogliśmy nazwać zmienną jaroslawKaczynski lub iMiE.~Komputer uruchomi program tak samo (o~ile nadal będziesz używał nazwy jarosławKaczyński lub iMiE).
 
-Nazwy zmiennych, podobnie jak wszystko inne w Pythonie, rozróżniają pomiędzy małymi i wielkimi literami (ang. Case-sensitive). Oznacza to, że ta sama nazwa zmiennej pisana inną wielkością liter uważana jest za zupełnie inną zmienną. Zatem foo, FOO, Foo i fOO są w Pythonie czterema różnymi zmiennymi. Każda z nich może przechowywać inną wartość.
+Nazwy zmiennych, podobnie jak wszystko inne w~Pythonie, rozróżniają pomiędzy małymi i~wielkimi literami (ang. Case-sensitive). Oznacza to, że ta sama nazwa zmiennej pisana inną wielkością liter uważana jest za zupełnie inną zmienną. Zatem foo, FOO, Foo i~fOO są w~Pythonie czterema różnymi zmiennymi. Każda z~nich może przechowywać inną wartość.
 
-Nie jest najlepszym pomysłem trzymanie zmiennych o tej samej nazwie różniących się tylko wielkością liter. Jeśli przechowujesz imię użytkownika w zmiennej \lstinline{IMIE}, a imię jego psa w zmiennej \lstinline{imie}, parę tygodni później czytając swój kod nie będziesz wiedział o co chodzi. Czy \lstinline{IMIE} oznacza imię psa, czy człowieka?
+Nie jest najlepszym pomysłem trzymanie zmiennych o~tej samej nazwie różniących się tylko wielkością liter. Jeśli przechowujesz imię użytkownika w~zmiennej \lstinline{IMIE}, a~imię jego psa w~zmiennej \lstinline{imie}, parę tygodni później czytając swój kod nie będziesz wiedział o~co chodzi. Czy \lstinline{IMIE} oznacza imię psa, czy człowieka?
 
-Jeśli przez przypadek zamienisz miejscami zmienne \lstinline{imie} i \lstinline{IMIE}, twój program będzie działał (to znaczy, nie będzie miał błędów składni), ale będzie się zachowywał nieprawidłowo (zwracając się do użytkownika per Fafik). Ten typ błędu w kodzie to {\bf bug}. Często zdarza się przez przypadek pozostawiać w programie bugi podczas ich pisania. Dlatego właśnie ważne jest, żeby wybierać sensowne nazwy dla zmiennych.
+Jeśli przez przypadek zamienisz miejscami zmienne \lstinline{imie} i~\lstinline{IMIE}, twój program będzie działał (to znaczy, nie będzie miał błędów składni), ale będzie się zachowywał nieprawidłowo (zwracając się do użytkownika per Fafik). Ten typ błędu w~kodzie to {\bf bug}. Często zdarza się przez przypadek pozostawiać w~programie bugi podczas ich pisania. Dlatego właśnie ważne jest, żeby wybierać sensowne nazwy dla zmiennych.
 
-Jeśli nazwa zmiennej składa się z więcej niż jednego słowa, dobrze jest zaczynać kolejne słowa od wielkiej litery. Jeśli przechowujesz string mówiący o tym co zjadłeś na śniadanie, nazwa zmiennej \lstinline{coJadlemNaSniadanie} będzie znacznie łatwiejsza do odczytania niż \lstinline{cojadlemnasniadanie}. W programowaniu to {\bf konwencja} - reguła której nie musisz przestrzegać, ale dla własnego dobra powinienneś. (Jeszcze lepiej byłoby nazwać zmienną prościej - dzisiejszeSniadanie). Używanie wielkiej litery na początku każdego słowa sprawia, że program jest czytelniejszy.
+Jeśli nazwa zmiennej składa się z~więcej niż jednego słowa, dobrze jest zaczynać kolejne słowa od wielkiej litery. Jeśli przechowujesz string mówiący o~tym co zjadłeś na śniadanie, nazwa zmiennej \lstinline{coJadlemNaSniadanie} będzie znacznie łatwiejsza do odczytania niż \lstinline{cojadlemnasniadanie}. W~programowaniu to {\bf konwencja} - reguła której nie musisz przestrzegać, ale dla własnego dobra powinienneś. (Jeszcze lepiej byłoby nazwać zmienną prościej - dzisiejszeSniadanie). Używanie wielkiej litery na początku każdego słowa sprawia, że program jest czytelniejszy.
 
 % Paragraph about not using national characters in names - not in original
-Zauważyłeś pewnie, że popełniłem błąd w nazwie zmiennej - słowo imię pisze się z "ę" na końcu, nie "e". Zrobiłem to jednak celowo. Chociaż możesz używać nazw zmiennych i funkcji z polskimi literami (takimi jak ą, ć, ę, ó, ł, ż, ź, ń, ś), najlepiej zastępuj je ich angielskimi odpowiednikami (a, c, e, o, l itp.). Python w najnowszej wersji radzi sobie z takimi nazwami dość dobrze, ale nie wszyscy używają najnowszych wersji. Kiedyś prawdopodobnie nauczysz się innego niż Python języka programowania - większość z nich nie pozwala na polskie znaki w nazwach zmiennych i funkcji, będzie ci ciężko zmienić przyzwyczajenia.
+Zauważyłeś pewnie, że popełniłem błąd w~nazwie zmiennej - słowo imię pisze się z~,,ę'' na końcu, nie ,,e''. Zrobiłem to jednak celowo. Chociaż możesz używać nazw zmiennych i~funkcji z~polskimi literami (takimi jak ą, ć, ę, ó, ł, ż, ź, ń, ś), najlepiej zastępuj je ich angielskimi odpowiednikami (a, c, e, o, l itp.). Python w~najnowszej wersji radzi sobie z~takimi nazwami dość dobrze, ale nie wszyscy używają najnowszych wersji. Kiedyś prawdopodobnie nauczysz się innego niż Python języka programowania - większość z~nich nie pozwala na polskie znaki w~nazwach zmiennych i~funkcji, będzie ci ciężko zmienić przyzwyczajenia.
 
 \section{Podsumowanie}
 
-Teraz wiesz już jak radzić sobie z tekstem, więc możemy zacząć tworzyć programy które użytkownik może uruchamiać i komunikować się z nimi. To ważne, ponieważ tekst jest głównym sposobem w który użytkownik będzie się komunikował z komputerem. Gracz będzie wprowadzał tekst na ekran poprzez klawiaturę z pomocą funkcji input(), a komputer będzie wyświetlał tekst kiedy będzie wykonywana funkcja print().
+Teraz wiesz już jak radzić sobie z~tekstem, więc możemy zacząć tworzyć programy które użytkownik może uruchamiać i~komunikować się z~nimi. To ważne, ponieważ tekst jest głównym sposobem w~który użytkownik będzie się komunikował z~komputerem. Gracz będzie wprowadzał tekst na ekran poprzez klawiaturę z~pomocą funkcji input(), a~komputer będzie wyświetlał tekst kiedy będzie wykonywana funkcja print().
 
-Stringi są po prostu jeszcze jednym typem danych, który możemy używać w programach. Możemy używać operatora + do złączenia stringów razem. Używanie operatora + do konkatenacji dwóch stringów i stworzenia nowego stringa działa tak samo jak użycie operatora + do dodania dwóch liczb, z których uzyskujemy nową liczbę (sumę).
+Stringi są po prostu jeszcze jednym typem danych, który możemy używać w~programach. Możemy używać operatora + do złączenia stringów razem. Używanie operatora + do konkatenacji dwóch stringów i~stworzenia nowego stringa działa tak samo jak użycie operatora + do dodania dwóch liczb, z~których uzyskujemy nową liczbę (sumę).
 
-W następnym rozdziale, nauczymy się więcej o zmiennych i nasz program będzie zapamiętywał tekst i liczby wprowadzone przez gracza. Wiedząc jak używać tekstu, liczb i zmiennych, będziemy gotowi żeby zacząć tworzyć gry.
+W następnym rozdziale, nauczymy się więcej o~zmiennych i~nasz program będzie zapamiętywał tekst i~liczby wprowadzone przez gracza. Wiedząc jak używać tekstu, liczb i~zmiennych, będziemy gotowi żeby zacząć tworzyć gry.
 
 \end{document}
