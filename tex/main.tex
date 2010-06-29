@@ -30,10 +30,10 @@
 
 % Numbered listing
 \definecolor{codebg}{gray}{0.9}
-\newcommand{\bnl}[1]{\lstset{language=Python,numbers=left,backgroundcolor=\color{codebg},#1}}
+\newcommand{\bnl}[1]{\lstset{language=Python,numbers=left,backgroundcolor=\color{codebg},frame=single,#1}}
 
 % Non-numbered listing
-\newcommand{\bl}[1]{\lstset{language=Python,numbers=none,backgroundcolor=\color{codebg},#1}}
+\newcommand{\bl}[1]{\lstset{language=Python,numbers=none,backgroundcolor=\color{codebg},frame=single,#1}}
 
 % Image macro
 \newcommand{\img}[3]{
@@ -391,22 +391,21 @@ Stało się tak dlatego, że Python ewaluuje zmienną \lstinline{foo} do~wartoś
 
 Stringi mogą zawierać prawie każdy znak na~klawiaturze (nie mogą zawierać apostrofów bez wcześniejszego ich wyescapowania. Escapowanie będzie opisane dalej). Poniżej są przykłady prawidłowych stringów:
 
-
 \begin{lstlisting}
 'czesc'
 'Jak się masz?'
 'ALAMAKOTA'
-'7 jabłek, 14 pomarańczy, 3 cytryny'
+'7 jabłek, 14 pomarańczy, 3 cytryny i czosnek'
 'Słuchaj, jeszcze chwila i otworzę wytwórnię salami.'
 'Dawno, dawno temu w odległej galaktyce...'
 'O*&#wY%*&OCfsdYO*&gfC%YO*&%3yc8r2'
 \end{lstlisting}
 
-Podobnie jak w~poprzednim rozdziale robiliśmy to z~liczbami, stringi również możemy łączyć razem operatorami tworząc wyrażenia.
+Podobnie jak w~poprzednim rozdziale robiliśmy to z~liczbami, stringi również możemy łączyć operatorami tworząc wyrażenia.
 
 \section{Konkatenacja stringów}
 
-Możesz dodać jednego stringa na~koniec drugiego używając operatora +. Operacja taka nazywa się konkatenacją (łączeniem) stringów. Spróbuj wpisać w~shellu \lstinline{'Witaj' + 'Świecie!'}
+Możesz ,,dokleić" jednego stringa na~koniec drugiego używając operatora +. Operacja taka nazywa się konkatenacją (łączeniem) stringów. Spróbuj wpisać w~shellu \lstinline{'Witaj' + 'Świecie!'}
 
 \begin{lstlisting}
 >>> 'Witaj' + 'Swiecie!'
@@ -422,7 +421,7 @@ Możesz dodać jednego stringa na~koniec drugiego używając operatora +. Operac
 >>> 
 \end{lstlisting}
 
-Operator + działa w~różny sposób dla stringów i~liczb, ponieważ są one różnymi {\bf typami danych}. Każda wartość posiada typ (jest jakiegoś typu). Typem wartości 'Cześć' jest string. Typem wartości 5 jest liczba całkowita. Typ wartości mówi nam (i~komputerowi) jaki rodzaj danych jest w~niej przechowywany. 
+Operator + działa w~inny sposób dla stringów i~dla liczb, ponieważ są one różnymi {\bf typami danych}. Każda wartość posiada typ (jest jakiegoś typu). Wartość 'Cześć' jest typu string. Wartość 5 jest typu liczba całkowita. Typ wartości mówi nam (i~komputerowi) jaki rodzaj danych ona przechowuje. 
 
 \section{Pisanie programów w~edytorze IDLE}
 
@@ -430,19 +429,21 @@ Do teraz pisaliśmy instrukcje jedna po drugiej w~interaktywnym shellu. Ale kied
 
 Program który pokazywał okno interaktywnego shella w~którym działaliśmy do~tej pory nazywał się IDLE (Interactive DeveLopment Environment - Interaktywne Środowisko Programistyczne). IDLE ma także inną funkcję - edytor plików.
 
-Kliknij na~menu File (Plik) na~górze okna, wybierz New Window (Nowe Okno). Pojawi sie nowe puste okno w~którym będziemy mogli pisać program. To okno to {\bf edytor plików}.
+Kliknij na~menu File (Plik) na~górze okna, wybierz New Window (Nowe Okno). Pojawi sie nowe puste okno w~którym będziesz mógł pisać program. To okno to {\bf edytor plików}.
 
 \img{strings-fileeditor}{Okno edytora plików}{7 cm}
 
 \section{Witaj Świecie!}
 
-Tradycją przy nauce programowania w~nowym języku jest tworzenie pierwszego programu wyświetlającego na~ekranie tekst ,,Witaj, Świecie!'' (,,Hello, World!"). Stworzymy teraz swój własny program Hello World.
+Istnieje w programowaniu tradycja polegająca na tym, że kiedy uczysz się nowego języka programowania, piszesz program wyświetlający na ekranie tekst ,,Witaj, Świecie!'' (,,Hello, World!"). Stwórzmy więc własny program Hello World w Pythonie!
 
-Kiedy wprowadzasz program, nie wpisuj liczb po lewej stronie kodu. Są tam jedynie po to, żeby omawiając kod można było się odnieść do~konkretnej linii po numerze. Jeśli spojrzysz w~prawy dolny róg edytora, zobaczysz w~której linii kursor znajduje się w~danym momencie.
+% The following 2 paragraphs in original order make little sense
+Wprowadź tekst poniżej do~nowego okna edytora plików. Nazywamy ten tekst kodem źródłowym programu ponieważ zawiera instrukcje które Python będzie wykonywał żeby wiedzieć dokładnie jak program powinien się zachować.
+
+Kiedy wprowadzasz program, nie wpisuj liczb po lewej stronie kodu. Są tam jedynie po to, żeby omawiając kod można było się odnieść do~konkretnej linii po numerze. Jeśli spojrzysz na~prawy dolny róg edytora, zobaczysz numer linii w~której kursor znajduje się w~danym momencie.
 
 \img{strings-nrlinii}{Prawy dolny róg okna edytora powie ci w~której linii znajduje się kursor. Tutaj znajduje się w~linii 12.}{3 cm}
 
-Wprowadź tekst poniżej do~nowego okna edytora plików. Nazywamy ten tekst kodem źródłowym programu ponieważ zawiera instrukcje które Python będzie wykonywał żeby wiedzieć dokładnie jak program powinien się zachować.
 
 {\bf Uwaga!} Ten program działa tylko z~Pythonem w~wersji 3, więc jeśli masz zainstalowanego Pythona 2.6 lub jakąkowiek inną wersję z~serii 2.x, program nie będzie działał. Świadczy o~tym błąd: \lstinline{NameError: name is not defined}.
 
@@ -450,7 +451,7 @@ Wprowadź tekst poniżej do~nowego okna edytora plików. Nazywamy ten tekst kode
 \lstinputlisting{python/hello.py}
 % TODO URL
 
-Okno programu w~IDLE będzie pokazywało instrukcje w~różnych kolorach. Kiedy skończysz przepisywać kod, okno powinno wyglądać tak, jak na~rysunku \ref{strings-idle}.
+Okno programu IDLE będzie pokazywało różne rodzaje instrukcji w~różnych kolorach. Kiedy skończysz przepisywać kod, okno powinno wyglądać tak, jak na~rysunku \ref{strings-idle}.
 
 \img{strings-idle}{Okno edytora plików powinno po wprowadzeniu kodu  wyglądać w~ten sposób}{10 cm}
 
@@ -458,9 +459,9 @@ Okno programu w~IDLE będzie pokazywało instrukcje w~różnych kolorach. Kiedy 
 
 \img{strings-saveas}{Zapisywanie programu}{7 cm}
 
-Po wprowadzeniu kodu źródłowego programu, zapisz go żebyś nie musiał wpisywać go od nowa za każdym razem kiedy startujesz IDLE.~Aby to zrobić, w~menu File (Plik) wybierz opcję Save As (Zapisz Jako). Powinno pokazać się okno wyboru pliku. Wpisz (jak na~rysunku \ref{strings-saveas}) ,,hello.py'' w~miejsce nazwy pliku i~wciśnij Save (Zapisz).
+Po przepisaniu kodu źródłowego programu, zapisz go żebyś nie musiał go wpisywać od nowa za każdym razem kiedy startujesz IDLE.~Aby to zrobić, w~menu File (Plik) wybierz opcję Save As (Zapisz Jako). Powinno pokazać się okno wyboru pliku. Wpisz jako nazwę pliku ,,hello.py'' (jak na~rysunku \ref{strings-saveas}) i~wciśnij Save (Zapisz).
 
-Kiedy wpisujesz program, powinenneś zapisywać go raz na~jakiś czas. W~ten sposób, jeśli komputer przypadkowo się wyłączy lub niechcąco wyjdziesz z~IDLE, zgubi się tylko część tekstu. Wciskając Ctrl-S, szybko zapiszesz plik bez użycia myszki.
+Kiedy wpisujesz program, powinenneś raz na~jakiś czas zapisywać jego kod. W~ten sposób, jeśli komputer przypadkowo się wyłączy lub niechcąco wyjdziesz z~IDLE, zgubi się tylko część tekstu. Wciskając Ctrl-S, szybko zapiszesz plik bez użycia myszki.
 
 %TODO mention about python2?
 
@@ -468,7 +469,7 @@ Kiedy wpisujesz program, powinenneś zapisywać go raz na~jakiś czas. W~ten spo
 
 Aby wczytać zapisany program, wybierz w~menu File (Plik) opcję Open (Otwórz). W~oknie które się pojawi, wybierz ,,hello.py'' i~wciśnij przycisk Open (Otwórz). Program hello.py który zapisałeś otworzy się w~oknie edytora plików.
 
-A teraz - czas na~uruchomienie programu! Z~menu Run (Uruchom) wybierz opcję Run Module (Uruchom Moduł) lub po prostu wciśnij klawisz F5 na~klawiaturze. Twój program powinien uruchomić się w~oknie shella które pokazało się kiedy wystartowałeś IDLE po raz pierwszy. Pamiętaj, musisz wcisnąć F5 w~oknie edytora plików, nie w~oknie interaktywnego shella.
+A teraz - czas na~uruchomienie programu! Z~menu Run (Uruchom) wybierz opcję Run Module (Uruchom Moduł) lub po prostu wciśnij na~klawiaturze klawisz F5. Twój program powinien uruchomić się w~oknie shella (tym, które pokazało się kiedy uruchomiłeś IDLE). Pamiętaj, musisz wcisnąć F5 w~oknie edytora plików (tam, gdzie przepisałeś kod) - nie w~oknie interaktywnego shella.
 
 \img{strings-hello}{Tak powinno wyglądać okno shella po uruchomieniu programu ,,Hello World''}{7 cm}
 
@@ -476,17 +477,17 @@ Kiedy program spyta cię o~imię, wpisz je a~potem wciśnij Enter jak na~rysunku
 
 \section{Jak działa program Witaj Świecie}
 
-W jaki sposób nasz program działa? Każda z~linii którą wprowadziliśmy jest instrukcją którą Python wykonuje tak, żeby komputer ją zrozumiał. Program komputerowy jest jak przepis kucharski. Najpierw wykonaj pierwszy krok, potem drugi i~tak dalej, aż dotrzesz do~końca. Każda instrukcja jest wykonywana jedna po drugiej, zaczynając od góry programu i~idąc instrukcja po instrukcji. Po tym jak program wykona instrukcje z~pierwszej linii, zaczyna wykonywać drugą linię, potem trzecią i~tak dalej.
+W jaki sposób nasz program działa? Każda z~linii którą wprowadziliśmy jest instrukcją którą Python tłumaczy tak, żeby komputer potrafił ją wykonać. Program komputerowy jest jak przepis kucharski. Najpierw wykonaj pierwszy krok, potem drugi i~tak dalej, aż dotrzesz do~końca. Każda instrukcja jest wykonywana jedna po drugiej, zaczynając od góry programu i~idąc dalej instrukcja po instrukcji. Po tym jak program wykona instrukcje z~pierwszej linii, zaczyna wykonywać drugą linię, potem trzecią i~tak dalej.
 
-Podążanie programu od instrukcji do~instrukcji nazywamy {\bf przepływem wykonania} lub po prostu {\bf wykonaniem}.
+Przechodzenie programu od instrukcji do~instrukcji nazywamy {\bf przepływem wykonania} lub po prostu {\bf wykonywaniem}.
 
-Spojrzmy teraz na~program linia po linii żeby zobaczyć co robi. Zacznijmy od linii pierwszej.
+Spojrzmy teraz na~program linia po linii żeby zobaczyć co robi. Zacznijmy od pierwszej.
 
 \subsection{Komentarze}
 \bnl{caption=,name=hello}
 \lstinputlisting[firstline=1,lastline=1]{python/hello.py}
 
-Ta linia nazywana jest {\bf komentarzem}. Każdy tekst za znakiem \lstinline{#} (znak ten nazywany jest {\bf hashem}) jest komentarzem. Komentarze nie są dla komputera, ale ciebie - programisty. Komputer je ignoruje. Używane są do~przypominania ci co program robi, lub do~mówienia innym ludziom którzy mogą oglądać twój kod co próbujesz w~nim osiągnąć.
+Ta linia nazywana jest {\bf komentarzem}. Każdy tekst za znakiem \lstinline{#} (znak ten nazywany jest {\bf hashem}\footnote{czyt. hasz}) jest komentarzem. Komentarze nie są dla komputera, ale ciebie - programisty. Komputer je ignoruje. Używane są do~przypominania ci co program robi, lub do~mówienia innym ludziom którzy mogą oglądać twój kod co próbujesz w~nim osiągnąć.
 
 Programiści zazwyczaj dodają komentarz na~samym początku kodu żeby nadać programowi tytuł. Program IDLE wyświetla komentarze na~czerwono żeby bardziej się wyróżniały.
 
