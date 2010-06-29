@@ -26,7 +26,7 @@
 
 % Fixes a bug in lstlisting
 \lstset{extendedchars=\false,inputencoding=utf8x,showspaces=false}
-\lstset{literate={ą}{{\k{a}}}1 {ł}{{\l{}}}1 {ń}{{\'n}}1 {ę}{{\k{e}}}1 {ś}{{\'s}}1 {ż}{{\.z}}1 {ó}{{\'o}}1 {ź}{{\'z}}1 {Ą}{{\k{A}}}1 {Ł}{{\L{}}}1 {Ń}{{\'N}}1 {Ę}{{\k{E}}}1 {Ś}{{\'S}}1 {Ż}{{\.Z}}1 {Ó}{{\'O}}1 {Ź}{{\'Z}}1 }
+\lstset{literate={ą}{{\k{a}}}1 {ć}{{\'c}}1 {ł}{{\l{}}}1 {ń}{{\'n}}1 {ę}{{\k{e}}}1 {ś}{{\'s}}1 {ż}{{\.z}}1 {ó}{{\'o}}1 {ź}{{\'z}}1 {Ą}{{\k{A}}}1 {Ć}{{\'C}}1 {Ł}{{\L{}}}1 {Ń}{{\'N}}1 {Ę}{{\k{E}}}1 {Ś}{{\'S}}1 {Ż}{{\.Z}}1 {Ó}{{\'O}}1 {Ź}{{\'Z}}1 }
 
 % Numbered listing
 \definecolor{codebg}{gray}{0.9}
@@ -68,6 +68,10 @@
 \begin{document}
 
 \chapter{Instalowanie Pythona}
+
+Ściągnij Pythona 3.1 ze strony Python.org.
+
+W razie czego - http://inventwithpython.com/chapter1.html
 
 \chapter{Shell interaktywny}
 \btopicscovered
@@ -487,15 +491,15 @@ Spojrzmy teraz na~program linia po linii żeby zobaczyć co robi. Zacznijmy od p
 \bnl{caption=,name=hello}
 \lstinputlisting[firstline=1,lastline=1]{python/hello.py}
 
-Ta linia nazywana jest {\bf komentarzem}. Każdy tekst za znakiem \lstinline{#} (znak ten nazywany jest {\bf hashem}\footnote{czyt. hasz}) jest komentarzem. Komentarze nie są dla komputera, ale ciebie - programisty. Komputer je ignoruje. Używane są do~przypominania ci co program robi, lub do~mówienia innym ludziom którzy mogą oglądać twój kod co próbujesz w~nim osiągnąć.
+Ta linia nazywana jest {\bf komentarzem}. Każdy tekst za znakiem \lstinline{#} (znak ten nazywany jest {\bf hashem}\footnote{czyt. hasz}) jest komentarzem. Komentarze nie są przeznaczone dla komputera, ale dla ciebie - programisty. Komputer je ignoruje. Używane są do~przypominania ci co program robi, lub do~mówienia innym ludziom jak działa twój kod.
 
-Programiści zazwyczaj dodają komentarz na~samym początku kodu żeby nadać programowi tytuł. Program IDLE wyświetla komentarze na~czerwono żeby bardziej się wyróżniały.
+Programiści zazwyczaj żeby nadać programowi tytuł dodają komentarz na~samym początku kodu. Program IDLE wyświetla komentarze na~czerwono żeby bardziej się wyróżniały.
 
 \subsection{Funkcje}
 
-{\bf Funkcja} jest rodzajem mini-programu wewnątrz twojego programu. Zawiera linie kodu który jest wykonywany od góry do~dołu. Python dostarcza kilku wbudowanych funkcji, których możemy używać. Najlepszą rzeczą w~funkcjach jest to, że wystarczy że wiemy co dana funkcja robi, nie jak to robi. Jedyne co musisz wiedzieć o~funkcji print() to to, że wyświetla tekst na~ekranie, ale nie musisz wiedzieć jak to robi.
+{\bf Funkcja} jest rodzajem mini-programu wewnątrz twojego programu. Zawiera linie kodu który jest wykonywany od góry do~dołu. Python dostarcza kilku wbudowanych funkcji, których możemy używać. Najlepszą rzeczą w~funkcjach jest to, że wystarczy że wiemy co dana funkcja robi, nie jak to robi. Jedyne co musisz wiedzieć o~funkcji print() to to, że wyświetla na~ekranie tekst, ale nie musisz wiedzieć o tym jak to robi.
 
-{\bf Wywołanie funkcji} jest fragmentem kodu który mówi naszemu programowi żeby uruchomił kod wewnątrz funkcji. Na przykład, twój program może wywołać funkcję print() kiedykolwiek chcesz wyświetlić tekst na~ekranie. Funkcja print() pobiera stringa który wpisujesz jej pomiędzy nawiasami i~drukuje tekst na~ekranie. ponieważ chcemy wyświetlić na~ekranie tekst Witaj Świecie, piszemy nazwę funkcji, otwierający nawias, string 'Witaj Świecie!' i~nawias zamykający.
+{\bf Wywołanie funkcji} jest fragmentem kodu który mówi naszemu programowi żeby uruchomił kod wewnątrz funkcji. Na przykład, twój program może wywoływać funkcję print() kiedykolwiek chcesz wyświetlić tekst na~ekranie. Funkcja print() pobiera stringa którego wprowadzasz pomiędzy nawiasami i~drukuje tekst na~ekranie. Ponieważ chcemy wyświetlić na~ekranie tekst Witaj Świecie, piszemy nazwę funkcji, otwierający nawias, string 'Witaj Świecie!' i~nawias zamykający.
 
 \subsection{Funkcja print()}
 
@@ -557,19 +561,19 @@ Nazwy zmiennych, podobnie jak wszystko inne w~Pythonie, rozróżniają pomiędzy
 
 Nie jest najlepszym pomysłem trzymanie zmiennych o~tej samej nazwie różniących się tylko wielkością liter. Jeśli przechowujesz imię użytkownika w~zmiennej \lstinline{IMIE}, a~imię jego psa w~zmiennej \lstinline{imie}, parę tygodni później czytając swój kod nie będziesz wiedział o~co chodzi. Czy \lstinline{IMIE} oznacza imię psa, czy człowieka?
 
-Jeśli przez przypadek zamienisz miejscami zmienne \lstinline{imie} i~\lstinline{IMIE}, twój program będzie działał (to znaczy, nie będzie miał błędów składni), ale będzie się zachowywał nieprawidłowo (zwracając się do~użytkownika per Fafik). Ten typ błędu w~kodzie to {\bf bug}. Często zdarza się przez przypadek pozostawiać w~programie bugi podczas ich pisania. Dlatego właśnie ważne jest, żeby wybierać sensowne nazwy dla zmiennych.
+Jeśli przez przypadek zamienisz miejscami zmienne \lstinline{imie} i~\lstinline{IMIE}, twój program będzie działał (to znaczy, nie będzie miał błędów składni), ale będzie się zachowywał nieprawidłowo (zwracając się do~użytkownika per Fafik). Ten typ błędu w~kodzie to {\bf bug}\footnote{czyt. bag}. Często zdarza się przez przypadek pozostawiać w~programie bugi podczas ich pisania. Dlatego właśnie ważne jest, żeby wybierać sensowne nazwy dla zmiennych.
 
-Jeśli nazwa zmiennej składa się z~więcej niż jednego słowa, dobrze jest zaczynać kolejne słowa od wielkiej litery. Jeśli przechowujesz string mówiący o~tym co zjadłeś na~śniadanie, nazwa zmiennej \lstinline{coJadlemNaSniadanie} będzie znacznie łatwiejsza do~odczytania niż \lstinline{cojadlemnasniadanie}. W~programowaniu to {\bf konwencja} - reguła której nie musisz przestrzegać, ale dla własnego dobra powinienneś. (Jeszcze lepiej byłoby nazwać zmienną prościej - dzisiejszeSniadanie). Używanie wielkiej litery na~początku każdego słowa sprawia, że program jest czytelniejszy.
+Jeśli nazwa zmiennej składa się z~więcej niż jednego słowa, dobrze jest zaczynać kolejne słowa od wielkiej litery. Jeśli przechowujesz string mówiący o~tym co zjadłeś na~śniadanie, nazwa zmiennej \lstinline{coJadlemNaSniadanie} będzie znacznie łatwiejsza do~odczytania niż \lstinline{cojadlemnasniadanie}. W~programowaniu to {\bf konwencja} - reguła której nie musisz przestrzegać, ale dla większej czytelności powinienneś. (Jeszcze lepiej byłoby nazwać zmienną prościej - dzisiejszeSniadanie). Używanie wielkiej litery na~początku każdego słowa sprawia, że program jest czytelniejszy.
 
 % Paragraph about not using national characters in names - not in original
-Zauważyłeś pewnie, że popełniłem błąd w~nazwie zmiennej - słowo imię pisze się z~,,ę'' na~końcu, nie ,,e''. Zrobiłem to jednak celowo. Chociaż możesz używać nazw zmiennych i~funkcji z~polskimi literami (takimi jak ą, ć, ę, ó, ł, ż, ź, ń, ś), najlepiej zastępuj je ich angielskimi odpowiednikami (a, c, e, o, l itp.). Python w~najnowszej wersji radzi sobie z~takimi nazwami dość dobrze, ale nie wszyscy używają najnowszych wersji. Kiedyś prawdopodobnie nauczysz się innego niż Python języka programowania - większość z~nich nie pozwala na~polskie znaki w~nazwach zmiennych i~funkcji, będzie ci ciężko zmienić przyzwyczajenia.
+Zauważyłeś pewnie, że w~nazwie zmiennej jest błąd - słowo imię pisze się z~,,ę'' na~końcu, nie ,,e''. Zrobiłem to jednak celowo. Chociaż możesz używać nazw zmiennych i~funkcji z~polskimi literami (takimi jak ą, ć, ę, ó, ł, ż, ź, ń, ś), najlepiej zastępuj je ich angielskimi odpowiednikami (a, c, e, o, l, z, z, n, s). Python w~najnowszej wersji radzi sobie z~takimi nazwami dość dobrze, ale nie wszyscy używają najnowszych wersji programów. Kiedyś też nauczysz się innego niż Python języka programowania - większość z~nich nie pozwala na~polskie znaki w~nazwach zmiennych i~funkcji, będzie ci ciężko zmienić przyzwyczajenia.
 
 \section{Podsumowanie}
 
-Teraz wiesz już jak radzić sobie z~tekstem, więc możemy zacząć tworzyć programy które użytkownik może uruchamiać i~komunikować się z~nimi. To ważne, ponieważ tekst jest głównym sposobem w~który użytkownik będzie się komunikował z~komputerem. Gracz będzie wprowadzał tekst na~ekran poprzez klawiaturę z~pomocą funkcji input(), a~komputer będzie wyświetlał tekst kiedy będzie wykonywana funkcja print().
+Teraz wiesz już jak radzić sobie z~tekstem, więc możemy zacząć tworzyć programy które użytkownik może uruchamiać i~komunikować się z~nimi. To ważna umiejętność, ponieważ tekst jest głównym sposobem w~który użytkownik będzie się komunikował z~komputerem. Gracz będzie wprowadzał tekst na~ekran poprzez klawiaturę z~pomocą funkcji input(), a~komputer będzie wyświetlał tekst kiedy będzie wykonywana funkcja print().
 
-Stringi są po prostu jeszcze jednym typem danych, który możemy używać w~programach. Możemy używać operatora + do~złączenia stringów razem. Używanie operatora + do~konkatenacji dwóch stringów i~stworzenia nowego stringa działa tak samo jak użycie operatora + do~dodania dwóch liczb, z~których uzyskujemy nową liczbę (sumę).
+Stringi są po prostu jeszcze jednym typem danych, któego możemy używać w~programach. Możemy używać operatora + do~,,sklejenia'' stringów razem. Używanie operatora + do~konkatenacji dwóch stringów i~stworzenia nowego działa tak samo jak użycie operatora + do~dodania dwóch liczb, z~których uzyskujemy nową liczbę (sumę).
 
-W następnym rozdziale, nauczymy się więcej o~zmiennych i~nasz program będzie zapamiętywał tekst i~liczby wprowadzone przez gracza. Wiedząc jak używać tekstu, liczb i~zmiennych, będziemy gotowi żeby zacząć tworzyć gry.
+W następnym rozdziale, nauczymy się więcej o~zmiennych i~nasz program będzie zapamiętywał tekst oraz~liczby wprowadzone przez gracza. Wiedząc jak używać tekstu, liczb i~zmiennych, będziemy gotowi żeby zacząć tworzyć gry.
 
 \end{document}
