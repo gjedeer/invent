@@ -283,7 +283,7 @@ Wyrażenie przypisania ,,liczba = liczba + 5'' jest jak powiedzenie ,,nowa warto
 
 \section{Używanie więcej niż jednej zmiennej}
 
-Kiedy piszesz program, nie jesteś ograniczony do~używania jednej zmiennej. Często będziesz potrzebował używać wielu zmiennych.
+Kiedy piszesz program, nie jesteś ograniczony do~używania jednej zmiennej. Często będziesz potrzebował używać wielu.
 
 Na przykład, przypiszmy różne wartości do~dwóch zmiennych o~nazwach ,,foo'' oraz ,,bar'':
 
@@ -306,11 +306,11 @@ Spróbujmy zmienić teraz zmienną ,,liczba''. Wpisz ,,liczba = foo + bar'' do~o
 25
 \end{lstlisting}
 
-Wartość zmiennej ,,liczba'' wynosi teraz 25, ponieważ kiedy dodajemy ,,foo'' i~,,bar'', dodajemy wartości przechowywane w~,,foo'' (10) i~,,bar'' (15).
+Wartość zmiennej ,,liczba'' wynosi teraz 25, ponieważ dodając ,,foo'' i~,,bar'', dodajemy wartości przechowywane w~,,foo'' (10) i~,,bar'' (15).
 
 \subsection{Nadpisywanie zmiennych}
 
-Zmiana wartości przechowywanej w~zmiennej jest prosta. Po prostu przypisz jej nową wartość. Sprawdź co się stanie po wprowadzeniu następującego kodu do~shella:
+Zmiana wartości przechowywanej w~zmiennej jest prosta. Po prostu przypisz jej nową wartość. Sprawdź, co się stanie po wprowadzeniu następującego kodu do~shella:
 
 \begin{lstlisting}
 >>> foo = 42
@@ -321,9 +321,9 @@ Zmiana wartości przechowywanej w~zmiennej jest prosta. Po prostu przypisz jej n
 'Czesc'
 \end{lstlisting}
 
-Na początku, zmienna ,,foo'' przechowywała liczbę 42. Dlatego właśnie za pierwszym razem po wpisaniu ,,foo'' komputer zwrócił ,,42". Ale po wykonaniu ,,spam='Czesc'", wartość 42 została usunięta ze zmiennej i~zapomniana w~momencie kiedy tekst ,,Czesc'' został w~niej zapamiętany.
+Na początku, zmienna ,,foo'' przechowywała liczbę 42. Dlatego właśnie za pierwszym razem po wpisaniu ,,foo'' komputer zwrócił ,,42". Ale po wykonaniu ,,spam='Czesc'", wartość 42 została usunięta ze zmiennej i~zapomniana w~momencie w którym tekst ,,Czesc'' został w~niej zapamiętany.
 
-Zmiana wartości zmiennej na~nową wartość nazywana jest {\bf nadpisywaniem} jej wartości. Ważne jest żeby wiedzieć, że stara wartość zostanie na~zawsze zapomniana. Jeśli chcesz zapamiętać tą wartość żeby użyć jej później, możesz zapamiętać ją w~innej zmiennej przed zmianą wartości.
+Zmiana wartości zmiennej na~nową wartość nazywana jest {\bf nadpisywaniem}. Ważne jest żeby wiedzieć, że stara wartość zostanie na~zawsze zapomniana. Jeśli chcesz ją zapamiętać żeby użyć jej później, możesz zapamiętać ją w~innej zmiennej przed zmianą wartości.
 
 \begin{lstlisting}
 >>> foo = 42
@@ -341,9 +341,9 @@ W powyższym przykładzie, przed nadpisaniem wartości zmiennej ,,foo'', skopiow
 
 \section{Podsumowanie}
 
-W tym rozdziale nauczyłeś się podstaw pisania instrukcji Pythona. Musisz mówić Pythonowi bardzo dokładnie i~ściśle co ma zrobić ponieważ komputery nie potrafią myśleć i~rozumieją tylko bardzo proste rozkazy. Nauczyłeś się że Python potrafi ewaluować wyrażenia (to znaczy, zamienić całe wyrażenie na~pojedynczą wartość), i~że wyrażenia to wartości (takie jak 2 czy 5) połączone operatorami (takimi jak + lub -). Dowiedziałeś się także, że możesz przechowywać wartości w~zmiennych, żeby twój program je zapamiętał a~ty żebyś mógł użyć ich później.
+W tym rozdziale nauczyłeś się podstaw pisania instrukcji Pythona. Musisz mówić Pythonowi bardzo dokładnie i~ściśle co ma zrobić ponieważ komputery nie potrafią myśleć i~rozumieją tylko bardzo proste rozkazy. Nauczyłeś się, że Python potrafi ewaluować wyrażenia (to znaczy, zamienić całe wyrażenie na~pojedynczą wartość), i~że wyrażenia to wartości (takie jak 2 czy 5) połączone operatorami (takimi jak + lub -). Dowiedziałeś się także, że możesz przechowywać wartości w~zmiennych, żeby twój program je zapamiętał a~ty żebyś mógł użyć ich później.
 
-W następnym rozdziale, poznasz trochę więcej podstawowych pojęć, a~później napiszesz swój pierwszy program!
+W następnym rozdziale poznasz jeszcze kilka podstawowych pojęć, a~później napiszesz swój pierwszy program!
 
 \chapter{Tekst}
 
@@ -361,11 +361,11 @@ W następnym rozdziale, poznasz trochę więcej podstawowych pojęć, a~późnie
 	\item Rozróżnianie wielkości liter
 \etopicscovered
 
-Wystarczy już liczb i~matematyki. Python jest znacznie więcej niż tylko kalkulatorem. Sprawdźmy teraz co Python potrafi robić z~tekstem. W~tym rozdziale, nauczymy się jak przechowywać tekst w~zmiennych, łączyć teksty i~wyświetlać je na~ekranie. Wiele z~naszych programów będzie używało tekstu do~wyświetlania gier na~ekranie gracza, a~gracz będzie wprowadzał tekst do~naszych programów za pomocą klawiatury. Napiszemy też nasz pierwszy program, który pozdrowi jego użytkownika tekstem ,,Witaj, świecie!'' i~spyta użytkownika o~imię.
+Wystarczy już liczb i~matematyki. Python jest znacznie więcej niż tylko kalkulatorem. Sprawdźmy teraz co potrafi robić z~tekstem. W~tym rozdziale nauczymy się jak przechowywać tekst w~zmiennych, łączyć teksty i~wyświetlać je na~ekranie. Wiele z~naszych programów będzie używało tekstu do~wyświetlania gier na~ekranie gracza, a~gracz będzie wprowadzał do nich tekst za pomocą klawiatury. Napiszemy też pierwszy program, który pozdrowi użytkownika tekstem ,,Witaj, świecie!'' i~spyta go o~imię.
 
 \section{Stringi}
 
-W Pythonie używamy małych fragmentów tekstu nazywanych {\bf stringami}\footnote{Niektórzy nazywają je także łańcuchami tekstowymi}. Możemy przechowywać stringi w~zmiennych dokładnie tak, jak robiliśmy to z~liczbami. Kiedy wpisujemy stringi, otaczamy je dwoma apostrofami (') w~ten sposób:
+W Pythonie używamy małych fragmentów tekstu nazywanych {\bf stringami}\footnote{Niektórzy nazywają je także łańcuchami tekstowymi}. Możemy przechowywać stringi w~zmiennych dokładnie tak, jak przechowywaliśmy liczby. Kiedy wpisujemy stringi, otaczamy je dwoma apostrofami (') w~ten sposób:
 
 \begin{lstlisting}
 >>> foo = 'czesc'
@@ -373,6 +373,9 @@ W Pythonie używamy małych fragmentów tekstu nazywanych {\bf stringami}\footno
 \end{lstlisting}
 
 Apostrofów używa się tylko po to, żeby komputer wiedział gdzie tekst się zaczyna i~kończy. Nie są one częścią tekstu.
+
+% This was not in the original
+{\bf Uwaga} - na klawiaturze są dwa znaki apostrofa, jeden w lewym górnym rogu (backtick), drugi - bliżej Entera, na prawo od klawisza ; (właściwy apostrof). My używamy tego drugiego (bliżej Entera).
 
 Jeśli teraz wpiszesz w~shellu \lstinline{foo}, powinienneś zobaczyć zawartość zmiennej \lstinline{foo} (string 'czesc'). 
 
