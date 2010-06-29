@@ -22,10 +22,13 @@
                                                            \arabic{subsubsection}.}
 % It's customary (depends on publisher) to indent first paragraph in sections and chapters:
 \usepackage{indentfirst}
-\lstset{extendedchars=false}
 
 % Fixes a bug in lstlisting
-\lstset{extendedchars=false}
+\lstset{extendedchars=false,showspaces=false}
+
+% Numbered listing
+\definecolor{codebg}{gray}{0.9}
+\newcommand{\bnl}[1]{\lstset{language=Python,numbers=left,backgroundcolor=\color{codebg},#1}}
 
 % Image macro
 \newcommand{\img}[3]{
@@ -399,16 +402,16 @@ Podobnie jak w poprzednim rozdziale robiliśmy to z liczbami, stringi również 
 Możesz dodać jednego stringa na koniec drugiego używając operatora +. Operacja taka nazywa się konkatenacją (łączeniem) stringów. Spróbuj wpisać w shellu \lstinline{'Witaj' + 'Świecie!'}
 
 \begin{lstlisting}
->>> 'Witaj' + 'Świecie!'
-'WitajŚwiecie!'
+>>> 'Witaj' + 'Swiecie!'
+'WitajSwiecie!'
 >>>
 \end{lstlisting}
 
 Żeby oddzielić słowa, dopisz spację po stringu 'Witaj' przed zamykającym apostrofem, w ten sposób:
 
 \begin{lstlisting}
->>> 'Witaj ' + 'Świecie!'
-'Witaj Świecie!'
+>>> 'Witaj ' + 'Swiecie!'
+'Witaj Swiecie!'
 >>> 
 \end{lstlisting}
 
@@ -433,5 +436,37 @@ Kiedy wprowadzasz program, nie wpisuj liczb po lewej stronie kodu. Są tam jedyn
 \img{strings-nrlinii}{Prawy dolny róg okna edytora powie ci w której linii znajduje się kursor. Tutaj znajduje się w linii 12.}{3cm}
 
 Wprowadź tekst poniżej do nowego okna edytora plików. Nazywamy ten tekst kodem źródłowym programu ponieważ zawiera instrukcje które Python będzie wykonywał żeby wiedzieć dokładnie jak program powinien się zachować.
+
+{\bf Uwaga!} Ten program działa tylko z Pythonem w wersji 3, więc jeśli masz zainstalowanego Pythona 2.6 lub jakąkowiek inną wersję z serii 2.x, program nie będzie działał. Świadczy o tym błąd: \lstinline{NameError: name is not defined}.
+
+\bnl{caption=hello.py}
+\lstinputlisting{python/hello.py}
+% TODO URL
+
+Okno programu w IDLE będzie pokazywało instrukcje w różnych kolorach. Kiedy skończysz przepisywać kod, okno powinno wyglądać tak, jak na rysunku \ref{strings-idle}.
+
+\img{strings-idle}{Okno edytora plików powinno po wprowadzeniu kodu  wyglądać w ten sposób}{10cm}
+
+\subsection{Zapisywanie programu}
+
+\img{strings-saveas}{Zapisywanie programu}{7cm}
+
+Po wprowadzeniu kodu źródłowego programu, zapisz go żebyś nie musiał wpisywać go od nowa za każdym razem kiedy startujesz IDLE. Aby to zrobić, w menu File (Plik) wybierz opcję Save As (Zapisz Jako). Powinno pokazać się okno wyboru pliku. Wpisz (jak na rysunku \ref{strings-saveas}) "hello.py" w miejsce nazwy pliku i wciśnij Save (Zapisz).
+
+Kiedy wpisujesz program, powinenneś zapisywać go raz na jakiś czas. W ten sposób, jeśli komputer przypadkowo się wyłączy lub niechcąco wyjdziesz z IDLE, zgubi się tylko część tekstu. Wciskając Ctrl-S, szybko zapiszesz plik bez użycia myszki.
+
+%TODO mention about python2?
+
+\subsection{Otwieranie zapisanych programów}
+
+Aby wczytać zapisany program, wybierz w menu File (Plik) opcję Open (Otwórz). W oknie które się pojawi, wybierz "hello.py" i wciśnij przycisk Open (Otwórz). Program hello.py który zapisałeś otworzy się w oknie edytora plików.
+
+A teraz - czas na uruchomienie programu! Z menu Run (Uruchom) wybierz opcję Run Module (Uruchom Moduł) lub po prostu wciśnij klawisz F5 na klawiaturze. Twój program powinien uruchomić się w oknie shella które pokazało się kiedy wystartowałeś IDLE po raz pierwszy. Pamiętaj, musisz wcisnąć F5 w oknie edytora plików, nie w oknie interaktywnego shella.
+
+\img{strings-hello}{Tak powinno wyglądać okno shella po uruchomieniu programu "Hello World"}{7cm}
+
+Kiedy program spyta cię o imię, wpisz je a potem wciśnij Enter jak na rysunku \ref{strings-hello}.
+
+\section{Jak działa program "Witaj Świecie"}
 
 \end{document}
