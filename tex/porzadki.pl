@@ -41,7 +41,7 @@ use File::Compare;
 
 my $Odstep = "[\ \t~]";
 my $NieOdstep = "[^\ \t~]";
-my $Spojnik = "[aAiIoOuUwWzZ]";
+my $Spojnik = "[aAiIoOuUwWzZ]|do|na";
 my $Litera = "[a-zA-ZąĄćĆęĘłŁńŃóÓśŚżŻźŹ]";
 my $NieLitera = "[^a-zA-ZąĄćĆęĘłŁńŃóÓśŚżŻźŹ]";
 my $DuzaLitera = "[A-ZĄĆĘŁŃÓŚŻŹ]";
@@ -49,7 +49,7 @@ my $MalaLitera = "[a-ząćęłńóśżź]";
 my $Cyfra = "[0-9]";
 my $CyfraRzymska = "[IVXL]";
  
-my $PominSrodowisko ="(tabular|array|tabbing|figure|equation|eqenarray|verbatim)";
+my $PominSrodowisko ="(tabular|array|tabbing|figure|equation|eqenarray|verbatim|lstlisting)";
 
 my $FILE;
 my $BACKUP;
@@ -294,6 +294,9 @@ open(OUT, '>-') unless $FILE;
 foreach (@file_content) {
 	next if /^%/;
 	if (/\\begin{$PominSrodowisko}/../\\end{$PominSrodowisko}/) {
+		next;
+	};
+	if (/\\img{.+/) {
 		next;
 	};
 #	&PolaczWiersze;
