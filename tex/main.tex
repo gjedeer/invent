@@ -6,7 +6,8 @@
 \usepackage[polish]{babel}
 \usepackage{setspace}
 \usepackage{graphicx}
-\usepackage{listingsutf8}
+\usepackage{listings}
+% \usepackage{listingsutf8}
 \usepackage{color}
 
 % Original author: Al Sweigart, http://inventwithpython.com/
@@ -606,7 +607,101 @@ Poniewa@z nasz program jest gr@a, b@edziemy nazywa@c u@zytkownika graczem, ale s
 
 Tak gra b@edzie wygl@ada@la na ekranie gracza kiedy j@a uruchomi. Tekst wpisywany przez gracza jest pogrubiony.
 
+Cześć! Jak masz na imię?
+{\bf Albert}
+Cześć Albert. Myślę o pewnej liczbie od 1 do 20.
+Zgaduj:
+{\bf 10}
+Strzeliłeś zbyt wysoką liczbę.
+Zgaduj:
+{\bf 2}
+Strzeliłeś zbyt niską liczbę.
+Zgaduj:
+{\bf 4}
+Dobra robota, Albert! Odgadłeś moją liczbę w 3 próbach!
 
+Przepisz kod źródłowy programu dokładnie tak, jak jest poniżej. Następnie zapisz go klikając na menu File, a następnie Save As. Nazwij go na przykład {\bf zgadula.py}, a następnie uruchom wciskając klawisz F5. Nie martw się jeśli jeszcze nie rozumiesz kodu, wyjaśnię go później krok po kroku.
 
+\subsection{Kod źródłowy zgaduj-zgaduli}
+
+Poniżej znajduje się kod źródłowy gry w zgaduj-zgadulę. Kiedy będziesz wprowadzał kod do edytora, zwróć szczególną uwagę na spacje na początku niektórych linii. Niektóre z linii zaczynają się od 4 albo 8 spacji. Jeśli po uruchomieniu pojawi się błąd, upewnij się że napisałeś program dokładnie tak, jak w książce.
+
+%TODO kod ze strony
+
+{\bf Uwaga!} Ten program działa tylko w wersji 3 Pythona. Jeśli spróbujesz uruchomić go w starszej wersji, pojawi się błąd. Możesz sprawdzić wersję Pythona wybierając w menu Help opcję About IDLE.
+
+\bnl{caption=zgadula.py}
+\lstinputlisting{python/zgadula.py}
+
+Pomimo tego, że przepisujesz kod źródłowy do nowego okna edytora, zawsze możesz wrócić do shella żeby wprowadzać pojedyncze instrukcje i sprawdzać co robią. Interaktywny shell jest bardzo dobry do eksperymentowania z instrukcjami bez potrzeby uruchamiania programu. Możesz powrócić do interaktywnego shella klikając na jego okno lub przycisk w pasku zadań. Przycisk okna znajduje się zazwyczaj w pasku zadań (lub docku) na dole ekranu, ale zdarza się że jest przeniesiony na górę.
+
+% TODO diff
+
+Jeśli program po przepisaniu nie wydaje się działać, sprawdź czy przepisałeś kod dokładnie tak, jak w książce. Możesz też skopiować i wkleić swój kod do narzędzia "diff" na stronie http://inventwithpython.com/diff. Narzędzie diff pokaże ci w którym miejscu twój kod źródłowy różni się od tego w książce.
+
+Możesz używać narzędzia diff dla każdego z programów w tej książce.
+
+\section{Instrukcja import}
+
+Przeanalizujmy każdą linię kodu po kolei żeby dowiedzieć się jak działa ten program.
+
+\lstinputlisting[linerange=1-1]{python/zgadula.py}
+
+Ta linia to komentarz. Komentarze wprowadziliśmy już w programie Hello World w rozdziale 3. Pamiętaj, że Python zignoruje wszystko co wpiszesz po znaku \lstinline{#}. Ta linia tylko przypomina nam, co program robi.
+
+\lstinputlisting[linerange=2-2]{python/zgadula.py}
+
+To jest {\bf instrukcja import}. Instrukcje nie są funkcjami (zauważ że ani import ani random nie mają po nazwie nawiasów()). Pamiętaj, że instrukcje wykonują pewne czynności, ale nie są ewaluowane do żadnej wartości. Widziałeś już instrukcje: instrukcje przypisania zapamiętują wartość w zmiennej (ale instrukcja nie jest do niczego ewaluowana).
+
+Chociaż Python ma wiele wbudowanych funkcji, jeszcze więcej jest ich dostępnych w osobnych programach nazywanych modułami. {\bf Moduły} to programy Pythona które zawierają dodatkowe funkcje. Używamy funkcji z tych modułów łącząc je z naszym programem instrukcją \lstinline{import}. W tym wypadku, importujemy moduł \lstinline{random}.
+
+Instrukcja \lstinline{import} składa się ze słowa kluczowego \lstinline{import} oraz nazwy modułu. Razem, słowo kluczowe i nazwa modułu tworzą instrukcję. Linia 2 jest instrukcją import która importuje moduł o nazwie random, który zawiera kilka funkcji związanych z liczbami losowymi. Random po angielsku oznacza właśnie "losowy". (Użyjemy później jednej z tych funkcji, żeby komputer miał liczbę którą gracz ma zgadnąć).
+
+\lstinputlisting[linerange=4-4]{python/zgadula.py}
+
+Ta linia tworzy nową zmienną o nazwie \lstinline{iloscProb}. Będziemy w niej zapamiętywać ile razy gracz próbował odgadnąć liczbę. Ponieważ gracz jeszcze nie próbował, na początek przechowamy tam liczbę 0.
+
+\lstinputlisting[linerange=6-7]{python/zgadula.py}
+
+Linie 6 i 7 powinienneś znać już z programu Witaj Świecie z rozdziału 3. Programiści często używają kodu z wcześniej napisanych programów, żeby nie wynajdować koła od nowa.
+
+Linia 6 jest wywołaniem funkcji print(). Przypomnienie - funkcja jest jak mniejszy program uruchamiany przez nasz program. Kiedy nasz program wywołuje funkcję, uruchamia ten mniejszy program. Kod zawarty w funkcji print() wyświetla na ekranie tekst podany pomiędzy nawiasami.
+
+Po wykonaniu tych dwóch linii, w zmiennej \lstinline{imie} będzie przechowywany string z imieniem gracza. (Pamiętaj, string może nie zawierać naprawdę imienia gracza - będzie zawierał cokolwiek gracz wpisze. Komputery są na tyle głupie, że wykonują program niezależnie od wszystkiego).
+
+\subsection{Funkcja random.randint()}
+
+\lstinputlisting[linerange=9-9]{python/zgadula.py}
+
+W linii 9 wywołujemy nową  funkcję o nazwie \lstinline{randint()}, a następnie przechowujemy wartość przez nią zwróconą w zmiennej o nazwie \lstinline{liczba}. Wywołania funkcji są wyrażeniami, ponieważ są ewaluowane do wartości. Wartość tę nazywamy wartością zwracaną przez funkcję.
+
+Ponieważ funkcja \lstinline{randint()} jest zawarta w module o nazwie \lstinline{random}, poprzedzamy jej nazwę przedrostkiem \lstinline{random.} (razem z kropką!). W ten sposób Python będzie wiedział, że ma szukać funkcji właśnie w tym module.
+
+Funkcja \lstinline{randint()} zwróci losową liczbę całkowitą \footnote{Przypomnienie: liczba całkowita to taka, która nie ma nic po przecinku} z przedziału który jej podamy. Tutaj podaliśmy jej pomiędzy nawiasami liczby 1 i 20 (oddzielone przecinkiem), więc funkcja zwróci liczbę z przedziału domkniętego od 1 do 20. Domknięty oznacza że liczby 1 i 20 mogą również być wylosowane. 
+
+Losowa liczba zwrócona przez randint() jest zapamiętana w zmiennej o nazwie \lstinline{liczba} - będzie to właśnie ta liczba którą gracz musi odgadnąć.
+
+Przejdź na chwilę do okna shella i wpisz \lstinline{import random} żeby zaimportować moduł \lstinline{random}. Potem wpisz \lstinline{random.randint(1,20)} żeby zobaczyć do jakiej wartości funkcja jest ewaluowana. Powinna zwrócić liczbę pomiędzy 1 i 20. Teraz wpisz ten sam kod ponownie i funkcja prawdopodobnie zwróci inną liczbę. Dzieje się tak dlatego, że za każdym razem kiedy funkcja \lstinline{randint()} jest wywoływana, zwraca jakąś liczbę losową, tak jakby rzucała kostką.
+
+\bl{}
+\begin{lstlisting}
+>>> import random
+>>> random.randint(1, 20)
+12
+>>> random.randint(1, 20)
+18
+>>> random.randint(1, 20)
+3
+>>> random.randint(1, 20)
+18
+>>> random.randint(1, 20)
+7
+>>>
+\end{lstlisting}
+
+Kiedy tylko chcemy żeby nasza gra coś wylosowała, możemy użyć funkcji \lstinline{randint()}. I w większości gier będziemy używać losowania - pomyśl ile znasz gier planszowych w których trzeba rzucać kostką.
+
+\bnl{}
+\lstinputlisting[linerange=9-10]{python/zgadula.py}
 
 \end{document}
