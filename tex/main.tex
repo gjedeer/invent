@@ -701,7 +701,81 @@ Przejdź na chwilę do okna shella i wpisz \lstinline{import random} żeby zaimp
 
 Kiedy tylko chcemy żeby nasza gra coś wylosowała, możemy użyć funkcji \lstinline{randint()}. I w większości gier będziemy używać losowania - pomyśl ile znasz gier planszowych w których trzeba rzucać kostką.
 
+Możemy też spróbować losowania liczb z innych zakresów. Na przykład, jeśli wpiszesz \lstinline{random.randint(1,4)}, zobaczysz liczby losowane z zakresu od 1 do 4 włącznie. Jeśli spróbujesz \lstinline{random.randint(1000, 2000)} - dostaniesz liczby pomiędzy 1000 i 2000. Poniżej jest przykład wywoływania funkcji \lstinline{random.randint()} z różnymi argumentami i sprawdzania jakie wartości zwróci. Twoje wyniki będą najprawdopodobniej inne (w końcu to liczby losowe).
+
+\begin{lstlisting}
+>>> random.randint(1, 4)
+3
+>>> random.randint(1, 4)
+4
+>>> random.randint(1000, 2000)
+1294
+>>> random.randint(1000, 2000)
+1585
+>>>
+\end{lstlisting}
+
+Możemy zmienić trochę kod gry żeby zachowywała się inaczej. Spróbuj zmienić linie 9 i 10 z takich:
+
 \bnl{}
 \lstinputlisting[linerange=9-10]{python/zgadula.py}
+
+na takie:
+
+\bnl{}
+\lstinputlisting[linerange=9-10]{python/zgadula100.py}
+
+Teraz komputer wylosuje liczbę od 1 do 100. Zmiana w linii 9 zmieni zakres losowania, ale pamiętaj zmienić też linię 10, żeby gra powiadomiła gracza o nowym przedziale liczb.
+
+\subsection{Wywoływanie funkcji umieszczonych w modułach}
+
+Koniecznie wpisuj \lstinline{random.randint(1, 20)} a nie samo \lstinline{randint(1, 20)}, albo komputer nie będzie wiedział żeby szukać funkcji \lstinline{randint()} w module \lstinline{random} i dostaniesz taki błąd:
+
+\bl{}
+\begin{lstlisting}
+>>> randint(1, 20)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'randint' is not defined
+>>>
+\end{lstlisting}
+
+Pamiętaj, twój program musi wykonać instrukcję \lstinline{import random} zanim wywoła funkcję \lstinline{random.randint()}. Dlatego właśnie instrukcje \lstinline{import} znajdują się zazwyczaj na początku programu.
+
+\section{Przekazywanie argumentów do funkcji}
+
+Liczby pomiędzy nawiasami w wywołaniu funkcji \lstinline{random.randint(1, 20)} nazywane są argumentami. {\bf Argumenty} to wartości przekazywane do funkcji kiedy jest wywoływana. Argumenty mówią funkcji jak ma się zachować. Podobnie jak to co wpisze gracz zmienia zachowanie naszego programu, argumenty zmieniają zachowanie funkcji.
+
+Niektóre funkcje wymagają od ciebie podania argumentów. Spójrz na te przykładowe wywołania funkcji:
+
+\bl{}
+\begin{lstlisting}
+input()
+print('Cześć')
+random.randint(1, 20)
+\end{lstlisting}
+
+Funkcja \lstinline{input()} nie ma argumentów, funkcja \lstinline{print()} ma jeden argument, a funkcja \lstinline{randint()} ma dwa. Kiedy używamy więcej niż jednego argumentu, oddzielamy poszczególne argumenty przecinkami. Inaczej mówiąc, argumenty są oddzielone przecinkami. Dzięki temu komputer wie gdzie kończy się jeden argument, a zaczyna następny.
+
+Jeśli wywołasz funkcję ze zbyt dużą lub małą ilością argumentów, Python wyświetli komunikat o błędzie podobny do tego poniżej. W tym przykładzie, najpierw wywołaliśmy \lstinline{randint()} z jednym argumentem (za mało), a potem - z trzema (za dużo).
+
+\bl{}
+\begin{lstlisting}
+>>> random.randint(1)
+Traceback (most recent call last):
+  File "<pyshell#1>", line 1, in <module>
+random.randint(1)
+TypeError: randint() takes exactly 3 positional arguments (2 given)
+>>> random.randint(1, 2, 3)
+Traceback (most recent call last):
+  File "<pyshell#2>", line 1, in <module>
+random.randint(1, 2, 3)
+TypeError: randint() takes exactly 3 positional arguments (4 given)
+>>>
+\end{lstlisting}
+
+Komunikaty mówią, że podaliśmy odpowiednio 2 i 4 argumenty, nie 2 i 3. To dlatego że Python zawsze dodaje dodatkowy, niewidoczny argument. Ten argument jest poza zakresem tej książki, i nie musisz się nim martwić.
+
+
 
 \end{document}
