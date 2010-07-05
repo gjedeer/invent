@@ -776,6 +776,25 @@ TypeError: randint() takes exactly 3 positional arguments (4 given)
 
 Komunikaty mówią, że podaliśmy odpowiednio 2 i 4 argumenty, nie 2 i 3. To dlatego że Python zawsze dodaje dodatkowy, niewidoczny argument. Ten argument jest poza zakresem tej książki, i nie musisz się nim martwić.
 
+\section{Powitanie gracza}
+
+Linie 10 i 12 witają gracza, mówią mu o zasadach gry i zaczynają właściwe zgadywanie liczb. Linia 10 jest prosta, ale linia 12 używa nowej konstrukcji nazywanej pętlą.
+
+\bnl{}
+\lstinputlisting[linerange=10-10]{python/zgadula100.py}
+
+W linii 10, funkcja print() wita się z graczem po imieniu i mówi mu o tym, że komputer myśli o jakiejś liczbie losowej.
+
+Ale chwila czy nie mówiliśmy że funkcja print() pobiera tylko jednego stringa? Na pierwszy rzut oka może wydawać się, że jest tu więcej niż jeden string, ale przyjrzyj się: operator + łączy wszystkie trzy stringi w jeden, i ten właśnie jeden string jest drukowany przez funkcję print(). Może wydawać się że przecinki oddzielają stringi, ale ponieważ są wewnątrz cudzysłowów, są częściami stringów.
+
+\section{Pętle}
+
+Linia 12 zawiera instrukcję while, która oznacza początek pętli while. {\bf Pętle} to części programu które są wykonywane wiele razy w kółko. Ale zanim omówimy dokładniej pętle, musimy poznać kilka pojęć. Te pojęcia to bloki, zmienne logiczne, operatory porównania i warunki. Dopiero wtedy będziemy gotowi wprowadzić pętlę while.
+
+\section{Bloki}
+
+{\bf Blok} to jedna lub więcej linii kodu zgru
+
 
 
 \end{document}
