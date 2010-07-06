@@ -17,10 +17,10 @@ while iloscProb < 6:
     iloscProb = iloscProb + 1
 
     if strzal < liczba:
-        print('Strzeliłeś zbyt niską liczbę') # na początku linii jest 8 spacji
+        print('Strzeliłeś zbyt małą liczbę') # na początku linii jest 8 spacji
 
     if strzal > liczba:
-        print('Strzeliłeś zbyt wysoką liczbę')
+        print('Strzeliłeś zbyt dużą liczbę')
 
     if strzal == liczba:
         break

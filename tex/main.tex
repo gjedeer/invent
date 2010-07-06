@@ -793,7 +793,15 @@ Linia 12 zawiera instrukcję while, która oznacza początek pętli while. {\bf 
 
 \section{Bloki}
 
-{\bf Blok} to jedna lub więcej linii kodu zgru
+{\bf Blok} to jedna lub więcej linii kodu zgrupowanych razem za pomocą podobnej ilości wcięć. Można łatwo zobaczyć gdzie blok zaczyna się i kończy patrząc na wcięcia linii (to znaczy, liczbę odstępów na początku linii).
+
+%TODO bełkot
+Blok zaczyna się linią z wcięciem długości czterech spacji. Każda kolejna linia która również jest wcięta na 4 spacje jest również częścią bloku. W bloku może znajdować się kolejny blok, kiedy linia jest wcięta na kolejne 4 spacje (czyli łącznie na początku linii jest 8 spacji). Blok kończy się jeśli kolejna linia ma takie wcięcie, jak przed rozpoczęciem bloku.
+
+\img{guess-blocks}{Bloki i odpowiadające im wcięcia. Czarne kropki odpowiadają spacjom.}{7cm}
+
+Spójrz na rysunek \ref{guess-blocks} - oznaczone są na nim wszystkie bloki znajdujące się w kodzie. Spacje zostały zamienione na czarne kropki żeby łatwiej można je było policzyć.
+
 
 
 
