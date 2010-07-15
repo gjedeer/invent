@@ -68,7 +68,7 @@
 
 \begin{document}
 
-\chapter{Instalowanie Pythona}
+\chapter{Instalacja Pythona}
 
 Ściągnij Pythona 3.1 ze strony Python.org.
 
@@ -586,7 +586,7 @@ W następnym rozdziale, nauczymy się więcej o~zmiennych i~nasz program będzie
 	\item Instrukcje \lstinline{while}
 	\item Warunki
 	\item Bloki
-	\item Zmienne logiczne
+	\item Wartości logiczne
 	\item Operatory por@ownania
 	\item R@oznica pomiedzy \lstinline{=} a \lstinline{==}
 	\item Instrukcje \lstinline{if}
@@ -800,8 +800,28 @@ Blok zaczyna się linią z wcięciem długości czterech spacji. Każda kolejna 
 
 \img{guess-blocks}{Bloki i odpowiadające im wcięcia. Czarne kropki odpowiadają spacjom.}{7cm}
 
-Spójrz na rysunek \ref{guess-blocks} - oznaczone są na nim wszystkie bloki znajdujące się w kodzie. Spacje zostały zamienione na czarne kropki żeby łatwiej można je było policzyć.
+Spójrz na rysunek \ref{guess-blocks} - oznaczone są na nim wszystkie bloki znajdujące się w kodzie. Spacje zostały zamienione na czarne kropki żeby łatwiej można je było policzyć. Linia 12 nie jest wcięta (nie rozpoczyna się od spacji) i nie jest wewnątrz żadnego bloku. Linia 13 jest wcięta o 4 spacje. Ponieważ jej wcięcie jest większe niż wcięcie poprzedniej linii, możemy powiedzieć że w tym miejscu zaczął się nowy blok. Linie 14, 15, 17 i 19 mają również po cztery spacje wcięcia. Wszystkie z nich mają tyle samo wcięcia co poprzednia linia, więc wiemy że są w tym samym bloku. (Kiedy szukamy bloków, ignorujemy puste linie takie jak 16 czy 18.)
 
+Linia 20 jest wcięta o osiem spacji. Ponieważ osiem spacji to więcej niż cztery, wiemy że zaczyna się nowy blok. Blok wewnątrz innego bloku.
+
+Linia 22 zaczyna się tylko od czterech spacji. Linia która była przed 22 (czyli 20) miała więcej spacji. Ponieważ wcięcie się zmniejsza, wiemy że blok się kończy. Linia 22 jest w tym samym bloku co inne linie z czterema spacjami.
+
+Linia 23 ma większe wcięcie - osiem spacji, rozpoczynając nowy blok.
+
+Kiedy wpisujesz kod do IDLE, każda litera ma taką samą szerokość. Możesz policzyć ilość liter nad lub pod linią żeby zobaczyć ile spacji postawiłeś przed tą linią kodu.
+
+Na rysunku powyżej, linie kodu w ramce 1 wszystkie są w tym samym bloku, a bloki 2 i 3 są wewnątrz bloku 1. Blok 1 jest wcięty o co najmniej cztery spacje, a bloki 2 i 3 - o osiem spacji od lewego marginesu. Blok może składać się tylko z jednej linii - dowodem na to są bloki 2 i 3.
+
+\section{Wartości logiczne}
+
+Wartości logiczne (boolowskie) to typ danych który może przyjmować tylko dwie wartości: Prawda (ang. True) lub Fałsz (ang. False). Te wartości muszą być pisane z dużej litery i nie są stringami, czyli {\bf nie} mogą "znajdować się w cudzysłowiach". Będziemy używać wartości logicznych z operatorami porównania do tworzenia warunków. Wszystko jest wyjaśnione poniżej.
+
+\section{Operatory porównania}
+
+Linia 12 naszego programu zawiera pętlę while:
+
+\bnl{}
+\lstinputlisting[linerange=12-12]{python/zgadula.py}
 
 
 
