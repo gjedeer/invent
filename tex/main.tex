@@ -895,11 +895,37 @@ False
 
 \section{Pętle while}
 
-Słowo kluczowe \lstinline{while} (dopóki) oznacza początek pętli. Czasem chcemy żeby program robił coś w kółko. Kiedy podczas wykonywania programu komputer dojdzie do słowa \lstinline{while}, ewaluuje warunek znajdujący się tuż za nim. Jeśli warunek ewaluuje do True (jest prawdziwy), wykonuje polecenia wewnątrz bloku while (w naszym programie ten blok zaczyna się od linii 13). Jeśli warunek ewaluuje do False (jest fałszywy), wykonywany jest kod za blokiem while (w naszym programie - od linii 28).
+Słowo kluczowe \lstinline{while} (dopóki) oznacza początek pętli. Czasem chcemy żeby program robił coś w kółko. Kiedy podczas wykonywania programu komputer dojdzie do słowa \lstinline{while}, ewaluuje warunek znajdujący się tuż za nim. Jeśli warunek ewaluuje do True (jest prawdziwy), wykonuje polecenia wewnątrz ciała pętli (w naszym programie jest to blok który zaczyna się od linii 13). Jeśli warunek ewaluuje do False (jest fałszywy), wykonywany jest kod za ciałem pętli (w naszym programie - od linii 28).
 
-Pierwsza linia pętli while zawsze kończy się dwukropkiem po warunku.
+Instrukcja \lstinline{while} zawsze kończy się dwukropkiem po warunku.
 
 \bnl{}
 \lstinputlisting[linerange=12-12]{python/zgadula.py}
+
+%TODO PIC 4.2
+
+Rysunek \ref{} pokazuje jak wykonywany jest program w zależności od warunku. Jeśli warunek jest prawdziwy (jest ewaluowany do True), komputer zacznie wykonywać ciało pętli w linii 13 i kolejnych. Kiedy program osiągnie koniec ciała pętli (linia 26), wraca do linii z instrukcją \lstinline{while} (linia 12). Wtedy ewaluuje warunek po raz kolejny, i jeśli jego wartość to True, wykonuje blok while po raz kolejny. 
+
+W naszym programie, za pierwszym razem warunek pętli while jest prawdziwy, ponieważ \lstinline{liczbaProb} jest równa 0.
+
+Tak działa pętla. Dopóki (ang. while) warunek jest prawdziwy, program wykonuje kod wewnątrz ciała pętli (bloku while) w kółko aż osiągnie koniec ciała pętli i warunek będzie fałszywy. Czyli do kiedy \lstinline{liczbaProb} nie jest równa ani większa niż 6, wykonywana jest pętla.
+
+Wykonanie instrukcji while jest jak powiedzenie "dopóki ten warunek jest prawdziwy, ciągle wykonuj kod w tym bloku".
+
+% Minipage prevents page breaks
+% http://www.tex.ac.uk/cgi-bin/texfaq2html?label=nopagebrk
+\begin{minipage}{1\linewidth}
+Możesz uprościć lub utrudnić grę zmieniając dozwoloną liczbę prób. Wszystko co musisz zrobić to zmienić linię:
+\bnl{}
+\lstinputlisting[linerange=12-12]{python/zgadula.py}
+na
+\bnl{}
+\lstinputlisting[linerange=12-12]{python/zgadula4.py}
+...i gracz dostaje tylko cztery próby zamiast sześciu.
+\end{minipage}
+
+Ustawiając warunek na \lstinline{liczbaProb < 4}, upewniamy się że kod wewnątrz pętli wykonywany jest tylko cztery razy zamiast sześciu. To sprawia że gra jest trudniejsza. Żeby uprościć grę, ustaw warunek na \lstinline{liczbaProb < 8} lub \lstinline{liczbaProb < 10}, co spowoduje że pętla zostanie wykonana więcej razy i program przyjmie większą liczbę prób.
+
+Oczywiście, jeśli usunęlibyśmy linię 17 (\lstinline{liczbaProb = liczbaProb + 1}), liczbaProb nigdy by się nie zwiększała i warunek zawsze byłby prawdziwy. To dawałoby graczowi nieskończoną liczbę prób.
 
 \end{document}
