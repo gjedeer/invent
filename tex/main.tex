@@ -68,7 +68,7 @@
 
 \begin{document}
 
-\chapter{Instalowanie Pythona}
+\chapter{Instalacja Pythona}
 
 Ściągnij Pythona 3.1 ze strony Python.org.
 
@@ -586,7 +586,7 @@ W następnym rozdziale, nauczymy się więcej o~zmiennych i~nasz program będzie
 	\item Instrukcje \lstinline{while}
 	\item Warunki
 	\item Bloki
-	\item Zmienne logiczne
+	\item Wartości logiczne
 	\item Operatory porównania
 	\item Różnica pomiędzy \lstinline{=} a \lstinline{==}
 	\item Instrukcje \lstinline{if}
@@ -800,9 +800,132 @@ Blok zaczyna się linią z wcięciem długości czterech spacji. Każda kolejna 
 
 \img{guess-blocks}{Bloki i odpowiadające im wcięcia. Czarne kropki odpowiadają spacjom.}{7cm}
 
-Spójrz na rysunek \ref{guess-blocks} - oznaczone są na nim wszystkie bloki znajdujące się w kodzie. Spacje zostały zamienione na czarne kropki żeby łatwiej można je było policzyć.
+Spójrz na rysunek \ref{guess-blocks} - oznaczone są na nim wszystkie bloki znajdujące się w kodzie. Spacje zostały zamienione na czarne kropki żeby łatwiej można je było policzyć. Linia 12 nie jest wcięta (nie rozpoczyna się od spacji) i nie jest wewnątrz żadnego bloku. Linia 13 jest wcięta o 4 spacje. Ponieważ jej wcięcie jest większe niż wcięcie poprzedniej linii, możemy powiedzieć że w tym miejscu zaczął się nowy blok. Linie 14, 15, 17 i 19 mają również po cztery spacje wcięcia. Wszystkie z nich mają tyle samo wcięcia co poprzednia linia, więc wiemy że są w tym samym bloku. (Kiedy szukamy bloków, ignorujemy puste linie takie jak 16 czy 18.)
 
+Linia 20 jest wcięta o osiem spacji. Ponieważ osiem spacji to więcej niż cztery, wiemy że zaczyna się nowy blok. Blok wewnątrz innego bloku.
 
+Linia 22 zaczyna się tylko od czterech spacji. Linia która była przed 22 (czyli 20) miała więcej spacji. Ponieważ wcięcie się zmniejsza, wiemy że blok się kończy. Linia 22 jest w tym samym bloku co inne linie z czterema spacjami.
 
+Linia 23 ma większe wcięcie - osiem spacji, rozpoczynając nowy blok.
+
+Kiedy wpisujesz kod do IDLE, każda litera ma taką samą szerokość. Możesz policzyć ilość liter nad lub pod linią żeby zobaczyć ile spacji postawiłeś przed tą linią kodu.
+
+Na rysunku powyżej, linie kodu w ramce 1 wszystkie są w tym samym bloku, a bloki 2 i 3 są wewnątrz bloku 1. Blok 1 jest wcięty o co najmniej cztery spacje, a bloki 2 i 3 - o osiem spacji od lewego marginesu. Blok może składać się tylko z jednej linii - dowodem na to są bloki 2 i 3.
+
+\section{Wartości logiczne}
+
+Wartości logiczne (boolowskie) to typ danych który może przyjmować tylko dwie wartości: Prawda (ang. True) lub Fałsz (ang. False). Te wartości muszą być pisane z dużej litery i nie są stringami, czyli {\bf nie} mogą "znajdować się w cudzysłowiach". Będziemy używać wartości logicznych z operatorami porównania do tworzenia warunków. Wszystko jest wyjaśnione poniżej.
+
+\section{Operatory porównania}
+
+Linia 12 naszego programu zawiera pętlę while:
+
+\bnl{}
+\lstinputlisting[linerange=12-12]{python/zgadula.py}
+
+Wyrażenie które występuje po słowie kluczowym \lstinline{while} (czyli \lstinline{iloscProb < 6}) składa się z dwóch wartości (wartość przechowywana w zmiennej \lstinline{iloscProb} i liczba człkowita 6) połączonych operatorem (znak \lstinline{<}, czyli "mniejsze niż"). Znak \lstinline{<} nazywany jest {\bf operatorem porównania}.
+
+Operator porównania jest używany do porównywania dwóch wartości i jest ewaluowany do wartości logicznej True (prawda) lub False (fałsz). Lista wszystkich operatorów porównania znajduje się w tabelce \ref{}.%TODO
+
+% TODO Comparison Operators table
+
+\section{Warunki}
+
+{\bf Warunek} to wyrażenie które łączy dwie wartości operatorem porównania (takim jak \lstinline{<} czy \lstinline{>}) i które jest ewaluowane do wartości logicznej. Warunek to inna nazwa wyrażenia które jest ewaluowane do True albo False (prawda / fałsz). Lista innych operatorów porównania znajduje się w %TODO 4.1
+
+Warunki zawsze są ewaluowane do zmiennej logicznej: True lub False. Na przykład, warunek który znajduje się w naszym kodzie, \lstinline{liczbaProb < 6} zadaje pytanie: "czy wartość przechowywana w \lstinline{liczbaProb} jest mniejsza niż liczba 6?" Jeśli tak, warunek jest ewaluowany do True (prawda). Jeśli nie, wynikiem ewaluacji jest False (fałsz).
+
+W przypadku naszej zgaduj-zgaduli, w linii 4 przechowaliśmy wartość 0 w zmiennej \lstinline{liczbaProb}. Ponieważ 0 to mniej niż 6, wynikiem warunku jest True (prawda). Zapamiętaj - warunek to tylko inna nazwa dla wyrażenia które używa operatorów porównania takich jak \lstinline{<} czy \lstinline{!=}.
+
+\section{Eksperyment ze zmiennymi logicznymi, operatorami porównania i warunkami}
+
+Wprowadź poniższe wyrażenia do interaktywnego shella żeby zobaczyć jakie są ich wartości logiczne:
+\bl{}
+\begin{lstlisting}
+>>> 0 < 6
+True
+>>> 6 < 0
+False
+>>> 50 < 10
+False
+>>> 10 < 11
+True
+>>> 10 < 10
+False
+\end{lstlisting}
+
+Warunek \lstinline{0 < 6} zwraca logiczną prawdę (True) ponieważ liczba 0 jest mniejsza niż liczba 6. Ale ponieważ 6 nie jest mniejsze niż 0, warunek \lstinline{6 < 0} zwraca fałsz (False). 50 nie jest mniejsze niż 10, dlatego \lstinline{50 < 10} to fałsz. 10 to mniej niż 11, więc \lstinline{10 < 11} to prawda.
+
+Ale co z \lstinline{10 < 10}? Dlaczego zwraca fałsz? Wyrażenie to jest fałszywe ponieważ liczba 10 nie jest mniejsza od siebie samej. Są dokładnie takie same. Jeśli dziewczyna o imieniu Ala ma taki sam wzrost jak chłopak o imieniu Piotrek, nie powież że Ala jest wyższa od Piotrka lub że Ala jest od Piotrka niższa. Oba zdania byłyby nieprawdziwe.
+
+Spróbuj wpisać w shellu jeszcze kilka wyrażeń żeby zobaczyć jak działają takie operatory porównania:
+\bl{}
+\begin{lstlisting}
+>>> 10 == 10
+True
+>>> 10 == 11
+False
+>>> 11 == 10
+False
+>>> 10 != 10
+False
+>>> 10 != 11
+True
+>>> 'Cześć' == 'Cześć'
+True
+>>> 'Cześć' == 'Do widzenia'
+False
+>>> 'Cześć' == 'CZEŚĆ'
+False
+>>> 'Do widzenia' != 'Cześć'
+True
+\end{lstlisting}
+
+Zauważ różnicę między operatorem przypisania (\lstinline{=}) a operatorem porównania "równa się" (\lstinline{==}). Znak \lstinline{=} używany jest żeby nadać zmiennej wartość, podczas kiedy operator \lstinline{==} jest używany w wyrażeniach żeby sprawdzić czy dwie wartości są równe. Łatwo jest je pomylić, więc pisz uważnie.
+
+Dwie wartości które są różnych typów danych nigdy nie będą równe. Spróbuj na przykład wpisać w shellu poniższe wyrażenia:
+
+\bl{}
+\begin{lstlisting}
+>>> 42 == 'Hello'
+False
+>>> 42 != '42'
+False
+\end{lstlisting}
+
+\section{Pętle while}
+
+Słowo kluczowe \lstinline{while} (dopóki) oznacza początek pętli. Czasem chcemy żeby program robił coś w kółko. Kiedy podczas wykonywania programu komputer dojdzie do słowa \lstinline{while}, ewaluuje warunek znajdujący się tuż za nim. Jeśli warunek ewaluuje do True (jest prawdziwy), wykonuje polecenia wewnątrz ciała pętli (w naszym programie jest to blok który zaczyna się od linii 13). Jeśli warunek ewaluuje do False (jest fałszywy), wykonywany jest kod za ciałem pętli (w naszym programie - od linii 28).
+
+Instrukcja \lstinline{while} zawsze kończy się dwukropkiem po warunku.
+
+\bnl{}
+\lstinputlisting[linerange=12-12]{python/zgadula.py}
+
+%TODO PIC 4.2
+
+Rysunek \ref{} pokazuje jak wykonywany jest program w zależności od warunku. Jeśli warunek jest prawdziwy (jest ewaluowany do True), komputer zacznie wykonywać ciało pętli w linii 13 i kolejnych. Kiedy program osiągnie koniec ciała pętli (linia 26), wraca do linii z instrukcją \lstinline{while} (linia 12). Wtedy ewaluuje warunek po raz kolejny, i jeśli jego wartość to True, wykonuje blok while po raz kolejny. 
+
+W naszym programie, za pierwszym razem warunek pętli while jest prawdziwy, ponieważ \lstinline{liczbaProb} jest równa 0.
+
+Tak działa pętla. Dopóki (ang. while) warunek jest prawdziwy, program wykonuje kod wewnątrz ciała pętli (bloku while) w kółko aż osiągnie koniec ciała pętli i warunek będzie fałszywy. Czyli do kiedy \lstinline{liczbaProb} nie jest równa ani większa niż 6, wykonywana jest pętla.
+
+Wykonanie instrukcji while jest jak powiedzenie "dopóki ten warunek jest prawdziwy, ciągle wykonuj kod w tym bloku".
+
+% Minipage prevents page breaks
+% http://www.tex.ac.uk/cgi-bin/texfaq2html?label=nopagebrk
+\begin{minipage}{1\linewidth}
+Możesz uprościć lub utrudnić grę zmieniając dozwoloną liczbę prób. Wszystko co musisz zrobić to zmienić linię:
+\bnl{}
+\lstinputlisting[linerange=12-12]{python/zgadula.py}
+na
+\bnl{}
+\lstinputlisting[linerange=12-12]{python/zgadula4.py}
+...i gracz dostaje tylko cztery próby zamiast sześciu.
+\end{minipage}
+
+Ustawiając warunek na \lstinline{liczbaProb < 4}, upewniamy się że kod wewnątrz pętli wykonywany jest tylko cztery razy zamiast sześciu. To sprawia że gra jest trudniejsza. Żeby uprościć grę, ustaw warunek na \lstinline{liczbaProb < 8} lub \lstinline{liczbaProb < 10}, co spowoduje że pętla zostanie wykonana więcej razy i program przyjmie większą liczbę prób.
+
+Oczywiście, jeśli usunęlibyśmy linię 17 (\lstinline{liczbaProb = liczbaProb + 1}), liczbaProb nigdy by się nie zwiększała i warunek zawsze byłby prawdziwy. To dawałoby graczowi nieskończoną liczbę prób.
 
 \end{document}
