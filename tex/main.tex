@@ -823,6 +823,83 @@ Linia 12 naszego programu zawiera pętlę while:
 \bnl{}
 \lstinputlisting[linerange=12-12]{python/zgadula.py}
 
+Wyrażenie które występuje po słowie kluczowym \lstinline{while} (czyli \lstinline{iloscProb < 6}) składa się z dwóch wartości (wartość przechowywana w zmiennej \lstinline{iloscProb} i liczba człkowita 6) połączonych operatorem (znak \lstinline{<}, czyli "mniejsze niż"). Znak \lstinline{<} nazywany jest {\bf operatorem porównania}.
 
+Operator porównania jest używany do porównywania dwóch wartości i jest ewaluowany do wartości logicznej True (prawda) lub False (fałsz). Lista wszystkich operatorów porównania znajduje się w tabelce \ref{}.%TODO
+
+% TODO Comparison Operators table
+
+\section{Warunki}
+
+{\bf Warunek} to wyrażenie które łączy dwie wartości operatorem porównania (takim jak \lstinline{<} czy \lstinline{>}) i które jest ewaluowane do wartości logicznej. Warunek to inna nazwa wyrażenia które jest ewaluowane do True albo False (prawda / fałsz). Lista innych operatorów porównania znajduje się w %TODO 4.1
+
+Warunki zawsze są ewaluowane do zmiennej logicznej: True lub False. Na przykład, warunek który znajduje się w naszym kodzie, \lstinline{liczbaProb < 6} zadaje pytanie: "czy wartość przechowywana w \lstinline{liczbaProb} jest mniejsza niż liczba 6?" Jeśli tak, warunek jest ewaluowany do True (prawda). Jeśli nie, wynikiem ewaluacji jest False (fałsz).
+
+W przypadku naszej zgaduj-zgaduli, w linii 4 przechowaliśmy wartość 0 w zmiennej \lstinline{liczbaProb}. Ponieważ 0 to mniej niż 6, wynikiem warunku jest True (prawda). Zapamiętaj - warunek to tylko inna nazwa dla wyrażenia które używa operatorów porównania takich jak \lstinline{<} czy \lstinline{!=}.
+
+\section{Eksperyment ze zmiennymi logicznymi, operatorami porównania i warunkami}
+
+Wprowadź poniższe wyrażenia do interaktywnego shella żeby zobaczyć jakie są ich wartości logiczne:
+\bl{}
+\begin{lstlisting}
+>>> 0 < 6
+True
+>>> 6 < 0
+False
+>>> 50 < 10
+False
+>>> 10 < 11
+True
+>>> 10 < 10
+False
+\end{lstlisting}
+
+Warunek \lstinline{0 < 6} zwraca logiczną prawdę (True) ponieważ liczba 0 jest mniejsza niż liczba 6. Ale ponieważ 6 nie jest mniejsze niż 0, warunek \lstinline{6 < 0} zwraca fałsz (False). 50 nie jest mniejsze niż 10, dlatego \lstinline{50 < 10} to fałsz. 10 to mniej niż 11, więc \lstinline{10 < 11} to prawda.
+
+Ale co z \lstinline{10 < 10}? Dlaczego zwraca fałsz? Wyrażenie to jest fałszywe ponieważ liczba 10 nie jest mniejsza od siebie samej. Są dokładnie takie same. Jeśli dziewczyna o imieniu Ala ma taki sam wzrost jak chłopak o imieniu Piotrek, nie powież że Ala jest wyższa od Piotrka lub że Ala jest od Piotrka niższa. Oba zdania byłyby nieprawdziwe.
+
+Spróbuj wpisać w shellu jeszcze kilka wyrażeń żeby zobaczyć jak działają takie operatory porównania:
+\bl{}
+\begin{lstlisting}
+>>> 10 == 10
+True
+>>> 10 == 11
+False
+>>> 11 == 10
+False
+>>> 10 != 10
+False
+>>> 10 != 11
+True
+>>> 'Cześć' == 'Cześć'
+True
+>>> 'Cześć' == 'Do widzenia'
+False
+>>> 'Cześć' == 'CZEŚĆ'
+False
+>>> 'Do widzenia' != 'Cześć'
+True
+\end{lstlisting}
+
+Zauważ różnicę między operatorem przypisania (\lstinline{=}) a operatorem porównania "równa się" (\lstinline{==}). Znak \lstinline{=} używany jest żeby nadać zmiennej wartość, podczas kiedy operator \lstinline{==} jest używany w wyrażeniach żeby sprawdzić czy dwie wartości są równe. Łatwo jest je pomylić, więc pisz uważnie.
+
+Dwie wartości które są różnych typów danych nigdy nie będą równe. Spróbuj na przykład wpisać w shellu poniższe wyrażenia:
+
+\bl{}
+\begin{lstlisting}
+>>> 42 == 'Hello'
+False
+>>> 42 != '42'
+False
+\end{lstlisting}
+
+\section{Pętle while}
+
+Słowo kluczowe \lstinline{while} (dopóki) oznacza początek pętli. Czasem chcemy żeby program robił coś w kółko. Kiedy podczas wykonywania programu komputer dojdzie do słowa \lstinline{while}, ewaluuje warunek znajdujący się tuż za nim. Jeśli warunek ewaluuje do True (jest prawdziwy), wykonuje polecenia wewnątrz bloku while (w naszym programie ten blok zaczyna się od linii 13). Jeśli warunek ewaluuje do False (jest fałszywy), wykonywany jest kod za blokiem while (w naszym programie - od linii 28).
+
+Pierwsza linia pętli while zawsze kończy się dwukropkiem po warunku.
+
+\bnl{}
+\lstinputlisting[linerange=12-12]{python/zgadula.py}
 
 \end{document}
