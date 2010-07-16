@@ -1,4 +1,10 @@
 \documentclass{book}
+
+
+\renewcommand{\rmdefault}{FreeSerif}
+\renewcommand{\sfdefault}{FreeSerif}
+%\renewcommand{\ttdefault}{andalemo}
+
 \usepackage{ucs}
 \usepackage[pdftex,plainpages=false,pdfpagelabels,pdfstartpage=1,pdfstartview=FitH]{}
 \usepackage[utf8]{inputenc}
@@ -9,6 +15,8 @@
 \usepackage{listings}
 % \usepackage{listingsutf8}
 \usepackage{color}
+\usepackage{framed}
+
 
 % Original author: Al Sweigart, http://inventwithpython.com/
 % License: BY-NC-SA, http://creativecommons.org/licenses/by-nc-sa/3.0/us/
@@ -29,12 +37,25 @@
 \lstset{extendedchars=\false,inputencoding=utf8x,showspaces=false}
 \lstset{literate={ą}{{\k{a}}}1 {ć}{{\'c}}1 {ł}{{\l{}}}1 {ń}{{\'n}}1 {ę}{{\k{e}}}1 {ś}{{\'s}}1 {ż}{{\.z}}1 {ó}{{\'o}}1 {ź}{{\'z}}1 {Ą}{{\k{A}}}1 {Ć}{{\'C}}1 {Ł}{{\L{}}}1 {Ń}{{\'N}}1 {Ę}{{\k{E}}}1 {Ś}{{\'S}}1 {Ż}{{\.Z}}1 {Ó}{{\'O}}1 {Ź}{{\'Z}}1 }
 
+% Fixed-width font for listings
+\lstset{basicstyle=\ttfamily}
+\lstset{breaklines=true}
+\lstset{linewidth=1.3\linewidth}
+
+
 % Numbered listing
 \definecolor{codebg}{gray}{0.9}
 \newcommand{\bnl}[1]{\lstset{language=Python,numbers=left,backgroundcolor=\color{codebg},frame=single,#1}}
 
 % Non-numbered listing
 \newcommand{\bl}[1]{\lstset{language=Python,numbers=none,backgroundcolor=\color{codebg},frame=single,#1}}
+
+% Pseudo-listing definiton
+%TODO fixed-width font
+\makeatletter\newenvironment{pseudolisting}{%
+\begin{lrbox}{\@tempboxa}\begin{minipage}{\columnwidth}\begin{flushleft}}{\end{flushleft}\end{minipage}\end{lrbox}%
+\colorbox{codebg}{\usebox{\@tempboxa}}
+}\makeatother
 
 % Image macro
 \newcommand{\img}[3]{
@@ -50,6 +71,7 @@
 % Topics covered 
 \definecolor{topicscoveredbg}{gray}{0.9}
           
+% Gray bg definition
 \makeatletter\newenvironment{graybox}{%
 \begin{lrbox}{\@tempboxa}\begin{minipage}{\columnwidth}}{\end{minipage}\end{lrbox}%
 \colorbox{topicscoveredbg}{\usebox{\@tempboxa}}
@@ -607,18 +629,20 @@ Ponieważ nasz program jest grą, będziemy nazywać użytkownika graczem, ale s
 
 Tak gra będzie wyglądała na ekranie gracza kiedy ją uruchomi. Tekst wpisywany przez gracza jest pogrubiony.
 
-Cześć! Jak masz na imię?
-{\bf Albert}
-Cześć Albert. Myślę o pewnej liczbie od 1 do 20.
-Zgaduj:
-{\bf 10}
-Strzeliłeś zbyt wysoką liczbę.
-Zgaduj:
-{\bf 2}
-Strzeliłeś zbyt niską liczbę.
-Zgaduj:
-{\bf 4}
-Dobra robota, Albert! Odgadłeś moją liczbę w 3 próbach!
+\begin{pseudolisting}
+Cześć! Jak masz na imię?\linebreak
+{\bf Albert}\linebreak
+Cześć Albert. Myślę o pewnej liczbie od 1 do 20.\linebreak
+Zgaduj:\linebreak
+{\bf 10}\linebreak
+Strzeliłeś zbyt wysoką liczbę.\linebreak
+Zgaduj:\linebreak
+{\bf 2}\linebreak
+Strzeliłeś zbyt niską liczbę.\linebreak
+Zgaduj:\linebreak
+{\bf 4}\linebreak
+Dobra robota, Albert! Odgadłeś moją liczbę w 3 próbach!\linebreak
+\end{pseudolisting}
 
 Przepisz kod źródłowy programu dokładnie tak, jak jest poniżej. Następnie zapisz go klikając na menu File, a następnie Save As. Nazwij go na przykład {\bf zgadula.py}, a następnie uruchom wciskając klawisz F5. Nie martw się jeśli jeszcze nie rozumiesz kodu, wyjaśnię go później krok po kroku.
 
