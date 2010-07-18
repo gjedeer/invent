@@ -975,4 +975,69 @@ Ustawiając warunek na \lstinline{liczbaProb < 4}, upewniamy się że kod wewną
 
 Oczywiście, jeśli usunęlibyśmy linię 17 (\lstinline{liczbaProb = liczbaProb + 1}), liczbaProb nigdy by się nie zwiększała i warunek zawsze byłby prawdziwy. To dawałoby graczowi nieskończoną liczbę prób.
 
+\section{Strzały gracza}
+
+Linie od 13 do 17 pytają gracza o liczbę i pozwalają mu wprowadzić strzał. Liczbę którą wpisał przechowujemy w zmiennej, a następnie zamieniamy stringa na liczbę całkowitą.
+
+\lstinputlisting[linerange=13-14]{python/zgadula.py}
+
+Program pyta gracza o strzał. Gracz wpisuje strzał i to, co wpisał, jest przechowywane w zmiennej o nazwie \lstinline{strzal}.
+
+\subsection{Konwersja stringów na liczby całkowite za pomocą funkcji int()}
+
+\lstinputlisting[linerange=15-15]{python/zgadula.py}
+
+W linii 15 wywołujemy nową funkcję o nazwie \lstinline{int()}. Funkcja \lstinline{int()} dostaje jeden argument. Funkcja \lstinline{input()} zwróciła to, co wpisał gracz w postaci stringa. Ale nasz program potrzebuje liczby całkowitej, a nie stringa. Jeśli gracz wpisze 5, funkcja \lstinline{input()} zwróci stringa '5', a nie liczbę całkowitą 5. Pamiętaj, że Python uważa że string '5' i liczba 5 to dwie różne wartości. Funkcja \lstinline{int()} pobierze stringa i zwróci jego wartość w postaci liczby całkowitej. Zamiana jednego typu danych na inny to {\bf konwersja}.
+
+Poeksperymentujmy z funkcją \lstinline{int()}. Spróbuj wpisać poniższe linie:
+
+\bl{}
+\begin{lstlisting}
+>>> int('42')
+42
+>>> int(42)
+42
+>>> int('czesc')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ValueError: invalid literal for int() with base 10: 'czesc'
+>>> int('czterdzieści dwa')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+UnicodeEncodeError: 'decimal' codec can't encode character '\u015b' in position 9: invalid decimal Unicode string
+>>> int(' 42 ')
+42
+>>> 3 + int('2')
+5
+>>> 3 + '2'
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: unsupported operand type(s) for +: 'int' and 'str'
+\end{lstlisting}
+
+Widzimy że wyrażenie \lstinline{int('42')} zwróci liczbę całkowitą 42, i że \lstinline{int(42)} zwróci dokładnie to samo (chociaż zamiana liczby całkowitej na liczbę całkowitą nie ma przecież sensu). Ale pomimot tego że do funkcji \lstinline{int()} da się przekazać stringa, nie oznacza to że może on zawierać cokolwiek. Na przykład przekazanie do funkcji \lstinline{int()} stringa 'czesc' spowoduje błąd. Tekst przekazywany do \lstinline{int()} musi składać się z cyfr.
+
+
+Liczba którą przekazujemy do \lstinline{int()} musi składać się z cyfr, dlatego \lstinline{int('czterdzieści dwa')} również spowodowało błąd. Ale jeśli string zawiera spacje, funkcja \lstinline{int()} będzie udawała że ich nie widzi - dlatego zadziałał przykład \lstinline{int(' 42 ')}.
+
+W linii \lstinline{3 + int('2')} wypróbowaliśmy wyrażenie które dodaje liczbę 3 do wartości zwracanej przez \lstinline{int('2')} (czyli liczby 2). Wyrażenie jest ewaluowane do \lstinline{3+2}, co z kolei jest ewaluowane do 5. W następnym przykładzie że bez konwersji nie da się dodać liczby (3) do stringa ('2'), ale można dodać liczbę do stringa którego skonwertowaliśmy na liczbę.
+
+W linii 15 naszego programu zmienna \lstinline{strzal} przechowywała string wpisany przez gracza. Nadpiszemy stringa przechowywanego w zmiennej \lstinline{strzal} wartością zwracaną przez funkcję \lstinline{int()}. Robimy to po to, żebyśmy mogli później porównać strzał gracza z liczbą wylosowaną przez komputer. Żeby sprawdzić czy strzał gracza jest zbyt niski czy zbyt wysoki, musimy porównać dwie liczby. Nie możemy porównać stringa z liczbą żeby sprawdzić który jest mniejszy a który większy, nawet jeśli string składa się z cyfr, na przykład '5'.
+
+W naszej zgaduj-zgaduli jeśli gracz wpisze coś co nie jest liczbą, wywołanie funkcji int() spowoduje błąd i program przestanie działać. W innych grach w tej książce dodamy trochę kodu który będzie sprawdzał czy nie wystąpił błąd i dawał graczowi szansę poprawienia wpisanej wartości.
+
+Zauważ że wywołanie \lstinline{int(strzal)} nie zmienia wartości zmiennej \lstinline{strzal}. Kod \lstinline{int(strzal)} to wyrażenie które jest ewaluowane do liczbowej wersji stringa \lstinline{strzal}. Żeby zminenić zawartość zmiennej, musimy przypisać wartość zwracaną przez to wyrażenie do zmiennej \lstinline{strzal} w ten sposób: \lstinline{strzal = int(strzal)}.
+
+\subsection{Inkrementacja zmiennych}
+
+\lstinputlisting[linerange=17-17]{python/zgadula.py}
+
+Kiedy gracz odda strzał, chcemy zwiększyć ilość oddanych strzałów które przechowujemy.
+
+Za pierwszym razem kiedy program wchodzi do pętli while, zmienna \lstinline{iloscProb} ma wartość 0. Python odczyta jej wartość i doda do niej 1. 0 + 1 to 1. Potem zapisze wynik dodawania (1) z powrotem do \lstinline{iloscProb}.
+
+Linia 17 mówi "zmienna \lstinline{iloscProb} powinna być o 1 większa niż jest obecnie".
+
+Kiedy programiści dodają jedynkę do wartości zmiennej przechowującej liczbę całkowitą, mówią że {\bf inkrementują} tą zmienną. Kiedy odejmują 1 od jej wartości, {\bf dekrementują} zmienną. Następnym razem kiedy ciało pętli będzie się wykonywać, \lstinline{iloscProb} będzie miało wartość 1 i zostanie inkrementowane do wartości 2.
+
 \end{document}
