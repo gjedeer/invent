@@ -138,7 +138,7 @@ Jak widzisz, możemy używać shella Pythona jako kalkulatora. To co zrobiłeś 
 \hline
 \end{tabular}
 }
-\label{hops-algo}
+\label{math-operators}
 \end{table}
 
 Znaki +, -, * i~/ kiedy używa się ich w~ten sposób, są nazywane {\bf operatorami} ponieważ mówią komputerowi żeby wykonał jakąś operację na~liczbach które je otaczają.
@@ -850,13 +850,35 @@ Linia 12 naszego programu zawiera pętlę while:
 
 Wyrażenie które występuje po słowie kluczowym \lstinline{while} (czyli \lstinline{iloscProb < 6}) składa się z dwóch wartości (wartość przechowywana w zmiennej \lstinline{iloscProb} i liczba człkowita 6) połączonych operatorem (znak \lstinline{<}, czyli "mniejsze niż"). Znak \lstinline{<} nazywany jest {\bf operatorem porównania}.
 
-Operator porównania jest używany do porównywania dwóch wartości i jest ewaluowany do wartości logicznej True (prawda) lub False (fałsz). Lista wszystkich operatorów porównania znajduje się w tabelce \ref{}.%TODO
+Operator porównania jest używany do porównywania dwóch wartości i jest ewaluowany do wartości logicznej True (prawda) lub False (fałsz). Lista wszystkich operatorów porównania znajduje się w tabelce \ref{comparison-operators}.
 
-% TODO Comparison Operators table
+\begin{table}[here]
+\caption{Operatory porównania}
+\centerline{
+\begin{tabular}{| c | l | }
+\hline
+Znak & Nazwa operatora\\
+\hline
+\lstinline{<} & Mniejsze niż\\
+\hline
+\lstinline{>} & Większe niż\\
+\hline
+\lstinline{<=} & Mniejsze lub równe\\
+\hline
+\lstinline{>=} & Większe lub równe\\
+\hline
+\lstinline{==} & Równe\\
+\hline
+\lstinline{!=} & Nierówne\\
+\hline
+\end{tabular}
+}
+\label{comparison-operators}
+\end{table}
 
 \section{Warunki}
 
-{\bf Warunek} to wyrażenie które łączy dwie wartości operatorem porównania (takim jak \lstinline{<} czy \lstinline{>}) i które jest ewaluowane do wartości logicznej. Warunek to inna nazwa wyrażenia które jest ewaluowane do True albo False (prawda / fałsz). Lista innych operatorów porównania znajduje się w %TODO 4.1
+{\bf Warunek} to wyrażenie które łączy dwie wartości operatorem porównania (takim jak \lstinline{<} czy \lstinline{>}) i które jest ewaluowane do wartości logicznej. Warunek to inna nazwa wyrażenia które jest ewaluowane do True albo False (prawda / fałsz). Lista innych operatorów porównania znajduje się w tabeli \ref{comparison-operators}.
 
 Warunki zawsze są ewaluowane do zmiennej logicznej: True lub False. Na przykład, warunek który znajduje się w naszym kodzie, \lstinline{liczbaProb < 6} zadaje pytanie: "czy wartość przechowywana w \lstinline{liczbaProb} jest mniejsza niż liczba 6?" Jeśli tak, warunek jest ewaluowany do True (prawda). Jeśli nie, wynikiem ewaluacji jest False (fałsz).
 
@@ -927,9 +949,9 @@ Instrukcja \lstinline{while} zawsze kończy się dwukropkiem po warunku.
 \bnl{}
 \lstinputlisting[linerange=12-12]{python/zgadula.py}
 
-%TODO PIC 4.2
+\img{guess-loop}{Warunek pętli while}{7 cm}
 
-Rysunek \ref{} pokazuje jak wykonywany jest program w zależności od warunku. Jeśli warunek jest prawdziwy (jest ewaluowany do True), komputer zacznie wykonywać ciało pętli w linii 13 i kolejnych. Kiedy program osiągnie koniec ciała pętli (linia 26), wraca do linii z instrukcją \lstinline{while} (linia 12). Wtedy ewaluuje warunek po raz kolejny, i jeśli jego wartość to True, wykonuje blok while po raz kolejny. 
+Rysunek \ref{guess-loop} pokazuje jak wykonywany jest program w zależności od warunku. Jeśli warunek jest prawdziwy (jest ewaluowany do True), komputer zacznie wykonywać ciało pętli w linii 13 i kolejnych. Kiedy program osiągnie koniec ciała pętli (linia 26), wraca do linii z instrukcją \lstinline{while} (linia 12). Wtedy ewaluuje warunek po raz kolejny, i jeśli jego wartość to True, wykonuje blok while po raz kolejny. 
 
 W naszym programie, za pierwszym razem warunek pętli while jest prawdziwy, ponieważ \lstinline{liczbaProb} jest równa 0.
 
