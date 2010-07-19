@@ -1,5 +1,9 @@
-\documentclass{book}
 
+% Original author: Al Sweigart, http://inventwithpython.com/
+% License: BY-NC-SA, http://creativecommons.org/licenses/by-nc-sa/3.0/us/
+% Translation: GDR!, http://gdr.geekhood.net/
+
+\documentclass{book}
 
 \renewcommand{\rmdefault}{FreeSerif}
 %\renewcommand{\sfdefault}{FreeSerif}
@@ -17,11 +21,6 @@
 % \usepackage{listingsutf8}
 \usepackage{color}
 \usepackage{framed}
-
-
-% Original author: Al Sweigart, http://inventwithpython.com/
-% License: BY-NC-SA, http://creativecommons.org/licenses/by-nc-sa/3.0/us/
-% Translation: GDR!, http://gdr.geekhood.net/
 
 \onehalfspacing
 
@@ -1039,5 +1038,100 @@ Za pierwszym razem kiedy program wchodzi do pętli while, zmienna \lstinline{ilo
 Linia 17 mówi "zmienna \lstinline{iloscProb} powinna być o 1 większa niż jest obecnie".
 
 Kiedy programiści dodają jedynkę do wartości zmiennej przechowującej liczbę całkowitą, mówią że {\bf inkrementują} tą zmienną. Kiedy odejmują 1 od jej wartości, {\bf dekrementują} zmienną. Następnym razem kiedy ciało pętli będzie się wykonywać, \lstinline{iloscProb} będzie miało wartość 1 i zostanie inkrementowane do wartości 2.
+
+\section{Instrukcje if}
+
+\subsection{Czy strzał gracza jest zbyt niski?}
+
+Linie 19 i 20 sprawdzają czy liczba którą wprowadził gracz jest mniejsza niż liczba wylosowana przez komputer. Jeśli tak, mówimy graczowi że strzelił zbyt nisko drukując wiadomość na ekranie.
+
+\lstinputlisting[linerange=19-20]{python/zgadula.py}
+
+Linia 19 rozpoczyna instrukcję \lstinline{if} słowem kluczowym \lstinline{if}. Za słowem \lstinline{if} znajduje się warunek. W linii 20 zaczyna się nowy blok (co widać po tym, że wcięcie jest większe niż w linii 19). Blok który znajduje się za słowem kluczowym \lstinline{if} nazywa się blokiem if. Wyrażenie \lstinline{if} (ang. jeśli) używane jest wtedy, kiedy chcesz żeby fragment kodu wykonał się tylko jeśli jakiś warunek jest prawdziwy. Linia 19 zawiera instrukcję z warunkiem \lstinline{strzal < liczba}. Jeśli warunek jest prawdziwy (to znaczy, jest ewaluowany do \lstinline{True}), wtedy wykonywany jest blok if. Jeśli warunek jest fałszywy, kod w bloku if jest pomijany.
+
+Jeśli liczba wprowadzona przez gracza jest mniejsza niż liczba wylosowana przez komputer, program wyświetla \lstinline{Strzeliłeś zbyt małą liczbę}. Jeśli liczba którą gracz wprowadził jest równa lub większa niż liczba wylosowana (czyli warunek \lstinline{strzal < liczba} jest fałszywy), blok if nie zostaje wykonany.
+
+\img{guess-keyword-condition}{Instrukcje if i while}{7 cm}
+
+\subsection{Czy strzał gracza jest zbyt wysoki?}
+
+Linie od 22 do 26 sprawdzają czy strał gracza był większy bądź dokładnie równy wylosowanej liczbie.
+
+\lstinputlisting[linerange=22-23]{python/zgadula.py}
+
+Jeśli strzał gracze jest większy niż wylosowana liczba, wykonywany jest blok znajdujący się za instrukcją \lstinline{if}. Funkcja \lstinline{print()} w linii 23 mówi graczowi, że liczba którą odgadł jest zbyt duża.
+
+Podobnie jak instrukcja while, instrukcja if składa się również ze słowa kluczowego, warunku, dwukropka, i bloku kodu. Spójrz na porównanie tych instrukcji na rysunku \ref{guess-keyword-condition}.
+
+Instrukcja if działa prawie tak samo jak instrukcja while. Różnią się tym, że kiedy \lstinline{if} skończy wykonywać blok, nie skacze z powrotem do początku - po prostu wykonuje program dalej. Inaczej mówiąc, instrukcje if nie są pętlami.
+
+Jeśli warunek jest prawdziwy, wykonują się wszystkie liczby z bloku if. Jedyna linia w tym bloku to linia 23, która wywołuje funkcję print().
+
+\section{Przerywanie pętli za pomocą instrukcji break}
+
+\lstinputlisting[linerange=25-26]{python/zgadula.py}
+
+Warunek tej instrukcji if sprawdza czy strzał jest taki sam jak wylosowana liczba. Jeśli tak, wykonywany jest blok składający się z linii 26.
+
+Linia wewnątrz bloku if zawiera instrukcję {\bf break} (ang. przerwij) która nakazuje programowi wyskoczyć z pętli do pierwszej linii za jej ciałem (28). Instrukcja break nie sprawdza warunku zakończenia pętli tylko przerywa ją niezależnie od wszystkiego.
+
+Instrukcja break składa sie tylko ze słowa \lstinline{break} bez żadnych warunków ani dwukropków.
+
+Jeśli strzał gracza nie jest równy wylosowanej liczbie, nie wyskakujemy z pętli. Ale linia 26 zawierająca instrukcję \lstinline{break} jest ostatnią linią ciała pętli, więc program wróci do początku i sprawdzi warunek z linii 12 (\lstinline{iloscProb < 6}). Ponieważ w międzyczasie została wykonana linia \lstinline{iloscProb = iloscProb + 1}, zmienna \lstinline{iloscProb} ma teraz wartość 1. Ponieważ 1 to mniej niż 6, pętla wykonywana jest kolejny raz.
+
+Jeśli gracz będzie odgadywał nieprawidłowe liczby (za duże lub za małe), zmienna \lstinline{iloscProb} będzie zmieniała wartość na 2, potem 3, 4, 5 i na końcu 6. Jeśli gracz prawidłowo odgadł liczbę, warunek w instrukcji \lstinline{if strzal == liczba} będzie prawdziwy i zostanie wykonana instrukcja \lstinline{break}. Jeśli liczba była nieprawidłowa, pętla będzie wykonana jeszcze raz. Ale kiedy zmienna \lstinline{iloscProb} przechowuje liczbę 6, warunek w instrukcji \lstinline{while} (\lstinline{iloscProb < 6}) jest fałszywy ponieważ 6 nie jest mniejsze niż 6.  Ponieważ warunek jest fałszywy, ciało pętli nie jest wykonywane kolejny raz, i program przeskakuje do kolejnej linii (czyli 28).
+
+Pozostała część kodu jest wykonywana kiedy gracz skończył zgadywać (dlatego że odgadł prawidłową liczbę albo próbował zbyt wiele razy). W zależności od tego dlaczego pętla przestała się wykonywać okaże się czy gracz wygrał czy przegrał. Program sprawdzi to i wyświetli komunikat o wygranej lub przegranej.
+
+\section{Sprawdzanie czy gracz wygrał}
+
+\lstinputlisting[linerange=28-28]{python/zgadula.py}
+
+W przeciwieństwie do linii 25, ta linia nie jest wcięta, co oznacza że blok z ciałem pętli while się zakończył, a linia 28 to pierwsza linia poza tym blokiem. Opuściliśmy ciało pętli albo dlatego że warunek pętli while był fałszywy (gracz zbyt wiele razy odgadnął złą liczbę) albo dlatego, że wykonaliśmy instrukcję \lstinline{break} (gracz odgadł liczbę). W linii 28 sprawdzamy jeszcze raz czy gracz odgadnął liczbę. Jeśli tak, wykonujemy blok if:
+
+\lstinputlisting[linerange=29-30]{python/zgadula.py}
+
+Linie 29 i 30 znajdują się wewnątrz bloku if. Wykonywane są tylko kiedy warunek w linii 28 był prawdziwy, czyli jeśli gracz poprawnie odgadnął liczbę.
+
+W linii 29 wywołujemy nową funkcję \lstinline{str()}, która zamienia argument na stringa. Używamy tej funkcji ponieważ chcemy zamienić liczbę całkowitą ze zmiennej \lstinline{iloscProb} na stringa który można wydrukować na ekranie. Argument funkcji \lstinline{print()} musi być stringiem.
+
+Linia 30 mówi graczowi że wygrał i ile razy musiał zgadywać zanim mu się udało. Zauważ że dodajemy (konkatenujemy) tutaj stringi do zmiennej \lstinline{iloscProb}. Gdybyśmy nie zamienili jej wcześniej na stringa, Python zgłosiłby błąd ponieważ nie da się dodać stringa do liczby całkowitej.
+
+\subsection{Sprawdzanie czy gracz przegrał}
+
+\lstinputlisting[linerange=32-32]{python/zgadula.py}
+
+W linii 32 używamy operatora porównania \lstinline{!=} jako warunku w instrukcji \lstinline{if}. Operator ten oznacza "nie jest równe". Jeśli wartość którą gracz wpisał jako ostatnią jest większa lub mniejsza niż liczba wylosowana przez komputer (czyli nie jest równa), ten warunek jest prawdziwy (jest ewaluowany do True), i wchodzimy do bloku który zaczyna się tuż za instrukcją \lstinline{if}, w linii 33.
+
+Linie 33 i 34 znajdują się wewnątrz bloku if i wykonują się tylko kiedy warunek jest prawdziwy:
+
+\lstinputlisting[linerange=33-34]{python/zgadula.py}
+
+W tym bloku mówimy graczowi jaka była wylosowana liczba której nie udało mu się odgadnąć. Ale wpierw musimy zamienić ją na stringa, żeby dało się ją wydrukować na ekranie.
+
+Dotarliśmy do miejsca w którym kończy się kod, a program przestaje się wykonywać.
+
+Gratulacje! Napisaliśmy właśnie pierwszą prawdziwą grę!
+
+\section{Podsumowanie: Czym właściwie jest programowanie?}
+
+Jeśli ktoś spytałby cię czym jest programowanie, jak mógłbyś mu odpowiedzieć? Programowanie to wpisywanie kodu programów, to znaczy, tworzenie programów które są wykonywane przez komputer.
+
+"Ale czym właściwie jest program?" Jeśli widzisz kogoś kto używa programu na komputerze (na przykład, gra w naszą zgaduj-zgadulę), widzisz tylko tekst pojawiający się na ekranie. Program decyduje jaki dokładnie tekst ma pojawić się na ekranie (ten tekst to {\bf wyjście} programu). Decyzje są podejmowane na podstawie instrukcji (czyli programu) i tekstu który gracz wpisał na klawiaturze (ten tekst to \bf{wejście} programu). Program ma bardzo szczegółowe instrukcje mówiące o tym jaki tekst ma pokazywać użytkownikowi. Program jest po prostu zestawem instrukcji.
+
+"Jakiego rodzaju instrukcji?" Jest kilka różnych rodzajów instrukcji.
+
+\begin{enumerate}
+\item Wyrażenia które składają sie z wartości połączonych operatorami. Wyrażenia są ewaluowane do pojedynczej wartości, tak jak \lstinline{2 + 2} jest ewaluowane do \lstinline{4}, albo \lstinline{'Witaj' + ' ' + 'świecie'} jest ewaluowane do \lstinline{'Witaj świecie'}. Wywołania funkcji mogą również być częścią wyrażeń ponieważ one też są ewaluowane do pojedynczej wartości, i ta wartość może być połączona operatorami z innymi wartościami. Kiedy wyrażenia znajdują się za słowami kluczowymi \lstinline{if} lub \lstinline{while}, nazywamy je warunkami.
+\item Instrukcje przypisania, które przechowują wartości w zmiennych żebyśmy mogli używać ich w dalszej części programu
+\item \lstinline{if}, \lstinline{while} i \lstinline{break} to {\bf instrukcje sterujące} ponieważ decydują o tym które linie programu zostaną wykonane, a które nie. Normalna kolejność wykonania programu jest taka że zaczyna się na górze ekranu i wykonuje linia po linii aż do końca. Ale instrukcje sterujące sprawiają że niektóre linie nie są wykonywane, a inne są wykonywane po kilka razy. Wywołania funkcji również zmieniają kolejność wykonania programu ponieważ skaczą do początku kodu funkcji.
+\item Funkcja \lstinline{print()}, która drukuje tekst na ekranie oraz funkcja \lstinline{input()} która pobiera tekst wpisany przez użytkownika. Funkcje tego typu nazywają {\bf wejściem/wyjściem} (I/O) poniewż kontrolują wejście oraz wyjście programu.
+\end{enumerate}
+
+To wszystko, tylko te cztery rzeczy. Oczywiście jest wiele szczegółów związanych z tymi czterema rodzajami instrukcji. W tej książce dowiesz się o nowych typach danych i operatorach, nowych instrukcjach sterujących innych niż \lstinline{if}, \lstinline{while} i \lstinline{break} i kilku nowych funkcjach. Są również różne rodzaje I/O (wejście: myszka, wyjście: dźwięk, grafika, obrazki).
+
+Osobę korzystającą z naszych programów interesuje tylko ostatni rodzaj instrukcji - I/O. Użytkownik pisze na klawiaurze i widzi na ekranie odpowiedź lub słyszy coś w głośnikach. Ale żeby komputer wiedział jakie ma pokazywać znaki i odtwarzać dźwięki - potrzebuje programu, a program to lista instrukcji którą napisałeś ty - programista.
+
+
 
 \end{document}
