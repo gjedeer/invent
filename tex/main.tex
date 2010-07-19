@@ -115,7 +115,7 @@ Zacznijmy od nauczenia się jak używać interaktywnego shella Pythona.
 \section{Trochę prostej matematyki}
 
 % Tego akapitu nie było w oryginale
-Python posiada interaktywnego shella o~nazwie IDLE.~Interaktywność oznacza że reaguje on na~wszystkie twoje polecenia zaraz po ich wpisaniu (nieinterkatywny tryb pracy to taki w~którym wpierw wpisujesz wszystkie polecenia do~pliku, a~dopiero potem są one wykonywane po kolei). Shell\footnote{Shell jest przez niektórych nazywany również ,,powłoką''. Zabawne, prawda?} to miejsce gdzie wpisujesz polecenia - zgłasza się znakiem \lstinline{>>>} nazywanym znakiem zachęty (lub promptem).
+Python posiada interaktywnego shella o~nazwie IDLE.~Interaktywność oznacza, że reaguje on na~wszystkie twoje polecenia zaraz po ich wpisaniu (nieinterkatywny tryb pracy to taki w~którym wpierw wpisujesz wszystkie polecenia do~pliku, a~dopiero potem są one wykonywane po kolei). Shell\footnote{Shell jest przez niektórych nazywany również ,,powłoką''. Zabawne, prawda?} to miejsce gdzie wpisujesz polecenia - zgłasza się znakiem \lstinline{>>>} nazywanym znakiem zachęty (lub promptem).
 
 Żeby otworzyć IDLE na~Windowsie, kliknij na~Start, Programy, Python 3.1 a~potem IDLE (Python GUI). Zaczniemy od kilku prostych obliczeń w~Pythonie. Interaktywny shell może działać jak kalkulator. Wpisz w~okno shella 2+2 i~wciśnij Enter na~klawiaturze (na~niektórych klawiaturach ten klawisz to Return). Jak widzisz na~rysunku~\ref{idle-dwaplusdwa}, komputer powinien odpowiedzieć liczbą 4, sumą 2+2.
 
@@ -218,13 +218,13 @@ Kiewy wciśniesz Enter, nie zobaczysz żadnej odpowiedzi od Pythona. O~ile nie z
 
 Ta instrukcja (nazywana {\bf instrukcją przypisania}) tworzy zmienną ,,liczba'' i~przechowuje w~niej wartość 15. W~przeciwieństwie do~wyrażeń, {\bf instrukcje} nie są ewaluowane do~żadnej wartości. Dlatego właśnie shell nie wyświetlił żadnej wartości w~odpowiedzi.
 
-Może nie być łatwo zapamiętać które polecenia są wyrażeniami a~które instrukcjami. Po prostu pamiętaj że jeśli polecenie ewaluuje się do~jakiejś wartości, jest wyrażeniem. Jeśli nie, jest instrukcją.
+Może nie być łatwo zapamiętać które polecenia są wyrażeniami, a~które instrukcjami. Po prostu pamiętaj, że jeśli polecenie ewaluuje się do~jakiejś wartości, jest wyrażeniem. Jeśli nie, jest instrukcją.
 
-Instrukcja przypisania jest zapisana w~następujący sposób: nazwa zmiennej, później znak = oraz wyrażenie. Wartość do~której ewaluuje się to wyrażenie jest przechowywana w~zmiennej. Wartość 15 sama w~sobie jest wyrażeniem. Wyrażenia złożone z~pojedynczej wartości są proste do~ewaluacji. Takie wyrażenia ewaluują się po prostu do~tej samej wartości. Na przykład, wyrażenie 15 ewaluuje się do~wartości 15.
+Instrukcja przypisania jest zapisana w~następujący sposób: nazwa zmiennej, później znak = oraz wyrażenie. Wartość, do~której ewaluuje się to wyrażenie, jest przechowywana w~zmiennej. Wartość 15 sama w~sobie jest wyrażeniem. Wyrażenia złożone z~pojedynczej wartości są proste do~ewaluacji. Takie wyrażenia ewaluują się po prostu do~tej samej wartości. Na przykład, wyrażenie 15 ewaluuje się do~wartości 15.
 
 Pemiętaj, zmienne przechowują wartości, nie wyrażenia. Na przykład, jeśli mielibyśmy wyrażenie liczba=10+5, to wyrażenie 10+5 zostałoby wpierw obliczone, a~następnie wynik (15) zostałby przechowany w~zmiennej ,,liczba''.
 
-Kiedy zapisujesz wartość do~zmiennej po raz pierwszy używając instrukcji przypisania, Python stworzy tą zmienną. Za każdym następnym razem, operator przypisania zamieni wartość zapamiętaną w~tej zmiennej.
+Kiedy zapisujesz wartość do~zmiennej po raz pierwszy używając instrukcji przypisania, Python stworzy tę zmienną. Za każdym następnym razem, operator przypisania zamieni wartość zapamiętaną w~tej zmiennej.
 
 Sprawdźmy czy zmienna stworzyła się poprawnie. Jeśli wpiszemy w~shellu tylko ,,liczba'', powinniśmy zobaczyć jaka wartość jest przechowywana w~zmiennej o~tej nazwie:
 
@@ -235,7 +235,7 @@ Sprawdźmy czy zmienna stworzyła się poprawnie. Jeśli wpiszemy w~shellu tylko
 >>> 
 \end{lstlisting}
 
-W tej chwili wyrażenie ,,liczba'' jest ewaluowane do~wartości przechowywaną przez zmienną ,,liczba'', czyli 15.
+W tej chwili wyrażenie ,,liczba'' jest ewaluowane do~wartości przechowywanej przez zmienną ,,liczba'', czyli 15.
 
 Wiedząc to wszystko, możemy zrobić ciekawą rzecz. Jeśli teraz wpiszemy do~shella ,,liczba + 5", otrzymamy wartość 20:
 
@@ -351,7 +351,7 @@ Zmiana wartości przechowywanej w~zmiennej jest prosta. Po prostu przypisz jej n
 
 Na początku, zmienna ,,foo'' przechowywała liczbę 42. Dlatego właśnie za pierwszym razem po wpisaniu ,,foo'' komputer zwrócił ,,42". Ale po wykonaniu ,,spam='Czesc'", wartość 42 została usunięta ze zmiennej i~zapomniana w~momencie w którym tekst ,,Czesc'' został w~niej zapamiętany.
 
-Zmiana wartości zmiennej na~nową wartość nazywana jest {\bf nadpisywaniem}. Ważne jest żeby wiedzieć, że stara wartość zostanie na~zawsze zapomniana. Jeśli chcesz ją zapamiętać żeby użyć jej później, możesz zapamiętać ją w~innej zmiennej przed zmianą wartości.
+Zmiana wartości zmiennej na~nową wartość nazywana jest {\bf nadpisywaniem}. Ważne jest, żeby wiedzieć, że stara wartość zostanie na~zawsze zapomniana. Jeśli chcesz ją zapamiętać żeby użyć jej później, możesz zapamiętać ją w~innej zmiennej przed zmianą wartości.
 
 \begin{lstlisting}
 >>> foo = 42
@@ -369,7 +369,7 @@ W powyższym przykładzie, przed nadpisaniem wartości zmiennej ,,foo'', skopiow
 
 \section{Podsumowanie}
 
-W tym rozdziale nauczyłeś się podstaw pisania instrukcji Pythona. Musisz mówić Pythonowi bardzo dokładnie i~ściśle co ma zrobić ponieważ komputery nie potrafią myśleć i~rozumieją tylko bardzo proste rozkazy. Nauczyłeś się, że Python potrafi ewaluować wyrażenia (to znaczy, zamienić całe wyrażenie na~pojedynczą wartość), i~że wyrażenia to wartości (takie jak 2 czy 5) połączone operatorami (takimi jak + lub -). Dowiedziałeś się także, że możesz przechowywać wartości w~zmiennych, żeby twój program je zapamiętał a~ty żebyś mógł użyć ich później.
+W tym rozdziale nauczyłeś się podstaw pisania instrukcji Pythona. Musisz mówić Pythonowi bardzo dokładnie i~ściśle co ma zrobić, ponieważ komputery nie potrafią myśleć i~rozumieją tylko bardzo proste rozkazy. Nauczyłeś się, że Python potrafi ewaluować wyrażenia (to znaczy, zamienić całe wyrażenie na~pojedynczą wartość), i~że wyrażenia to wartości (takie jak 2 czy 5) połączone operatorami (takimi jak + lub -). Dowiedziałeś się także, że możesz przechowywać wartości w~zmiennych, żeby twój program je zapamiętał, a~żebyś ty mógł użyć ich później.
 
 W następnym rozdziale poznasz jeszcze kilka podstawowych pojęć, a~później napiszesz swój pierwszy program!
 
@@ -389,7 +389,7 @@ W następnym rozdziale poznasz jeszcze kilka podstawowych pojęć, a~później n
 	\item Rozróżnianie wielkości liter
 \etopicscovered
 
-Wystarczy już liczb i~matematyki. Python jest znacznie więcej niż tylko kalkulatorem. Sprawdźmy teraz co potrafi robić z~tekstem. W~tym rozdziale nauczymy się jak przechowywać tekst w~zmiennych, łączyć teksty i~wyświetlać je na~ekranie. Wiele z~naszych programów będzie używało tekstu do~wyświetlania gier na~ekranie gracza, a~gracz będzie wprowadzał do nich tekst za pomocą klawiatury. Napiszemy też pierwszy program, który pozdrowi użytkownika tekstem ,,Witaj, świecie!'' i~spyta go o~imię.
+Wystarczy już liczb i~matematyki. Python jest znacznie więcej niż tylko kalkulatorem. Sprawdźmy teraz, co potrafi robić z~tekstem. W~tym rozdziale nauczymy się jak przechowywać tekst w~zmiennych, łączyć teksty i~wyświetlać je na~ekranie. Wiele z~naszych programów będzie używało tekstu do~wyświetlania gier na~ekranie gracza, a~gracz będzie wprowadzał do nich tekst za pomocą klawiatury. Napiszemy też pierwszy program, który pozdrowi użytkownika tekstem ,,Witaj, świecie!'' i~spyta go o~imię.
 
 \section{Stringi}
 
@@ -449,13 +449,13 @@ Możesz ,,dokleić" jednego stringa na~koniec drugiego używając operatora +. O
 >>> 
 \end{lstlisting}
 
-Operator + działa w~inny sposób dla stringów i~dla liczb, ponieważ są one różnymi {\bf typami danych}. Każda wartość posiada typ (jest jakiegoś typu). Wartość 'Cześć' jest typu string. Wartość 5 jest typu liczba całkowita. Typ wartości mówi nam (i~komputerowi) jaki rodzaj danych ona przechowuje. 
+Operator + działa w~inny sposób dla stringów i~dla liczb, ponieważ są one różnymi {\bf typami danych}. Każda wartość posiada typ (jest jakiegoś typu). Wartość 'Cześć' jest typu ,,string''. Wartość 5 jest typu ,,liczba całkowita''. Typ wartości mówi nam (i~komputerowi), jaki rodzaj danych ona przechowuje. 
 
 \section{Pisanie programów w~edytorze IDLE}
 
 Do teraz pisaliśmy instrukcje jedna po drugiej w~interaktywnym shellu. Ale kiedy piszemy program, wpierw wpisujemy kilka instrukcji, a~następnie uruchamiamy je wszystkie razem. Napiszmy więc pierwszy program!
 
-Program który pokazywał okno interaktywnego shella w~którym działaliśmy do~tej pory nazywał się IDLE (Interactive DeveLopment Environment - Interaktywne Środowisko Programistyczne). IDLE ma także inną funkcję - edytor plików.
+Program, który pokazywał okno interaktywnego shella w~którym działaliśmy do~tej pory nazywał się IDLE (Interactive DeveLopment Environment - Interaktywne Środowisko Programistyczne). IDLE ma także inną funkcję - edytor plików.
 
 Kliknij na~menu File (Plik) na~górze okna, wybierz New Window (Nowe Okno). Pojawi sie nowe puste okno w~którym będziesz mógł pisać program. To okno to {\bf edytor plików}.
 
