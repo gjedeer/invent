@@ -98,10 +98,82 @@
 \begin{document}
 
 \chapter{Instalacja Pythona}
+\btopicscovered
+	\item Ściąganie i instalacja interpretera Pythona
+	\item Używanie interaktywnego shella IDLE do uruchamiania instrukcji
+	\item Jak używać tej książki
+%TODO strona WWW	
+\etopicscovered
 
-Ściągnij Pythona 3.1 ze strony Python.org.
+%Ściągnij Pythona 3.1 ze strony Python.org.
 
-W razie czego - http://inventwithpython.com/chapter1.html bo ten rozdział nie jest gotowy.
+%W razie czego - http://inventwithpython.com/chapter1.html bo ten rozdział nie jest gotowy.
+
+Cześć! Czytasz właśnie książkę która nauczy cię pisać programy pokazując ci jak tworzyć gry komputerowe. Kiedy dowiesz się jak działają gry z tej książki, będziesz też wiedział jak tworzyć własne. Potrzebujesz tylko komputera, programu nazywanego interpreterem Pythona i tej książki. Program którego będziesz potrzebował jest darmowy i można go ściągnąć z internetu.
+
+Kiedy byłem dzieckiem, znalazłem książkę podobną do tej i nauczyłem się z niej jak pisać pierwsze programy i gry. Bardzo mi się to podobało, a na dodatek było całkiem proste. Teraz, jako dorosły, ciągle lubię programować komputery, a na dodatek zarabiam na tym pieniądze. Ale nawet jeśli nie zostaniesz programistą komputerowym kiedy dorośniesz, warto jest umieć programować. Jest to przyjemne, ale i przydatne.
+
+Komputery to bardzo przydatne urządzenia. Na szczęście nauka programowania komputerów jest łatwa. Jeśli jesteś w stanie przeczytać książkę, jesteś też w stanie zaprogramować komputer. {\bf Program} komputerowy to zlepek instrukcji wykonywanych przez komputer, podobnie jak książka jest zlepkiem zdań czytanych przez czytelnika.
+
+Te instrukcje są podobne do instrukcji mówiących jak dojść do domu kolegi (Skręć w lewo na światłach, przejdź dwie przecznice i idź dalej aż zobaczysz po prawej niebieski dom). Komputer wykonuje każdą instrukcję którą każesz mu wykonać w takiej kolejności, w jakiej mu ją podasz. Gry komputerowe nie są niczym innym jak programami komputerowymi (i to bardzo wciągającymi programami)!
+
+W tej książce wszystkie słowa które będziesz musiał poznać będą wyglądały {\bf w ten sposób}. Na przykład, słowo "program" jest w ten sposób pogrubione kilka linijek wyżej.
+
+Żeby powiedzieć komputerowi co ma robić, piszesz program w języku który komputer potrafi zrozumieć. Język programowania którego uczy ta książka nazywa się Python (czytaj "python"). Jest wiele różnych języków programowania takich, jak BASIC, Java, Pascal, Haskell czy C++.
+
+Kiedy byłem dzieckiem, większość ludzi którzy uczyli się programować poznawało język BASIC. Ale od tego czasu zostały wynalezione nowsze języki takie, jak Python. Nie dość że Pythona łatwiej się nauczyć niż BASIC-a, jest prawdziwym językiem programowania używanym przez zawodowych programistów. Wielu dorosłych używa Pythona zarówno w swojej pracy jak i kiedy programują dla przyjemności.
+
+Pierwsze kilka gier które wspólnie stworzymy będzie prostsze niż te w które grałeś na Xboxie, Playstation czy Wii. Nie mają skomplikowanej grafiki ani muzyki, ale tylko dlatego, że mają nauczyć cię podstaw. Specjalnie są proste, żebyś mógł skupić się na nauce programowania. Gry nie muszą być skomplikowane żeby wciągały. Wisielec, Kółko i Krzyżyk czy zgadywanka są łatwe do napisania, ale i tak dobrze się w nie gra.
+
+Nauczymy się też jak rozwiązywać zadania matematyczne w shellu Pythona. (Nie martw się jeśli nie znasz matematyki. Jeśli umiesz dodawać i mnożyć, znasz dostatecznie dużo żeby zacząć programować. W programowaniu chodzi bardziej o rozwiązywanie problemów i planowanie niż o rozwiązywanie zadań).
+
+\section{Ściąganie i instalacja Pythona}
+
+Zanim zaczniemy programować, musisz zainstalować program nazywany interpreterem Pythona (możesz poprosić rodziców o pomoc). {\bf Interpreter} to program który rozumie instrukcje które piszez w języku Python. Bez interpretera, twój komputer nie rozumiałby instrukcji które mu wydajesz, i programy nie działałyby. (Od teraz, zamiast "interpreter Pythona" będziemy mówić "Python").
+
+Powiem ci jak zainstalować Pythona na systemie operacyjnym Microsoft Windows - nie dlatego że to mój ulubiony system, ale dlatego że najprawdopodobniej tego właśnie systemu używasz. Jeśli nie, poszukaj w sieci jak zainstalować Pythona. Najważniejsze żeby był w wersji 3 lub wyższej.
+
+%TODO ubuntu, mac
+
+\subsection{Instalacja w systemie Windows}
+
+%TODO screeny
+Wejdź na stronę http://python.org/ - jest w języku angielskim. W linkach po lewej stronie kliknij na link {\bf Download}. Kliknij na link podpisany "Python 3 Windows x86 MSI Installer". Po liczbie 3 będą prawdopodobnie inne liczby, na przykład "Python 3.1.2 Windows x86 MSI Installer" - najważniejsze żeby pierwszą z nich była trójka. 
+
+Uruchom plik który ściągniesz - będzie się nazywał \lstinline{python-3.1.2.msi} lub podobnie. Włączy się program instalacyjny w którym powinienneś klikać przycisk Next nie zmieniając ustawień. Po skończonej instalacji, kliknij przycisk Finish.
+
+{\bf Ważne!} Zainstaluj na pewno Pythona 3, nie Pythona 2. Programy w tej książce używają Pythona w wersji 3, i jeśli spróbujesz uruchomić je w wersji drugiej, zamiast działać będą pokazywały błędy.
+
+\subsection{Instalacja w systemie Ubuntu}
+
+% TODO sprawdzic na ubuntu
+Jeśli twoim systemem jest Ubuntu, możesz zainstalować Pythona otwierając menedżera pakietów (w menu {\bf Aplikacje} wybierz {\bf Dodaj/usuń}.  Wciśnij przycisk Szukaj i wpisz \lstinline{idle 3}. 
+
+\subsection{Instalacja w systemie Mac OS}
+
+Instalacja w systemie Mac OS jest podobna do tej w Windows. Zamiast ściągać plik "Windows x86 MSI Installer", ściągnij ten podpisany "Mac OS X Installer Disk Image" i postępuj podobnie jak przy instalacji w Windows.
+
+%TODO video?
+
+\section{Uruchamianie Pythona}
+
+\subsection{Windows}
+
+Jeśli używasz Windows, wciśnij przycisk Start, potem wybierz Programy, Python 3.1, IDLE (Python GUI). Po uruchomieniu okno będzie wyglądało w podobnie do tego na obrazku \ref{intro-shell}.
+%TODO screenshot
+
+\section{Jak używać tej książki}
+
+\subsection{Programy w książce}
+\subsection{Numery linii i spacje}
+\subsection{Zawijanie linii}
+%TODO traces
+%TODO diff
+\section{Podsumowanie}
+
+Ten rozdział pomógł ci zainstalować programy bez których nie da się pisać własnych programów w Pythonie. Po instalacji i uruchomieniu programu IDLE będziemy gotowi do nauki programowania która rozpocznie się w następnym rozdziale.
+
+%TODO website
 
 \chapter{Shell interaktywny}
 \btopicscovered
@@ -1178,6 +1250,9 @@ Jak się nazywa syn optyka?\linebreak
 Synoptyk!\linebreak
 \end{pseudolisting}
 
+%TODO dokonczyc i skonsultowac sie w sprawie czerstwych dowcipow
+
+\chapter{Smocze królestwo}
 
 
 
