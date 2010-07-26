@@ -5,10 +5,12 @@
 
 \documentclass{book}
 
-\renewcommand{\rmdefault}{FreeSerif}
+%\renewcommand{\rmdefault}{FreeSerif}
 %\renewcommand{\sfdefault}{FreeSerif}
 %\renewcommand{\ttdefault}{Courier}
 % \setttfont{AndaleMono}
+%\usepackage[T1]{fontenc}
+%\usepackage{lucidabr}
 
 \usepackage{ucs}
 \usepackage[pdftex,plainpages=false,pdfpagelabels,pdfstartpage=1,pdfstartview=FitH]{}
@@ -21,6 +23,11 @@
 % \usepackage{listingsutf8}
 \usepackage{color}
 \usepackage{framed}
+
+\usepackage[T1]{fontenc}
+\usepackage{beramono}
+\usepackage{em}
+%\renewcommand*\familydefault{\ttdefault}
 
 \onehalfspacing
 
@@ -38,9 +45,9 @@
 \lstset{literate={ą}{{\k{a}}}1 {ć}{{\'c}}1 {ł}{{\l{}}}1 {ń}{{\'n}}1 {ę}{{\k{e}}}1 {ś}{{\'s}}1 {ż}{{\.z}}1 {ó}{{\'o}}1 {ź}{{\'z}}1 {Ą}{{\k{A}}}1 {Ć}{{\'C}}1 {Ł}{{\L{}}}1 {Ń}{{\'N}}1 {Ę}{{\k{E}}}1 {Ś}{{\'S}}1 {Ż}{{\.Z}}1 {Ó}{{\'O}}1 {Ź}{{\'Z}}1 }
 
 % Fixed-width font for listings
-\lstset{basicstyle=\ttfamily}
+\lstset{basicstyle=\footnotesize\ttfamily}
 \lstset{breaklines=true}
-\lstset{linewidth=1.3\linewidth}
+\lstset{linewidth=1.2\linewidth}
 
 
 % Numbered listing
@@ -348,7 +355,7 @@ Zmiana wartości przechowywanej w~zmiennej jest prosta. Po prostu przypisz jej n
 'Czesc'
 \end{lstlisting}
 
-Na początku, zmienna ,,foo'' przechowywała liczbę 42. Dlatego właśnie za pierwszym razem po wpisaniu ,,foo'' komputer zwrócił ,,42". Ale po wykonaniu ,,spam='Czesc'", wartość 42 została usunięta ze zmiennej i~zapomniana w~momencie w którym tekst ,,Czesc'' został w~niej zapamiętany.
+Na początku, zmienna ,,foo'' przechowywała liczbę 42. Dlatego właśnie za pierwszym razem po wpisaniu ,,foo'' komputer zwrócił ,,42". Ale po wykonaniu ,,spam='Czesc'", wartość 42 została usunięta ze zmiennej i~zapomniana w~momencie w~którym tekst ,,Czesc'' został w~niej zapamiętany.
 
 Zmiana wartości zmiennej na~nową wartość nazywana jest {\bf nadpisywaniem}. Ważne jest, żeby wiedzieć, że stara wartość zostanie na~zawsze zapomniana. Jeśli chcesz ją zapamiętać żeby użyć jej później, możesz zapamiętać ją w~innej zmiennej przed zmianą wartości.
 
@@ -388,7 +395,7 @@ W następnym rozdziale poznasz jeszcze kilka podstawowych pojęć, a~później n
 	\item Rozróżnianie wielkości liter
 \etopicscovered
 
-Wystarczy już liczb i~matematyki. Python jest znacznie więcej niż tylko kalkulatorem. Sprawdźmy teraz, co potrafi robić z~tekstem. W~tym rozdziale nauczymy się jak przechowywać tekst w~zmiennych, łączyć teksty i~wyświetlać je na~ekranie. Wiele z~naszych programów będzie używało tekstu do~wyświetlania gier na~ekranie gracza, a~gracz będzie wprowadzał do nich tekst za pomocą klawiatury. Napiszemy też pierwszy program, który pozdrowi użytkownika tekstem ,,Witaj, świecie!'' i~spyta go o~imię.
+Wystarczy już liczb i~matematyki. Python jest znacznie więcej niż tylko kalkulatorem. Sprawdźmy teraz, co potrafi robić z~tekstem. W~tym rozdziale nauczymy się jak przechowywać tekst w~zmiennych, łączyć teksty i~wyświetlać je na~ekranie. Wiele z~naszych programów będzie używało tekstu do~wyświetlania gier na~ekranie gracza, a~gracz będzie wprowadzał do~nich tekst za pomocą klawiatury. Napiszemy też pierwszy program, który pozdrowi użytkownika tekstem ,,Witaj, świecie!'' i~spyta go o~imię.
 
 \section{Stringi}
 
@@ -402,7 +409,7 @@ W Pythonie używamy małych fragmentów tekstu nazywanych {\bf stringami}\footno
 Apostrofów używa się tylko po to, żeby komputer wiedział gdzie tekst się zaczyna i~kończy. Nie są one częścią tekstu.
 
 % This was not in the original
-{\bf Uwaga} - na klawiaturze są dwa znaki apostrofa, jeden w lewym górnym rogu (backtick), drugi - bliżej Entera, na prawo od klawisza ; (właściwy apostrof). My używamy tego drugiego (bliżej Entera).
+{\bf Uwaga} - na~klawiaturze są dwa znaki apostrofa, jeden w~lewym górnym rogu (backtick), drugi - bliżej Entera, na~prawo od klawisza ; (właściwy apostrof). My używamy tego drugiego (bliżej Entera).
 
 Jeśli teraz wpiszesz w~shellu \lstinline{foo}, powinienneś zobaczyć zawartość zmiennej \lstinline{foo} (string 'czesc'). 
 
@@ -432,7 +439,7 @@ Podobnie jak w~poprzednim rozdziale robiliśmy to z~liczbami, stringi również 
 
 \section{Konkatenacja stringów}
 
-Możesz ,,dokleić" jednego stringa na~koniec drugiego używając operatora +. Operacja taka nazywa się konkatenacją (łączeniem) stringów. Spróbuj wpisać w~shellu \lstinline{'Witaj' + 'Świecie!'}
+Możesz ,,dokleić'' jednego stringa na~koniec drugiego używając operatora +. Operacja taka nazywa się konkatenacją (łączeniem) stringów. Spróbuj wpisać w~shellu \lstinline{'Witaj' + 'Świecie!'}
 
 \begin{lstlisting}
 >>> 'Witaj' + 'Swiecie!'
@@ -462,7 +469,7 @@ Kliknij na~menu File (Plik) na~górze okna, wybierz New Window (Nowe Okno). Poja
 
 \section{Witaj Świecie!}
 
-Istnieje w programowaniu tradycja polegająca na tym, że kiedy uczysz się nowego języka programowania, piszesz program wyświetlający na ekranie tekst ,,Witaj, Świecie!'' (,,Hello, World!"). Stwórzmy więc własny program Hello World w Pythonie!
+Istnieje w~programowaniu tradycja polegająca na~tym, że kiedy uczysz się nowego języka programowania, piszesz program wyświetlający na~ekranie tekst ,,Witaj, Świecie!'' (,,Hello, World!"). Stwórzmy więc własny program Hello World w~Pythonie!
 
 % The following 2 paragraphs in original order make little sense
 Wprowadź tekst poniżej do~nowego okna edytora plików. Nazywamy ten tekst kodem źródłowym programu ponieważ zawiera instrukcje które Python będzie wykonywał żeby wiedzieć dokładnie jak program powinien się zachować.
@@ -520,7 +527,7 @@ Programiści zazwyczaj żeby nadać programowi tytuł dodają komentarz na~samym
 
 \subsection{Funkcje}
 
-{\bf Funkcja} jest rodzajem mini-programu wewnątrz twojego programu. Zawiera linie kodu który jest wykonywany od góry do~dołu. Python dostarcza kilku wbudowanych funkcji, których możemy używać. Najlepszą rzeczą w~funkcjach jest to, że wystarczy że wiemy co dana funkcja robi, nie jak to robi. Jedyne co musisz wiedzieć o~funkcji print() to to, że wyświetla na~ekranie tekst, ale nie musisz wiedzieć o tym jak to robi.
+{\bf Funkcja} jest rodzajem mini-programu wewnątrz twojego programu. Zawiera linie kodu który jest wykonywany od góry do~dołu. Python dostarcza kilku wbudowanych funkcji, których możemy używać. Najlepszą rzeczą w~funkcjach jest to, że wystarczy że wiemy co dana funkcja robi, nie jak to robi. Jedyne co musisz wiedzieć o~funkcji print() to to, że wyświetla na~ekranie tekst, ale nie musisz wiedzieć o~tym jak to robi.
 
 {\bf Wywołanie funkcji} jest fragmentem kodu który mówi naszemu programowi żeby uruchomił kod wewnątrz funkcji. Na przykład, twój program może wywoływać funkcję print() kiedykolwiek chcesz wyświetlić tekst na~ekranie. Funkcja print() pobiera stringa którego wprowadzasz pomiędzy nawiasami i~drukuje tekst na~ekranie. Ponieważ chcemy wyświetlić na~ekranie tekst Witaj Świecie, piszemy nazwę funkcji, otwierający nawias, string 'Witaj Świecie!' i~nawias zamykający.
 
@@ -599,7 +606,7 @@ Stringi są po prostu jeszcze jednym typem danych, któego możemy używać w~pr
 
 W następnym rozdziale, nauczymy się więcej o~zmiennych i~nasz program będzie zapamiętywał tekst oraz~liczby wprowadzone przez gracza. Wiedząc jak używać tekstu, liczb i~zmiennych, będziemy gotowi żeby zacząć tworzyć gry.
 
-\chapter{Gra w zgadywanie liczb}
+\chapter{Gra w~zgadywanie liczb}
 
 \btopicscovered
 	\item Instrukcje \lstinline{import}
@@ -610,7 +617,7 @@ W następnym rozdziale, nauczymy się więcej o~zmiennych i~nasz program będzie
 	\item Bloki
 	\item Wartości logiczne
 	\item Operatory porównania
-	\item Różnica pomiędzy \lstinline{=} a \lstinline{==}
+	\item Różnica pomiędzy \lstinline{=} a~\lstinline{==}
 	\item Instrukcje \lstinline{if}
 	\item Słowo kluczowe \lstinline{break}
 	\item Funkcje str() oraz int()
@@ -619,20 +626,20 @@ W następnym rozdziale, nauczymy się więcej o~zmiennych i~nasz program będzie
 
 \section{Zgaduj zgadula}
 
-Napiszemy grę "zgaduj zgadula". Komputer wylosuje liczbę pomiędzy 1 a 20 i poprosi cię o jej odgadnięcie. Dostaniesz tylko sześc prob, ale komputer będzie mówił ci czy twój strzał był zbyt wysoki czy zbyt niski. Jeśli odgadniesz liczbę po sześciu próbach, wygrywasz.
+Napiszemy grę ,,zgaduj zgadula''. Komputer wylosuje liczbę pomiędzy 1 a~20 i~poprosi cię o~jej odgadnięcie. Dostaniesz tylko sześc prob, ale komputer będzie mówił ci czy twój strzał był zbyt wysoki czy zbyt niski. Jeśli odgadniesz liczbę po sześciu próbach, wygrywasz.
 
-To dobra gra na początek ponieważ używa liczb losowych, pętli i danych od użytkownika w całkiem krótkim kodzie programu. Pisząc ta gre, nauczysz się jak konwertować wartości do różnych typów danych (i dlaczego jest to niezbędne).
+To dobra gra na~początek ponieważ używa liczb losowych, pętli i~danych od użytkownika w~całkiem krótkim kodzie programu. Pisząc ta gre, nauczysz się jak konwertować wartości do~różnych typów danych (i~dlaczego jest to niezbędne).
 
-Ponieważ nasz program jest grą, będziemy nazywać użytkownika graczem, ale słowo "użytkownik" jest tu także na miejscu.
+Ponieważ nasz program jest grą, będziemy nazywać użytkownika graczem, ale słowo ,,użytkownik'' jest tu także na~miejscu.
 
-\subsection{Przykładowa rozgrywka w zgaduj-zgadulę}
+\subsection{Przykładowa rozgrywka w~zgaduj-zgadulę}
 
-Tak gra będzie wyglądała na ekranie gracza kiedy ją uruchomi. Tekst wpisywany przez gracza jest pogrubiony.
+Tak gra będzie wyglądała na~ekranie gracza kiedy ją uruchomi. Tekst wpisywany przez gracza jest pogrubiony.
 
 \begin{pseudolisting}
-Cześć! Jak masz na imię?\linebreak
+Cześć! Jak masz na~imię?\linebreak
 {\bf Albert}\linebreak
-Cześć Albert. Myślę o pewnej liczbie od 1 do 20.\linebreak
+Cześć Albert. Myślę o~pewnej liczbie od 1 do~20.\linebreak
 Zgaduj:\linebreak
 {\bf 10}\linebreak
 Strzeliłeś zbyt wysoką liczbę.\linebreak
@@ -641,29 +648,29 @@ Zgaduj:\linebreak
 Strzeliłeś zbyt niską liczbę.\linebreak
 Zgaduj:\linebreak
 {\bf 4}\linebreak
-Dobra robota, Albert! Odgadłeś moją liczbę w 3 próbach!\linebreak
+Dobra robota, Albert! Odgadłeś moją liczbę w~3 próbach!\linebreak
 \end{pseudolisting}
 
-Przepisz kod źródłowy programu dokładnie tak, jak jest poniżej. Następnie zapisz go klikając na menu File, a następnie Save As. Nazwij go na przykład {\bf zgadula.py}, a następnie uruchom wciskając klawisz F5. Nie martw się jeśli jeszcze nie rozumiesz kodu, wyjaśnię go później krok po kroku.
+Przepisz kod źródłowy programu dokładnie tak, jak jest poniżej. Następnie zapisz go klikając na~menu File, a~następnie Save As. Nazwij go na~przykład {\bf zgadula.py}, a~następnie uruchom wciskając klawisz F5. Nie martw się jeśli jeszcze nie rozumiesz kodu, wyjaśnię go później krok po kroku.
 
 \subsection{Kod źródłowy zgaduj-zgaduli}
 
-Poniżej znajduje się kod źródłowy gry w zgaduj-zgadulę. Kiedy będziesz wprowadzał kod do edytora, zwróć szczególną uwagę na spacje na początku niektórych linii. Niektóre z linii zaczynają się od 4 albo 8 spacji. Jeśli po uruchomieniu pojawi się błąd, upewnij się że napisałeś program dokładnie tak, jak w książce.
+Poniżej znajduje się kod źródłowy gry w~zgaduj-zgadulę. Kiedy będziesz wprowadzał kod do~edytora, zwróć szczególną uwagę na~spacje na~początku niektórych linii. Niektóre z~linii zaczynają się od 4 albo 8 spacji. Jeśli po uruchomieniu pojawi się błąd, upewnij się że napisałeś program dokładnie tak, jak w~książce.
 
 %TODO kod ze strony
 
-{\bf Uwaga!} Ten program działa tylko w wersji 3 Pythona. Jeśli spróbujesz uruchomić go w starszej wersji, pojawi się błąd. Możesz sprawdzić wersję Pythona wybierając w menu Help opcję About IDLE.
+{\bf Uwaga!} Ten program działa tylko w~wersji 3 Pythona. Jeśli spróbujesz uruchomić go w~starszej wersji, pojawi się błąd. Możesz sprawdzić wersję Pythona wybierając w~menu Help opcję About IDLE.
 
 \bnl{caption=zgadula.py}
 \lstinputlisting{python/zgadula.py}
 
-Pomimo tego, że przepisujesz kod źródłowy do nowego okna edytora, zawsze możesz wrócić do shella żeby wprowadzać pojedyncze instrukcje i sprawdzać co robią. Interaktywny shell jest bardzo dobry do eksperymentowania z instrukcjami bez potrzeby uruchamiania programu. Możesz powrócić do interaktywnego shella klikając na jego okno lub przycisk w pasku zadań. Przycisk okna znajduje się zazwyczaj w pasku zadań (lub docku) na dole ekranu, ale zdarza się że jest przeniesiony na górę.
+Pomimo tego, że przepisujesz kod źródłowy do~nowego okna edytora, zawsze możesz wrócić do~shella żeby wprowadzać pojedyncze instrukcje i~sprawdzać co robią. Interaktywny shell jest bardzo dobry do~eksperymentowania z~instrukcjami bez potrzeby uruchamiania programu. Możesz powrócić do~interaktywnego shella klikając na~jego okno lub przycisk w~pasku zadań.~Przycisk okna znajduje się zazwyczaj w~pasku zadań (lub docku) na~dole ekranu, ale zdarza się że jest przeniesiony na~górę.
 
 % TODO diff
 
-Jeśli program po przepisaniu nie wydaje się działać, sprawdź czy przepisałeś kod dokładnie tak, jak w książce. Możesz też skopiować i wkleić swój kod do narzędzia "diff" na stronie http://inventwithpython.com/diff. Narzędzie diff pokaże ci w którym miejscu twój kod źródłowy różni się od tego w książce.
+Jeśli program po przepisaniu nie wydaje się działać, sprawdź czy przepisałeś kod dokładnie tak, jak w~książce. Możesz też skopiować i~wkleić swój kod do~narzędzia ,,diff'' na~stronie http://inventwithpython.com/diff. Narzędzie diff pokaże ci w~którym miejscu twój kod źródłowy różni się od tego w~książce.
 
-Możesz używać narzędzia diff dla każdego z programów w tej książce.
+Możesz używać narzędzia diff dla każdego z~programów w~tej książce.
 
 \section{Instrukcja import}
 
@@ -671,41 +678,41 @@ Przeanalizujmy każdą linię kodu po kolei żeby dowiedzieć się jak działa t
 
 \lstinputlisting[linerange=1-1]{python/zgadula.py}
 
-Ta linia to komentarz. Komentarze wprowadziliśmy już w programie Hello World w rozdziale 3. Pamiętaj, że Python zignoruje wszystko co wpiszesz po znaku \lstinline{#}. Ta linia tylko przypomina nam, co program robi.
+Ta linia to komentarz. Komentarze wprowadziliśmy już w~programie Hello World w~rozdziale 3. Pamiętaj, że Python zignoruje wszystko co wpiszesz po znaku \lstinline{#}. Ta linia tylko przypomina nam, co program robi.
 
 \lstinputlisting[linerange=2-2]{python/zgadula.py}
 
-To jest {\bf instrukcja import}. Instrukcje nie są funkcjami (zauważ że ani import ani random nie mają po nazwie nawiasów()). Pamiętaj, że instrukcje wykonują pewne czynności, ale nie są ewaluowane do żadnej wartości. Widziałeś już instrukcje: instrukcje przypisania zapamiętują wartość w zmiennej (ale instrukcja nie jest do niczego ewaluowana).
+To jest {\bf instrukcja import}. Instrukcje nie są funkcjami (zauważ że ani import ani random nie mają po nazwie nawiasów()). Pamiętaj, że instrukcje wykonują pewne czynności, ale nie są ewaluowane do~żadnej wartości. Widziałeś już instrukcje: instrukcje przypisania zapamiętują wartość w~zmiennej (ale instrukcja nie jest do~niczego ewaluowana).
 
-Chociaż Python ma wiele wbudowanych funkcji, jeszcze więcej jest ich dostępnych w osobnych programach nazywanych modułami. {\bf Moduły} to programy Pythona które zawierają dodatkowe funkcje. Używamy funkcji z tych modułów łącząc je z naszym programem instrukcją \lstinline{import}. W tym wypadku, importujemy moduł \lstinline{random}.
+Chociaż Python ma wiele wbudowanych funkcji, jeszcze więcej jest ich dostępnych w~osobnych programach nazywanych modułami. {\bf Moduły} to programy Pythona które zawierają dodatkowe funkcje. Używamy funkcji z~tych modułów łącząc je z~naszym programem instrukcją \lstinline{import}. W~tym wypadku, importujemy moduł \lstinline{random}.
 
-Instrukcja \lstinline{import} składa się ze słowa kluczowego \lstinline{import} oraz nazwy modułu. Razem, słowo kluczowe i nazwa modułu tworzą instrukcję. Linia 2 jest instrukcją import która importuje moduł o nazwie random, który zawiera kilka funkcji związanych z liczbami losowymi. Random po angielsku oznacza właśnie "losowy". (Użyjemy później jednej z tych funkcji, żeby komputer miał liczbę którą gracz ma zgadnąć).
+Instrukcja \lstinline{import} składa się ze słowa kluczowego \lstinline{import} oraz nazwy modułu. Razem, słowo kluczowe i~nazwa modułu tworzą instrukcję. Linia 2 jest instrukcją import która importuje moduł o~nazwie random, który zawiera kilka funkcji związanych z~liczbami losowymi. Random po angielsku oznacza właśnie ,,losowy''. (Użyjemy później jednej z~tych funkcji, żeby komputer miał liczbę którą gracz ma zgadnąć).
 
 \lstinputlisting[linerange=4-4]{python/zgadula.py}
 
-Ta linia tworzy nową zmienną o nazwie \lstinline{iloscProb}. Będziemy w niej zapamiętywać ile razy gracz próbował odgadnąć liczbę. Ponieważ gracz jeszcze nie próbował, na początek przechowamy tam liczbę 0.
+Ta linia tworzy nową zmienną o~nazwie \lstinline{iloscProb}. Będziemy w~niej zapamiętywać ile razy gracz próbował odgadnąć liczbę. Ponieważ gracz jeszcze nie próbował, na~początek przechowamy tam liczbę 0.
 
 \lstinputlisting[linerange=6-7]{python/zgadula.py}
 
-Linie 6 i 7 powinienneś znać już z programu Witaj Świecie z rozdziału 3. Programiści często używają kodu z wcześniej napisanych programów, żeby nie wynajdować koła od nowa.
+Linie 6 i~7 powinienneś znać już z~programu Witaj Świecie z~rozdziału 3. Programiści często używają kodu z~wcześniej napisanych programów, żeby nie wynajdować koła od nowa.
 
-Linia 6 jest wywołaniem funkcji print(). Przypomnienie - funkcja jest jak mniejszy program uruchamiany przez nasz program. Kiedy nasz program wywołuje funkcję, uruchamia ten mniejszy program. Kod zawarty w funkcji print() wyświetla na ekranie tekst podany pomiędzy nawiasami.
+Linia 6 jest wywołaniem funkcji print(). Przypomnienie - funkcja jest jak mniejszy program uruchamiany przez nasz program. Kiedy nasz program wywołuje funkcję, uruchamia ten mniejszy program. Kod zawarty w~funkcji print() wyświetla na~ekranie tekst podany pomiędzy nawiasami.
 
-Po wykonaniu tych dwóch linii, w zmiennej \lstinline{imie} będzie przechowywany string z imieniem gracza. (Pamiętaj, string może nie zawierać naprawdę imienia gracza - będzie zawierał cokolwiek gracz wpisze. Komputery są na tyle głupie, że wykonują program niezależnie od wszystkiego).
+Po wykonaniu tych dwóch linii, w~zmiennej \lstinline{imie} będzie przechowywany string z~imieniem gracza. (Pamiętaj, string może nie zawierać naprawdę imienia gracza - będzie zawierał cokolwiek gracz wpisze. Komputery są na~tyle głupie, że wykonują program niezależnie od wszystkiego).
 
 \subsection{Funkcja random.randint()}
 
 \lstinputlisting[linerange=9-9]{python/zgadula.py}
 
-W linii 9 wywołujemy nową  funkcję o nazwie \lstinline{randint()}, a następnie przechowujemy wartość przez nią zwróconą w zmiennej o nazwie \lstinline{liczba}. Wywołania funkcji są wyrażeniami, ponieważ są ewaluowane do wartości. Wartość tę nazywamy wartością zwracaną przez funkcję.
+W linii 9 wywołujemy nową  funkcję o~nazwie \lstinline{randint()}, a~następnie przechowujemy wartość przez nią zwróconą w~zmiennej o~nazwie \lstinline{liczba}. Wywołania funkcji są wyrażeniami, ponieważ są ewaluowane do~wartości. Wartość tę nazywamy wartością zwracaną przez funkcję.
 
-Ponieważ funkcja \lstinline{randint()} jest zawarta w module o nazwie \lstinline{random}, poprzedzamy jej nazwę przedrostkiem \lstinline{random.} (razem z kropką!). W ten sposób Python będzie wiedział, że ma szukać funkcji właśnie w tym module.
+Ponieważ funkcja \lstinline{randint()} jest zawarta w~module o~nazwie \lstinline{random}, poprzedzamy jej nazwę przedrostkiem \lstinline{random.} (razem z~kropką!). W~ten sposób Python będzie wiedział, że ma szukać funkcji właśnie w~tym module.
 
-Funkcja \lstinline{randint()} zwróci losową liczbę całkowitą \footnote{Przypomnienie: liczba całkowita to taka, która nie ma nic po przecinku} z przedziału który jej podamy. Tutaj podaliśmy jej pomiędzy nawiasami liczby 1 i 20 (oddzielone przecinkiem), więc funkcja zwróci liczbę z przedziału domkniętego od 1 do 20. Domknięty oznacza że liczby 1 i 20 mogą również być wylosowane. 
+Funkcja \lstinline{randint()} zwróci losową liczbę całkowitą \footnote{Przypomnienie: liczba całkowita to taka, która nie ma nic po przecinku} z~przedziału który jej podamy. Tutaj podaliśmy jej pomiędzy nawiasami liczby 1 i~20 (oddzielone przecinkiem), więc funkcja zwróci liczbę z~przedziału domkniętego od 1 do~20. Domknięty oznacza że liczby 1 i~20 mogą również być wylosowane. 
 
-Losowa liczba zwrócona przez randint() jest zapamiętana w zmiennej o nazwie \lstinline{liczba} - będzie to właśnie ta liczba którą gracz musi odgadnąć.
+Losowa liczba zwrócona przez randint() jest zapamiętana w~zmiennej o~nazwie \lstinline{liczba} - będzie to właśnie ta liczba którą gracz musi odgadnąć.
 
-Przejdź na chwilę do okna shella i wpisz \lstinline{import random} żeby zaimportować moduł \lstinline{random}. Potem wpisz \lstinline{random.randint(1,20)} żeby zobaczyć do jakiej wartości funkcja jest ewaluowana. Powinna zwrócić liczbę pomiędzy 1 i 20. Teraz wpisz ten sam kod ponownie i funkcja prawdopodobnie zwróci inną liczbę. Dzieje się tak dlatego, że za każdym razem kiedy funkcja \lstinline{randint()} jest wywoływana, zwraca jakąś liczbę losową, tak jakby rzucała kostką.
+Przejdź na~chwilę do~okna shella i~wpisz \lstinline{import random} żeby zaimportować moduł \lstinline{random}. Potem wpisz \lstinline{random.randint(1,20)} żeby zobaczyć do~jakiej wartości funkcja jest ewaluowana. Powinna zwrócić liczbę pomiędzy 1 i~20. Teraz wpisz ten sam kod ponownie i~funkcja prawdopodobnie zwróci inną liczbę. Dzieje się tak dlatego, że za każdym razem kiedy funkcja \lstinline{randint()} jest wywoływana, zwraca jakąś liczbę losową, tak jakby rzucała kostką.
 
 \bl{}
 \begin{lstlisting}
@@ -723,9 +730,9 @@ Przejdź na chwilę do okna shella i wpisz \lstinline{import random} żeby zaimp
 >>>
 \end{lstlisting}
 
-Kiedy tylko chcemy żeby nasza gra coś wylosowała, możemy użyć funkcji \lstinline{randint()}. I w większości gier będziemy używać losowania - pomyśl ile znasz gier planszowych w których trzeba rzucać kostką.
+Kiedy tylko chcemy żeby nasza gra coś wylosowała, możemy użyć funkcji \lstinline{randint()}. I~w~większości gier będziemy używać losowania - pomyśl ile znasz gier planszowych w~których trzeba rzucać kostką.
 
-Możemy też spróbować losowania liczb z innych zakresów. Na przykład, jeśli wpiszesz \lstinline{random.randint(1,4)}, zobaczysz liczby losowane z zakresu od 1 do 4 włącznie. Jeśli spróbujesz \lstinline{random.randint(1000, 2000)} - dostaniesz liczby pomiędzy 1000 i 2000. Poniżej jest przykład wywoływania funkcji \lstinline{random.randint()} z różnymi argumentami i sprawdzania jakie wartości zwróci. Twoje wyniki będą najprawdopodobniej inne (w końcu to liczby losowe).
+Możemy też spróbować losowania liczb z~innych zakresów. Na przykład, jeśli wpiszesz \lstinline{random.randint(1,4)}, zobaczysz liczby losowane z~zakresu od 1 do~4 włącznie. Jeśli spróbujesz \lstinline{random.randint(1000, 2000)} - dostaniesz liczby pomiędzy 1000 i~2000. Poniżej jest przykład wywoływania funkcji \lstinline{random.randint()} z~różnymi argumentami i~sprawdzania jakie wartości zwróci. Twoje wyniki będą najprawdopodobniej inne (w~końcu to liczby losowe).
 
 \begin{lstlisting}
 >>> random.randint(1, 4)
@@ -739,7 +746,7 @@ Możemy też spróbować losowania liczb z innych zakresów. Na przykład, jeśl
 >>>
 \end{lstlisting}
 
-Możemy zmienić trochę kod gry żeby zachowywała się inaczej. Spróbuj zmienić linie 9 i 10 z takich:
+Możemy zmienić trochę kod gry żeby zachowywała się inaczej. Spróbuj zmienić linie 9 i~10 z~takich:
 
 \bnl{}
 \lstinputlisting[linerange=9-10]{python/zgadula.py}
@@ -749,11 +756,11 @@ na takie:
 \bnl{}
 \lstinputlisting[linerange=9-10]{python/zgadula100.py}
 
-Teraz komputer wylosuje liczbę od 1 do 100. Zmiana w linii 9 zmieni zakres losowania, ale pamiętaj zmienić też linię 10, żeby gra powiadomiła gracza o nowym przedziale liczb.
+Teraz komputer wylosuje liczbę od 1 do~100. Zmiana w~linii 9 zmieni zakres losowania, ale pamiętaj zmienić też linię 10, żeby gra powiadomiła gracza o~nowym przedziale liczb.
 
-\subsection{Wywoływanie funkcji umieszczonych w modułach}
+\subsection{Wywoływanie funkcji umieszczonych w~modułach}
 
-Koniecznie wpisuj \lstinline{random.randint(1, 20)} a nie samo \lstinline{randint(1, 20)}, albo komputer nie będzie wiedział żeby szukać funkcji \lstinline{randint()} w module \lstinline{random} i dostaniesz taki błąd:
+Koniecznie wpisuj \lstinline{random.randint(1, 20)} a~nie samo \lstinline{randint(1, 20)}, albo komputer nie będzie wiedział żeby szukać funkcji \lstinline{randint()} w~module \lstinline{random} i~dostaniesz taki błąd:
 
 \bl{}
 \begin{lstlisting}
@@ -764,13 +771,13 @@ NameError: name 'randint' is not defined
 >>>
 \end{lstlisting}
 
-Pamiętaj, twój program musi wykonać instrukcję \lstinline{import random} zanim wywoła funkcję \lstinline{random.randint()}. Dlatego właśnie instrukcje \lstinline{import} znajdują się zazwyczaj na początku programu.
+Pamiętaj, twój program musi wykonać instrukcję \lstinline{import random} zanim wywoła funkcję \lstinline{random.randint()}. Dlatego właśnie instrukcje \lstinline{import} znajdują się zazwyczaj na~początku programu.
 
-\section{Przekazywanie argumentów do funkcji}
+\section{Przekazywanie argumentów do~funkcji}
 
-Liczby pomiędzy nawiasami w wywołaniu funkcji \lstinline{random.randint(1, 20)} nazywane są argumentami. {\bf Argumenty} to wartości przekazywane do funkcji kiedy jest wywoływana. Argumenty mówią funkcji jak ma się zachować. Podobnie jak to co wpisze gracz zmienia zachowanie naszego programu, argumenty zmieniają zachowanie funkcji.
+Liczby pomiędzy nawiasami w~wywołaniu funkcji \lstinline{random.randint(1, 20)} nazywane są argumentami. {\bf Argumenty} to wartości przekazywane do~funkcji kiedy jest wywoływana. Argumenty mówią funkcji jak ma się zachować. Podobnie jak to co wpisze gracz zmienia zachowanie naszego programu, argumenty zmieniają zachowanie funkcji.
 
-Niektóre funkcje wymagają od ciebie podania argumentów. Spójrz na te przykładowe wywołania funkcji:
+Niektóre funkcje wymagają od ciebie podania argumentów. Spójrz na~te przykładowe wywołania funkcji:
 
 \bl{}
 \begin{lstlisting}
@@ -779,9 +786,9 @@ print('Cześć')
 random.randint(1, 20)
 \end{lstlisting}
 
-Funkcja \lstinline{input()} nie ma argumentów, funkcja \lstinline{print()} ma jeden argument, a funkcja \lstinline{randint()} ma dwa. Kiedy używamy więcej niż jednego argumentu, oddzielamy poszczególne argumenty przecinkami. Inaczej mówiąc, argumenty są oddzielone przecinkami. Dzięki temu komputer wie gdzie kończy się jeden argument, a zaczyna następny.
+Funkcja \lstinline{input()} nie ma argumentów, funkcja \lstinline{print()} ma jeden argument, a~funkcja \lstinline{randint()} ma dwa. Kiedy używamy więcej niż jednego argumentu, oddzielamy poszczególne argumenty przecinkami. Inaczej mówiąc, argumenty są oddzielone przecinkami. Dzięki temu komputer wie gdzie kończy się jeden argument, a~zaczyna następny.
 
-Jeśli wywołasz funkcję ze zbyt dużą lub małą ilością argumentów, Python wyświetli komunikat o błędzie podobny do tego poniżej. W tym przykładzie, najpierw wywołaliśmy \lstinline{randint()} z jednym argumentem (za mało), a potem - z trzema (za dużo).
+Jeśli wywołasz funkcję ze zbyt dużą lub małą ilością argumentów, Python wyświetli komunikat o~błędzie podobny do~tego poniżej. W~tym przykładzie, najpierw wywołaliśmy \lstinline{randint()} z~jednym argumentem (za mało), a~potem - z~trzema (za dużo).
 
 \bl{}
 \begin{lstlisting}
@@ -798,47 +805,47 @@ TypeError: randint() takes exactly 3 positional arguments (4 given)
 >>>
 \end{lstlisting}
 
-Komunikaty mówią, że podaliśmy odpowiednio 2 i 4 argumenty, nie 2 i 3. To dlatego że Python zawsze dodaje dodatkowy, niewidoczny argument. Ten argument jest poza zakresem tej książki, i nie musisz się nim martwić.
+Komunikaty mówią, że podaliśmy odpowiednio 2 i~4 argumenty, nie 2 i~3. To dlatego że Python zawsze dodaje dodatkowy, niewidoczny argument. Ten argument jest poza zakresem tej książki, i~nie musisz się nim martwić.
 
 \section{Powitanie gracza}
 
-Linie 10 i 12 witają gracza, mówią mu o zasadach gry i zaczynają właściwe zgadywanie liczb. Linia 10 jest prosta, ale linia 12 używa nowej konstrukcji nazywanej pętlą.
+Linie 10 i~12 witają gracza, mówią mu o~zasadach gry i~zaczynają właściwe zgadywanie liczb. Linia 10 jest prosta, ale linia 12 używa nowej konstrukcji nazywanej pętlą.
 
 \bnl{}
 \lstinputlisting[linerange=10-10]{python/zgadula100.py}
 
-W linii 10, funkcja print() wita się z graczem po imieniu i mówi mu o tym, że komputer myśli o jakiejś liczbie losowej.
+W linii 10, funkcja print() wita się z~graczem po imieniu i~mówi mu o~tym, że komputer myśli o~jakiejś liczbie losowej.
 
-Ale chwila czy nie mówiliśmy że funkcja print() pobiera tylko jednego stringa? Na pierwszy rzut oka może wydawać się, że jest tu więcej niż jeden string, ale przyjrzyj się: operator + łączy wszystkie trzy stringi w jeden, i ten właśnie jeden string jest drukowany przez funkcję print(). Może wydawać się że przecinki oddzielają stringi, ale ponieważ są wewnątrz cudzysłowów, są częściami stringów.
+Ale chwila czy nie mówiliśmy że funkcja print() pobiera tylko jednego stringa? Na pierwszy rzut oka może wydawać się, że jest tu więcej niż jeden string, ale przyjrzyj się: operator + łączy wszystkie trzy stringi w~jeden, i~ten właśnie jeden string jest drukowany przez funkcję print(). Może wydawać się że przecinki oddzielają stringi, ale ponieważ są wewnątrz cudzysłowów, są częściami stringów.
 
 \section{Pętle}
 
-Linia 12 zawiera instrukcję while, która oznacza początek pętli while. {\bf Pętle} to części programu które są wykonywane wiele razy w kółko. Ale zanim omówimy dokładniej pętle, musimy poznać kilka pojęć. Te pojęcia to bloki, zmienne logiczne, operatory porównania i warunki. Dopiero wtedy będziemy gotowi wprowadzić pętlę while.
+Linia 12 zawiera instrukcję while, która oznacza początek pętli while. {\bf Pętle} to części programu które są wykonywane wiele razy w~kółko. Ale zanim omówimy dokładniej pętle, musimy poznać kilka pojęć. Te pojęcia to bloki, zmienne logiczne, operatory porównania i~warunki. Dopiero wtedy będziemy gotowi wprowadzić pętlę while.
 
 \section{Bloki}
 
-{\bf Blok} to jedna lub więcej linii kodu zgrupowanych razem za pomocą podobnej ilości wcięć. Można łatwo zobaczyć gdzie blok zaczyna się i kończy patrząc na wcięcia linii (to znaczy, liczbę odstępów na początku linii).
+{\bf Blok} to jedna lub więcej linii kodu zgrupowanych razem za pomocą podobnej ilości wcięć. Można łatwo zobaczyć gdzie blok zaczyna się i~kończy patrząc na~wcięcia linii (to znaczy, liczbę odstępów na~początku linii).
 
 %TODO bełkot
-Blok zaczyna się linią z wcięciem długości czterech spacji. Każda kolejna linia która również jest wcięta na 4 spacje jest również częścią bloku. W bloku może znajdować się kolejny blok, kiedy linia jest wcięta na kolejne 4 spacje (czyli łącznie na początku linii jest 8 spacji). Blok kończy się jeśli kolejna linia ma takie wcięcie, jak przed rozpoczęciem bloku.
+Blok zaczyna się linią z~wcięciem długości czterech spacji. Każda kolejna linia która również jest wcięta na~4 spacje jest również częścią bloku. W~bloku może znajdować się kolejny blok, kiedy linia jest wcięta na~kolejne 4 spacje (czyli łącznie na~początku linii jest 8 spacji). Blok kończy się jeśli kolejna linia ma takie wcięcie, jak przed rozpoczęciem bloku.
 
 \img{guess-blocks}{Bloki i odpowiadające im wcięcia. Czarne kropki odpowiadają spacjom.}{7cm}
 
-Spójrz na rysunek \ref{guess-blocks} - oznaczone są na nim wszystkie bloki znajdujące się w kodzie. Spacje zostały zamienione na czarne kropki żeby łatwiej można je było policzyć. Linia 12 nie jest wcięta (nie rozpoczyna się od spacji) i nie jest wewnątrz żadnego bloku. Linia 13 jest wcięta o 4 spacje. Ponieważ jej wcięcie jest większe niż wcięcie poprzedniej linii, możemy powiedzieć że w tym miejscu zaczął się nowy blok. Linie 14, 15, 17 i 19 mają również po cztery spacje wcięcia. Wszystkie z nich mają tyle samo wcięcia co poprzednia linia, więc wiemy że są w tym samym bloku. (Kiedy szukamy bloków, ignorujemy puste linie takie jak 16 czy 18.)
+Spójrz na~rysunek \ref{guess-blocks} - oznaczone są na~nim wszystkie bloki znajdujące się w~kodzie. Spacje zostały zamienione na~czarne kropki żeby łatwiej można je było policzyć. Linia 12 nie jest wcięta (nie rozpoczyna się od spacji) i~nie jest wewnątrz żadnego bloku. Linia 13 jest wcięta o~4 spacje. Ponieważ jej wcięcie jest większe niż wcięcie poprzedniej linii, możemy powiedzieć że w~tym miejscu zaczął się nowy blok. Linie 14, 15, 17 i~19 mają również po cztery spacje wcięcia. Wszystkie z~nich mają tyle samo wcięcia co poprzednia linia, więc wiemy że są w~tym samym bloku. (Kiedy szukamy bloków, ignorujemy puste linie takie jak 16 czy 18.)
 
-Linia 20 jest wcięta o osiem spacji. Ponieważ osiem spacji to więcej niż cztery, wiemy że zaczyna się nowy blok. Blok wewnątrz innego bloku.
+Linia 20 jest wcięta o~osiem spacji. Ponieważ osiem spacji to więcej niż cztery, wiemy że zaczyna się nowy blok. Blok wewnątrz innego bloku.
 
-Linia 22 zaczyna się tylko od czterech spacji. Linia która była przed 22 (czyli 20) miała więcej spacji. Ponieważ wcięcie się zmniejsza, wiemy że blok się kończy. Linia 22 jest w tym samym bloku co inne linie z czterema spacjami.
+Linia 22 zaczyna się tylko od czterech spacji. Linia która była przed 22 (czyli 20) miała więcej spacji. Ponieważ wcięcie się zmniejsza, wiemy że blok się kończy. Linia 22 jest w~tym samym bloku co inne linie z~czterema spacjami.
 
 Linia 23 ma większe wcięcie - osiem spacji, rozpoczynając nowy blok.
 
-Kiedy wpisujesz kod do IDLE, każda litera ma taką samą szerokość. Możesz policzyć ilość liter nad lub pod linią żeby zobaczyć ile spacji postawiłeś przed tą linią kodu.
+Kiedy wpisujesz kod do~IDLE, każda litera ma taką samą szerokość. Możesz policzyć ilość liter nad lub pod linią żeby zobaczyć ile spacji postawiłeś przed tą linią kodu.
 
-Na rysunku powyżej, linie kodu w ramce 1 wszystkie są w tym samym bloku, a bloki 2 i 3 są wewnątrz bloku 1. Blok 1 jest wcięty o co najmniej cztery spacje, a bloki 2 i 3 - o osiem spacji od lewego marginesu. Blok może składać się tylko z jednej linii - dowodem na to są bloki 2 i 3.
+Na rysunku powyżej, linie kodu w~ramce 1 wszystkie są w~tym samym bloku, a~bloki 2 i~3 są wewnątrz bloku 1. Blok 1 jest wcięty o~co najmniej cztery spacje, a~bloki 2 i~3 - o~osiem spacji od lewego marginesu. Blok może składać się tylko z~jednej linii - dowodem na~to są bloki 2 i~3.
 
 \section{Wartości logiczne}
 
-Wartości logiczne (boolowskie) to typ danych który może przyjmować tylko dwie wartości: Prawda (ang. True) lub Fałsz (ang. False). Te wartości muszą być pisane z dużej litery i nie są stringami, czyli {\bf nie} mogą "znajdować się w cudzysłowiach". Będziemy używać wartości logicznych z operatorami porównania do tworzenia warunków. Wszystko jest wyjaśnione poniżej.
+Wartości logiczne (boolowskie) to typ danych który może przyjmować tylko dwie wartości: Prawda (ang. True) lub Fałsz (ang. False). Te wartości muszą być pisane z~dużej litery i~nie są stringami, czyli {\bf nie} mogą ,,znajdować się w~cudzysłowiach''. Będziemy używać wartości logicznych z~operatorami porównania do~tworzenia warunków. Wszystko jest wyjaśnione poniżej.
 
 \section{Operatory porównania}
 
@@ -847,9 +854,9 @@ Linia 12 naszego programu zawiera pętlę while:
 \bnl{}
 \lstinputlisting[linerange=12-12]{python/zgadula.py}
 
-Wyrażenie które występuje po słowie kluczowym \lstinline{while} (czyli \lstinline{iloscProb < 6}) składa się z dwóch wartości (wartość przechowywana w zmiennej \lstinline{iloscProb} i liczba człkowita 6) połączonych operatorem (znak \lstinline{<}, czyli "mniejsze niż"). Znak \lstinline{<} nazywany jest {\bf operatorem porównania}.
+Wyrażenie które występuje po słowie kluczowym \lstinline{while} (czyli \lstinline{iloscProb < 6}) składa się z~dwóch wartości (wartość przechowywana w~zmiennej \lstinline{iloscProb} i~liczba człkowita 6) połączonych operatorem (znak \lstinline{<}, czyli ,,mniejsze niż''). Znak \lstinline{<} nazywany jest {\bf operatorem porównania}.
 
-Operator porównania jest używany do porównywania dwóch wartości i jest ewaluowany do wartości logicznej True (prawda) lub False (fałsz). Lista wszystkich operatorów porównania znajduje się w tabelce \ref{comparison-operators}.
+Operator porównania jest używany do~porównywania dwóch wartości i~jest ewaluowany do~wartości logicznej True (prawda) lub False (fałsz). Lista wszystkich operatorów porównania znajduje się w~tabelce \ref{comparison-operators}.
 
 \begin{table}[here]
 \caption{Operatory porównania}
@@ -877,15 +884,15 @@ Znak & Nazwa operatora\\
 
 \section{Warunki}
 
-{\bf Warunek} to wyrażenie które łączy dwie wartości operatorem porównania (takim jak \lstinline{<} czy \lstinline{>}) i które jest ewaluowane do wartości logicznej. Warunek to inna nazwa wyrażenia które jest ewaluowane do True albo False (prawda / fałsz). Lista innych operatorów porównania znajduje się w tabeli \ref{comparison-operators}.
+{\bf Warunek} to wyrażenie które łączy dwie wartości operatorem porównania (takim jak \lstinline{<} czy \lstinline{>}) i~które jest ewaluowane do~wartości logicznej. Warunek to inna nazwa wyrażenia które jest ewaluowane do~True albo False (prawda / fałsz). Lista innych operatorów porównania znajduje się w~tabeli \ref{comparison-operators}.
 
-Warunki zawsze są ewaluowane do zmiennej logicznej: True lub False. Na przykład, warunek który znajduje się w naszym kodzie, \lstinline{liczbaProb < 6} zadaje pytanie: "czy wartość przechowywana w \lstinline{liczbaProb} jest mniejsza niż liczba 6?" Jeśli tak, warunek jest ewaluowany do True (prawda). Jeśli nie, wynikiem ewaluacji jest False (fałsz).
+Warunki zawsze są ewaluowane do~zmiennej logicznej: True lub False. Na przykład, warunek który znajduje się w~naszym kodzie, \lstinline{liczbaProb < 6} zadaje pytanie: ,,czy wartość przechowywana w~\lstinline{liczbaProb} jest mniejsza niż liczba 6?'' Jeśli tak, warunek jest ewaluowany do~True (prawda). Jeśli nie, wynikiem ewaluacji jest False (fałsz).
 
-W przypadku naszej zgaduj-zgaduli, w linii 4 przechowaliśmy wartość 0 w zmiennej \lstinline{liczbaProb}. Ponieważ 0 to mniej niż 6, wynikiem warunku jest True (prawda). Zapamiętaj - warunek to tylko inna nazwa dla wyrażenia które używa operatorów porównania takich jak \lstinline{<} czy \lstinline{!=}.
+W przypadku naszej zgaduj-zgaduli, w~linii 4 przechowaliśmy wartość 0 w~zmiennej \lstinline{liczbaProb}. Ponieważ 0 to mniej niż 6, wynikiem warunku jest True (prawda). Zapamiętaj - warunek to tylko inna nazwa dla wyrażenia które używa operatorów porównania takich jak \lstinline{<} czy \lstinline{!=}.
 
-\section{Eksperyment ze zmiennymi logicznymi, operatorami porównania i warunkami}
+\section{Eksperyment ze zmiennymi logicznymi, operatorami porównania i~warunkami}
 
-Wprowadź poniższe wyrażenia do interaktywnego shella żeby zobaczyć jakie są ich wartości logiczne:
+Wprowadź poniższe wyrażenia do~interaktywnego shella żeby zobaczyć jakie są ich wartości logiczne:
 \bl{}
 \begin{lstlisting}
 >>> 0 < 6
@@ -902,9 +909,9 @@ False
 
 Warunek \lstinline{0 < 6} zwraca logiczną prawdę (True) ponieważ liczba 0 jest mniejsza niż liczba 6. Ale ponieważ 6 nie jest mniejsze niż 0, warunek \lstinline{6 < 0} zwraca fałsz (False). 50 nie jest mniejsze niż 10, dlatego \lstinline{50 < 10} to fałsz. 10 to mniej niż 11, więc \lstinline{10 < 11} to prawda.
 
-Ale co z \lstinline{10 < 10}? Dlaczego zwraca fałsz? Wyrażenie to jest fałszywe ponieważ liczba 10 nie jest mniejsza od siebie samej. Są dokładnie takie same. Jeśli dziewczyna o imieniu Ala ma taki sam wzrost jak chłopak o imieniu Piotrek, nie powież że Ala jest wyższa od Piotrka lub że Ala jest od Piotrka niższa. Oba zdania byłyby nieprawdziwe.
+Ale co z~\lstinline{10 < 10}? Dlaczego zwraca fałsz? Wyrażenie to jest fałszywe ponieważ liczba 10 nie jest mniejsza od siebie samej. Są dokładnie takie same. Jeśli dziewczyna o~imieniu Ala ma taki sam wzrost jak chłopak o~imieniu Piotrek, nie powież że Ala jest wyższa od Piotrka lub że Ala jest od Piotrka niższa. Oba zdania byłyby nieprawdziwe.
 
-Spróbuj wpisać w shellu jeszcze kilka wyrażeń żeby zobaczyć jak działają takie operatory porównania:
+Spróbuj wpisać w~shellu jeszcze kilka wyrażeń żeby zobaczyć jak działają takie operatory porównania:
 \bl{}
 \begin{lstlisting}
 >>> 10 == 10
@@ -927,9 +934,9 @@ False
 True
 \end{lstlisting}
 
-Zauważ różnicę między operatorem przypisania (\lstinline{=}) a operatorem porównania "równa się" (\lstinline{==}). Znak \lstinline{=} używany jest żeby nadać zmiennej wartość, podczas kiedy operator \lstinline{==} jest używany w wyrażeniach żeby sprawdzić czy dwie wartości są równe. Łatwo jest je pomylić, więc pisz uważnie.
+Zauważ różnicę między operatorem przypisania (\lstinline{=}) a~operatorem porównania ,,równa się'' (\lstinline{==}). Znak \lstinline{=} używany jest żeby nadać zmiennej wartość, podczas kiedy operator \lstinline{==} jest używany w~wyrażeniach żeby sprawdzić czy dwie wartości są równe. Łatwo jest je pomylić, więc pisz uważnie.
 
-Dwie wartości które są różnych typów danych nigdy nie będą równe. Spróbuj na przykład wpisać w shellu poniższe wyrażenia:
+Dwie wartości które są różnych typów danych nigdy nie będą równe. Spróbuj na~przykład wpisać w~shellu poniższe wyrażenia:
 
 \bl{}
 \begin{lstlisting}
@@ -941,7 +948,7 @@ False
 
 \section{Pętle while}
 
-Słowo kluczowe \lstinline{while} (dopóki) oznacza początek pętli. Czasem chcemy żeby program robił coś w kółko. Kiedy podczas wykonywania programu komputer dojdzie do słowa \lstinline{while}, ewaluuje warunek znajdujący się tuż za nim. Jeśli warunek ewaluuje do True (jest prawdziwy), wykonuje polecenia wewnątrz ciała pętli (w naszym programie jest to blok który zaczyna się od linii 13). Jeśli warunek ewaluuje do False (jest fałszywy), wykonywany jest kod za ciałem pętli (w naszym programie - od linii 28).
+Słowo kluczowe \lstinline{while} (dopóki) oznacza początek pętli. Czasem chcemy żeby program robił coś w~kółko. Kiedy podczas wykonywania programu komputer dojdzie do~słowa \lstinline{while}, ewaluuje warunek znajdujący się tuż za nim. Jeśli warunek ewaluuje do~True (jest prawdziwy), wykonuje polecenia wewnątrz ciała pętli (w~naszym programie jest to blok który zaczyna się od linii 13). Jeśli warunek ewaluuje do~False (jest fałszywy), wykonywany jest kod za ciałem pętli (w~naszym programie - od linii 28).
 
 Instrukcja \lstinline{while} zawsze kończy się dwukropkiem po warunku.
 
@@ -950,13 +957,13 @@ Instrukcja \lstinline{while} zawsze kończy się dwukropkiem po warunku.
 
 \img{guess-loop}{Warunek pętli while}{7 cm}
 
-Rysunek \ref{guess-loop} pokazuje jak wykonywany jest program w zależności od warunku. Jeśli warunek jest prawdziwy (jest ewaluowany do True), komputer zacznie wykonywać ciało pętli w linii 13 i kolejnych. Kiedy program osiągnie koniec ciała pętli (linia 26), wraca do linii z instrukcją \lstinline{while} (linia 12). Wtedy ewaluuje warunek po raz kolejny, i jeśli jego wartość to True, wykonuje blok while po raz kolejny. 
+Rysunek \ref{guess-loop} pokazuje jak wykonywany jest program w~zależności od warunku. Jeśli warunek jest prawdziwy (jest ewaluowany do~True), komputer zacznie wykonywać ciało pętli w~linii 13 i~kolejnych. Kiedy program osiągnie koniec ciała pętli (linia 26), wraca do~linii z~instrukcją \lstinline{while} (linia 12). Wtedy ewaluuje warunek po raz kolejny, i~jeśli jego wartość to True, wykonuje blok while po raz kolejny. 
 
 W naszym programie, za pierwszym razem warunek pętli while jest prawdziwy, ponieważ \lstinline{liczbaProb} jest równa 0.
 
-Tak działa pętla. Dopóki (ang. while) warunek jest prawdziwy, program wykonuje kod wewnątrz ciała pętli (bloku while) w kółko aż osiągnie koniec ciała pętli i warunek będzie fałszywy. Czyli do kiedy \lstinline{liczbaProb} nie jest równa ani większa niż 6, wykonywana jest pętla.
+Tak działa pętla. Dopóki (ang. while) warunek jest prawdziwy, program wykonuje kod wewnątrz ciała pętli (bloku while) w~kółko aż osiągnie koniec ciała pętli i~warunek będzie fałszywy. Czyli do~kiedy \lstinline{liczbaProb} nie jest równa ani większa niż 6, wykonywana jest pętla.
 
-Wykonanie instrukcji while jest jak powiedzenie "dopóki ten warunek jest prawdziwy, ciągle wykonuj kod w tym bloku".
+Wykonanie instrukcji while jest jak powiedzenie ,,dopóki ten warunek jest prawdziwy, ciągle wykonuj kod w~tym bloku''.
 
 % Minipage prevents page breaks
 % http://www.tex.ac.uk/cgi-bin/texfaq2html?label=nopagebrk
@@ -967,28 +974,30 @@ Możesz uprościć lub utrudnić grę zmieniając dozwoloną liczbę prób. Wszy
 na
 \bnl{}
 \lstinputlisting[linerange=12-12]{python/zgadula4.py}
-...i gracz dostaje tylko cztery próby zamiast sześciu.
+\ldots{}i gracz dostaje tylko cztery próby zamiast sześciu.
 \end{minipage}
 
-Ustawiając warunek na \lstinline{liczbaProb < 4}, upewniamy się że kod wewnątrz pętli wykonywany jest tylko cztery razy zamiast sześciu. To sprawia że gra jest trudniejsza. Żeby uprościć grę, ustaw warunek na \lstinline{liczbaProb < 8} lub \lstinline{liczbaProb < 10}, co spowoduje że pętla zostanie wykonana więcej razy i program przyjmie większą liczbę prób.
+Ustawiając warunek na~\lstinline{liczbaProb < 4}, upewniamy się że kod wewnątrz pętli wykonywany jest tylko cztery razy zamiast sześciu. To sprawia że gra jest trudniejsza. Żeby uprościć grę, ustaw warunek na~\lstinline{liczbaProb < 8} lub \lstinline{liczbaProb < 10}, co spowoduje że pętla zostanie wykonana więcej razy i~program przyjmie większą liczbę prób.
 
-Oczywiście, jeśli usunęlibyśmy linię 17 (\lstinline{liczbaProb = liczbaProb + 1}), liczbaProb nigdy by się nie zwiększała i warunek zawsze byłby prawdziwy. To dawałoby graczowi nieskończoną liczbę prób.
+Oczywiście, jeśli usunęlibyśmy linię 17 (\lstinline{liczbaProb = liczbaProb + 1}), liczbaProb nigdy by się nie zwiększała i~warunek zawsze byłby prawdziwy. To dawałoby graczowi nieskończoną liczbę prób.
 
 \section{Strzały gracza}
 
-Linie od 13 do 17 pytają gracza o liczbę i pozwalają mu wprowadzić strzał. Liczbę którą wpisał przechowujemy w zmiennej, a następnie zamieniamy stringa na liczbę całkowitą.
+Linie od 13 do~17 pytają gracza o~liczbę i~pozwalają mu wprowadzić strzał. Liczbę którą wpisał przechowujemy w~zmiennej, a~następnie zamieniamy stringa na~liczbę całkowitą.
 
+\bnl{}
 \lstinputlisting[linerange=13-14]{python/zgadula.py}
 
-Program pyta gracza o strzał. Gracz wpisuje strzał i to, co wpisał, jest przechowywane w zmiennej o nazwie \lstinline{strzal}.
+Program pyta gracza o~strzał. Gracz wpisuje strzał i~to, co wpisał, jest przechowywane w~zmiennej o~nazwie \lstinline{strzal}.
 
-\subsection{Konwersja stringów na liczby całkowite za pomocą funkcji int()}
+\subsection{Konwersja stringów na~liczby całkowite za pomocą funkcji int()}
 
+\bnl{}
 \lstinputlisting[linerange=15-15]{python/zgadula.py}
 
-W linii 15 wywołujemy nową funkcję o nazwie \lstinline{int()}. Funkcja \lstinline{int()} dostaje jeden argument. Funkcja \lstinline{input()} zwróciła to, co wpisał gracz w postaci stringa. Ale nasz program potrzebuje liczby całkowitej, a nie stringa. Jeśli gracz wpisze 5, funkcja \lstinline{input()} zwróci stringa '5', a nie liczbę całkowitą 5. Pamiętaj, że Python uważa że string '5' i liczba 5 to dwie różne wartości. Funkcja \lstinline{int()} pobierze stringa i zwróci jego wartość w postaci liczby całkowitej. Zamiana jednego typu danych na inny to {\bf konwersja}.
+W linii 15 wywołujemy nową funkcję o~nazwie \lstinline{int()}. Funkcja \lstinline{int()} dostaje jeden argument. Funkcja \lstinline{input()} zwróciła to, co wpisał gracz w~postaci stringa. Ale nasz program potrzebuje liczby całkowitej, a~nie stringa. Jeśli gracz wpisze 5, funkcja \lstinline{input()} zwróci stringa '5', a~nie liczbę całkowitą 5. Pamiętaj, że Python uważa że string '5' i~liczba 5 to dwie różne wartości. Funkcja \lstinline{int()} pobierze stringa i~zwróci jego wartość w~postaci liczby całkowitej. Zamiana jednego typu danych na~inny to {\bf konwersja}.
 
-Poeksperymentujmy z funkcją \lstinline{int()}. Spróbuj wpisać poniższe linie:
+Poeksperymentujmy z~funkcją \lstinline{int()}. Spróbuj wpisać poniższe linie:
 
 \bl{}
 \begin{lstlisting}
@@ -1014,40 +1023,42 @@ Traceback (most recent call last):
 TypeError: unsupported operand type(s) for +: 'int' and 'str'
 \end{lstlisting}
 
-Widzimy że wyrażenie \lstinline{int('42')} zwróci liczbę całkowitą 42, i że \lstinline{int(42)} zwróci dokładnie to samo (chociaż zamiana liczby całkowitej na liczbę całkowitą nie ma przecież sensu). Ale pomimot tego że do funkcji \lstinline{int()} da się przekazać stringa, nie oznacza to że może on zawierać cokolwiek. Na przykład przekazanie do funkcji \lstinline{int()} stringa 'czesc' spowoduje błąd. Tekst przekazywany do \lstinline{int()} musi składać się z cyfr.
+Widzimy że wyrażenie \lstinline{int('42')} zwróci liczbę całkowitą 42, i~że \lstinline{int(42)} zwróci dokładnie to samo (chociaż zamiana liczby całkowitej na~liczbę całkowitą nie ma przecież sensu). Ale pomimot tego że do~funkcji \lstinline{int()} da się przekazać stringa, nie oznacza to że może on zawierać cokolwiek. Na przykład przekazanie do~funkcji \lstinline{int()} stringa 'czesc' spowoduje błąd. Tekst przekazywany do~\lstinline{int()} musi składać się z~cyfr.
 
 
-Liczba którą przekazujemy do \lstinline{int()} musi składać się z cyfr, dlatego \lstinline{int('czterdzieści dwa')} również spowodowało błąd. Ale jeśli string zawiera spacje, funkcja \lstinline{int()} będzie udawała że ich nie widzi - dlatego zadziałał przykład \lstinline{int(' 42 ')}.
+Liczba którą przekazujemy do~\lstinline{int()} musi składać się z~cyfr, dlatego \lstinline{int('czterdzieści dwa')} również spowodowało błąd. Ale jeśli string zawiera spacje, funkcja \lstinline{int()} będzie udawała że ich nie widzi - dlatego zadziałał przykład \lstinline{int(' 42 ')}.
 
-W linii \lstinline{3 + int('2')} wypróbowaliśmy wyrażenie które dodaje liczbę 3 do wartości zwracanej przez \lstinline{int('2')} (czyli liczby 2). Wyrażenie jest ewaluowane do \lstinline{3+2}, co z kolei jest ewaluowane do 5. W następnym przykładzie że bez konwersji nie da się dodać liczby (3) do stringa ('2'), ale można dodać liczbę do stringa którego skonwertowaliśmy na liczbę.
+W linii \lstinline{3 + int('2')} wypróbowaliśmy wyrażenie które dodaje liczbę 3 do~wartości zwracanej przez \lstinline{int('2')} (czyli liczby 2). Wyrażenie jest ewaluowane do~\lstinline{3+2}, co z~kolei jest ewaluowane do~5. W~następnym przykładzie że bez konwersji nie da się dodać liczby (3) do~stringa ('2'), ale można dodać liczbę do~stringa którego skonwertowaliśmy na~liczbę.
 
-W linii 15 naszego programu zmienna \lstinline{strzal} przechowywała string wpisany przez gracza. Nadpiszemy stringa przechowywanego w zmiennej \lstinline{strzal} wartością zwracaną przez funkcję \lstinline{int()}. Robimy to po to, żebyśmy mogli później porównać strzał gracza z liczbą wylosowaną przez komputer. Żeby sprawdzić czy strzał gracza jest zbyt niski czy zbyt wysoki, musimy porównać dwie liczby. Nie możemy porównać stringa z liczbą żeby sprawdzić który jest mniejszy a który większy, nawet jeśli string składa się z cyfr, na przykład '5'.
+W linii 15 naszego programu zmienna \lstinline{strzal} przechowywała string wpisany przez gracza. Nadpiszemy stringa przechowywanego w~zmiennej \lstinline{strzal} wartością zwracaną przez funkcję \lstinline{int()}. Robimy to po to, żebyśmy mogli później porównać strzał gracza z~liczbą wylosowaną przez komputer. Żeby sprawdzić czy strzał gracza jest zbyt niski czy zbyt wysoki, musimy porównać dwie liczby. Nie możemy porównać stringa z~liczbą żeby sprawdzić który jest mniejszy a~który większy, nawet jeśli string składa się z~cyfr, na~przykład '5'.
 
-W naszej zgaduj-zgaduli jeśli gracz wpisze coś co nie jest liczbą, wywołanie funkcji int() spowoduje błąd i program przestanie działać. W innych grach w tej książce dodamy trochę kodu który będzie sprawdzał czy nie wystąpił błąd i dawał graczowi szansę poprawienia wpisanej wartości.
+W naszej zgaduj-zgaduli jeśli gracz wpisze coś co nie jest liczbą, wywołanie funkcji int() spowoduje błąd i~program przestanie działać. W~innych grach w~tej książce dodamy trochę kodu który będzie sprawdzał czy nie wystąpił błąd i~dawał graczowi szansę poprawienia wpisanej wartości.
 
-Zauważ że wywołanie \lstinline{int(strzal)} nie zmienia wartości zmiennej \lstinline{strzal}. Kod \lstinline{int(strzal)} to wyrażenie które jest ewaluowane do liczbowej wersji stringa \lstinline{strzal}. Żeby zminenić zawartość zmiennej, musimy przypisać wartość zwracaną przez to wyrażenie do zmiennej \lstinline{strzal} w ten sposób: \lstinline{strzal = int(strzal)}.
+Zauważ że wywołanie \lstinline{int(strzal)} nie zmienia wartości zmiennej \lstinline{strzal}. Kod \lstinline{int(strzal)} to wyrażenie które jest ewaluowane do~liczbowej wersji stringa \lstinline{strzal}. Żeby zminenić zawartość zmiennej, musimy przypisać wartość zwracaną przez to wyrażenie do~zmiennej \lstinline{strzal} w~ten sposób: \lstinline{strzal = int(strzal)}.
 
 \subsection{Inkrementacja zmiennych}
 
+\bnl{}
 \lstinputlisting[linerange=17-17]{python/zgadula.py}
 
 Kiedy gracz odda strzał, chcemy zwiększyć ilość oddanych strzałów które przechowujemy.
 
-Za pierwszym razem kiedy program wchodzi do pętli while, zmienna \lstinline{iloscProb} ma wartość 0. Python odczyta jej wartość i doda do niej 1. 0 + 1 to 1. Potem zapisze wynik dodawania (1) z powrotem do \lstinline{iloscProb}.
+Za pierwszym razem kiedy program wchodzi do~pętli while, zmienna \lstinline{iloscProb} ma wartość 0. Python odczyta jej wartość i~doda do~niej 1. 0 + 1 to 1. Potem zapisze wynik dodawania (1) z~powrotem do~\lstinline{iloscProb}.
 
-Linia 17 mówi "zmienna \lstinline{iloscProb} powinna być o 1 większa niż jest obecnie".
+Linia 17 mówi ,,zmienna \lstinline{iloscProb} powinna być o~1 większa niż jest obecnie''.
 
-Kiedy programiści dodają jedynkę do wartości zmiennej przechowującej liczbę całkowitą, mówią że {\bf inkrementują} tą zmienną. Kiedy odejmują 1 od jej wartości, {\bf dekrementują} zmienną. Następnym razem kiedy ciało pętli będzie się wykonywać, \lstinline{iloscProb} będzie miało wartość 1 i zostanie inkrementowane do wartości 2.
+Kiedy programiści dodają jedynkę do~wartości zmiennej przechowującej liczbę całkowitą, mówią że {\bf inkrementują} tą zmienną. Kiedy odejmują 1 od jej wartości, {\bf dekrementują} zmienną. Następnym razem kiedy ciało pętli będzie się wykonywać, \lstinline{iloscProb} będzie miało wartość 1 i~zostanie inkrementowane do~wartości 2.
 
 \section{Instrukcje if}
 
 \subsection{Czy strzał gracza jest zbyt niski?}
 
-Linie 19 i 20 sprawdzają czy liczba którą wprowadził gracz jest mniejsza niż liczba wylosowana przez komputer. Jeśli tak, mówimy graczowi że strzelił zbyt nisko drukując wiadomość na ekranie.
+Linie 19 i~20 sprawdzają czy liczba którą wprowadził gracz jest mniejsza niż liczba wylosowana przez komputer. Jeśli tak, mówimy graczowi że strzelił zbyt nisko drukując wiadomość na~ekranie.
 
+\bnl{}
 \lstinputlisting[linerange=19-20]{python/zgadula.py}
 
-Linia 19 rozpoczyna instrukcję \lstinline{if} słowem kluczowym \lstinline{if}. Za słowem \lstinline{if} znajduje się warunek. W linii 20 zaczyna się nowy blok (co widać po tym, że wcięcie jest większe niż w linii 19). Blok który znajduje się za słowem kluczowym \lstinline{if} nazywa się blokiem if. Wyrażenie \lstinline{if} (ang. jeśli) używane jest wtedy, kiedy chcesz żeby fragment kodu wykonał się tylko jeśli jakiś warunek jest prawdziwy. Linia 19 zawiera instrukcję z warunkiem \lstinline{strzal < liczba}. Jeśli warunek jest prawdziwy (to znaczy, jest ewaluowany do \lstinline{True}), wtedy wykonywany jest blok if. Jeśli warunek jest fałszywy, kod w bloku if jest pomijany.
+Linia 19 rozpoczyna instrukcję \lstinline{if} słowem kluczowym \lstinline{if}. Za słowem \lstinline{if} znajduje się warunek. W~linii 20 zaczyna się nowy blok (co widać po tym, że wcięcie jest większe niż w~linii 19). Blok który znajduje się za słowem kluczowym \lstinline{if} nazywa się blokiem if. Wyrażenie \lstinline{if} (ang. jeśli) używane jest wtedy, kiedy chcesz żeby fragment kodu wykonał się tylko jeśli jakiś warunek jest prawdziwy. Linia 19 zawiera instrukcję z~warunkiem \lstinline{strzal < liczba}. Jeśli warunek jest prawdziwy (to znaczy, jest ewaluowany do~\lstinline{True}), wtedy wykonywany jest blok if. Jeśli warunek jest fałszywy, kod w~bloku if jest pomijany.
 
 Jeśli liczba wprowadzona przez gracza jest mniejsza niż liczba wylosowana przez komputer, program wyświetla \lstinline{Strzeliłeś zbyt małą liczbę}. Jeśli liczba którą gracz wprowadził jest równa lub większa niż liczba wylosowana (czyli warunek \lstinline{strzal < liczba} jest fałszywy), blok if nie zostaje wykonany.
 
@@ -1055,61 +1066,67 @@ Jeśli liczba wprowadzona przez gracza jest mniejsza niż liczba wylosowana prze
 
 \subsection{Czy strzał gracza jest zbyt wysoki?}
 
-Linie od 22 do 26 sprawdzają czy strał gracza był większy bądź dokładnie równy wylosowanej liczbie.
+Linie od 22 do~26 sprawdzają czy strał gracza był większy bądź dokładnie równy wylosowanej liczbie.
 
+\bnl{}
 \lstinputlisting[linerange=22-23]{python/zgadula.py}
 
-Jeśli strzał gracze jest większy niż wylosowana liczba, wykonywany jest blok znajdujący się za instrukcją \lstinline{if}. Funkcja \lstinline{print()} w linii 23 mówi graczowi, że liczba którą odgadł jest zbyt duża.
+Jeśli strzał gracze jest większy niż wylosowana liczba, wykonywany jest blok znajdujący się za instrukcją \lstinline{if}. Funkcja \lstinline{print()} w~linii 23 mówi graczowi, że liczba którą odgadł jest zbyt duża.
 
-Podobnie jak instrukcja while, instrukcja if składa się również ze słowa kluczowego, warunku, dwukropka, i bloku kodu. Spójrz na porównanie tych instrukcji na rysunku \ref{guess-keyword-condition}.
+Podobnie jak instrukcja while, instrukcja if składa się również ze słowa kluczowego, warunku, dwukropka, i~bloku kodu. Spójrz na~porównanie tych instrukcji na~rysunku \ref{guess-keyword-condition}.
 
-Instrukcja if działa prawie tak samo jak instrukcja while. Różnią się tym, że kiedy \lstinline{if} skończy wykonywać blok, nie skacze z powrotem do początku - po prostu wykonuje program dalej. Inaczej mówiąc, instrukcje if nie są pętlami.
+Instrukcja if działa prawie tak samo jak instrukcja while. Różnią się tym, że kiedy \lstinline{if} skończy wykonywać blok, nie skacze z~powrotem do~początku - po prostu wykonuje program dalej. Inaczej mówiąc, instrukcje if nie są pętlami.
 
-Jeśli warunek jest prawdziwy, wykonują się wszystkie liczby z bloku if. Jedyna linia w tym bloku to linia 23, która wywołuje funkcję print().
+Jeśli warunek jest prawdziwy, wykonują się wszystkie liczby z~bloku if. Jedyna linia w~tym bloku to linia 23, która wywołuje funkcję print().
 
 \section{Przerywanie pętli za pomocą instrukcji break}
 
+\bnl{}
 \lstinputlisting[linerange=25-26]{python/zgadula.py}
 
-Warunek tej instrukcji if sprawdza czy strzał jest taki sam jak wylosowana liczba. Jeśli tak, wykonywany jest blok składający się z linii 26.
+Warunek tej instrukcji if sprawdza czy strzał jest taki sam jak wylosowana liczba. Jeśli tak, wykonywany jest blok składający się z~linii 26.
 
-Linia wewnątrz bloku if zawiera instrukcję {\bf break} (ang. przerwij) która nakazuje programowi wyskoczyć z pętli do pierwszej linii za jej ciałem (28). Instrukcja break nie sprawdza warunku zakończenia pętli tylko przerywa ją niezależnie od wszystkiego.
+Linia wewnątrz bloku if zawiera instrukcję {\bf break} (ang. przerwij) która nakazuje programowi wyskoczyć z~pętli do~pierwszej linii za jej ciałem (28). Instrukcja break nie sprawdza warunku zakończenia pętli tylko przerywa ją niezależnie od wszystkiego.
 
 Instrukcja break składa sie tylko ze słowa \lstinline{break} bez żadnych warunków ani dwukropków.
 
-Jeśli strzał gracza nie jest równy wylosowanej liczbie, nie wyskakujemy z pętli. Ale linia 26 zawierająca instrukcję \lstinline{break} jest ostatnią linią ciała pętli, więc program wróci do początku i sprawdzi warunek z linii 12 (\lstinline{iloscProb < 6}). Ponieważ w międzyczasie została wykonana linia \lstinline{iloscProb = iloscProb + 1}, zmienna \lstinline{iloscProb} ma teraz wartość 1. Ponieważ 1 to mniej niż 6, pętla wykonywana jest kolejny raz.
+Jeśli strzał gracza nie jest równy wylosowanej liczbie, nie wyskakujemy z~pętli. Ale linia 26 zawierająca instrukcję \lstinline{break} jest ostatnią linią ciała pętli, więc program wróci do~początku i~sprawdzi warunek z~linii 12 (\lstinline{iloscProb < 6}). Ponieważ w~międzyczasie została wykonana linia \lstinline{iloscProb = iloscProb + 1}, zmienna \lstinline{iloscProb} ma teraz wartość 1. Ponieważ 1 to mniej niż 6, pętla wykonywana jest kolejny raz.
 
-Jeśli gracz będzie odgadywał nieprawidłowe liczby (za duże lub za małe), zmienna \lstinline{iloscProb} będzie zmieniała wartość na 2, potem 3, 4, 5 i na końcu 6. Jeśli gracz prawidłowo odgadł liczbę, warunek w instrukcji \lstinline{if strzal == liczba} będzie prawdziwy i zostanie wykonana instrukcja \lstinline{break}. Jeśli liczba była nieprawidłowa, pętla będzie wykonana jeszcze raz. Ale kiedy zmienna \lstinline{iloscProb} przechowuje liczbę 6, warunek w instrukcji \lstinline{while} (\lstinline{iloscProb < 6}) jest fałszywy ponieważ 6 nie jest mniejsze niż 6.  Ponieważ warunek jest fałszywy, ciało pętli nie jest wykonywane kolejny raz, i program przeskakuje do kolejnej linii (czyli 28).
+Jeśli gracz będzie odgadywał nieprawidłowe liczby (za duże lub za małe), zmienna \lstinline{iloscProb} będzie zmieniała wartość na~2, potem 3, 4, 5 i~na~końcu 6. Jeśli gracz prawidłowo odgadł liczbę, warunek w~instrukcji \lstinline{if strzal == liczba} będzie prawdziwy i~zostanie wykonana instrukcja \lstinline{break}. Jeśli liczba była nieprawidłowa, pętla będzie wykonana jeszcze raz. Ale kiedy zmienna \lstinline{iloscProb} przechowuje liczbę 6, warunek w~instrukcji \lstinline{while} (\lstinline{iloscProb < 6}) jest fałszywy ponieważ 6 nie jest mniejsze niż 6.  Ponieważ warunek jest fałszywy, ciało pętli nie jest wykonywane kolejny raz, i~program przeskakuje do~kolejnej linii (czyli 28).
 
-Pozostała część kodu jest wykonywana kiedy gracz skończył zgadywać (dlatego że odgadł prawidłową liczbę albo próbował zbyt wiele razy). W zależności od tego dlaczego pętla przestała się wykonywać okaże się czy gracz wygrał czy przegrał. Program sprawdzi to i wyświetli komunikat o wygranej lub przegranej.
+Pozostała część kodu jest wykonywana kiedy gracz skończył zgadywać (dlatego że odgadł prawidłową liczbę albo próbował zbyt wiele razy). W~zależności od tego dlaczego pętla przestała się wykonywać okaże się czy gracz wygrał czy przegrał. Program sprawdzi to i~wyświetli komunikat o~wygranej lub przegranej.
 
 \section{Sprawdzanie czy gracz wygrał}
 
+\bnl{}
 \lstinputlisting[linerange=28-28]{python/zgadula.py}
 
-W przeciwieństwie do linii 25, ta linia nie jest wcięta, co oznacza że blok z ciałem pętli while się zakończył, a linia 28 to pierwsza linia poza tym blokiem. Opuściliśmy ciało pętli albo dlatego że warunek pętli while był fałszywy (gracz zbyt wiele razy odgadnął złą liczbę) albo dlatego, że wykonaliśmy instrukcję \lstinline{break} (gracz odgadł liczbę). W linii 28 sprawdzamy jeszcze raz czy gracz odgadnął liczbę. Jeśli tak, wykonujemy blok if:
+W przeciwieństwie do~linii 25, ta linia nie jest wcięta, co oznacza że blok z~ciałem pętli while się zakończył, a~linia 28 to pierwsza linia poza tym blokiem. Opuściliśmy ciało pętli albo dlatego że warunek pętli while był fałszywy (gracz zbyt wiele razy odgadnął złą liczbę) albo dlatego, że wykonaliśmy instrukcję \lstinline{break} (gracz odgadł liczbę). W~linii 28 sprawdzamy jeszcze raz czy gracz odgadnął liczbę. Jeśli tak, wykonujemy blok if:
 
+\bnl{}
 \lstinputlisting[linerange=29-30]{python/zgadula.py}
 
-Linie 29 i 30 znajdują się wewnątrz bloku if. Wykonywane są tylko kiedy warunek w linii 28 był prawdziwy, czyli jeśli gracz poprawnie odgadnął liczbę.
+Linie 29 i~30 znajdują się wewnątrz bloku if. Wykonywane są tylko kiedy warunek w~linii 28 był prawdziwy, czyli jeśli gracz poprawnie odgadnął liczbę.
 
-W linii 29 wywołujemy nową funkcję \lstinline{str()}, która zamienia argument na stringa. Używamy tej funkcji ponieważ chcemy zamienić liczbę całkowitą ze zmiennej \lstinline{iloscProb} na stringa który można wydrukować na ekranie. Argument funkcji \lstinline{print()} musi być stringiem.
+W linii 29 wywołujemy nową funkcję \lstinline{str()}, która zamienia argument na~stringa. Używamy tej funkcji ponieważ chcemy zamienić liczbę całkowitą ze zmiennej \lstinline{iloscProb} na~stringa który można wydrukować na~ekranie. Argument funkcji \lstinline{print()} musi być stringiem.
 
-Linia 30 mówi graczowi że wygrał i ile razy musiał zgadywać zanim mu się udało. Zauważ że dodajemy (konkatenujemy) tutaj stringi do zmiennej \lstinline{iloscProb}. Gdybyśmy nie zamienili jej wcześniej na stringa, Python zgłosiłby błąd ponieważ nie da się dodać stringa do liczby całkowitej.
+Linia 30 mówi graczowi że wygrał i~ile razy musiał zgadywać zanim mu się udało. Zauważ że dodajemy (konkatenujemy) tutaj stringi do~zmiennej \lstinline{iloscProb}. Gdybyśmy nie zamienili jej wcześniej na~stringa, Python zgłosiłby błąd ponieważ nie da się dodać stringa do~liczby całkowitej.
 
 \subsection{Sprawdzanie czy gracz przegrał}
 
+\bnl{}
 \lstinputlisting[linerange=32-32]{python/zgadula.py}
 
-W linii 32 używamy operatora porównania \lstinline{!=} jako warunku w instrukcji \lstinline{if}. Operator ten oznacza "nie jest równe". Jeśli wartość którą gracz wpisał jako ostatnią jest większa lub mniejsza niż liczba wylosowana przez komputer (czyli nie jest równa), ten warunek jest prawdziwy (jest ewaluowany do True), i wchodzimy do bloku który zaczyna się tuż za instrukcją \lstinline{if}, w linii 33.
+W linii 32 używamy operatora porównania \lstinline{!=} jako warunku w~instrukcji \lstinline{if}. Operator ten oznacza ,,nie jest równe''. Jeśli wartość którą gracz wpisał jako ostatnią jest większa lub mniejsza niż liczba wylosowana przez komputer (czyli nie jest równa), ten warunek jest prawdziwy (jest ewaluowany do~True), i~wchodzimy do~bloku który zaczyna się tuż za instrukcją \lstinline{if}, w~linii 33.
 
-Linie 33 i 34 znajdują się wewnątrz bloku if i wykonują się tylko kiedy warunek jest prawdziwy:
+Linie 33 i~34 znajdują się wewnątrz bloku if i~wykonują się tylko kiedy warunek jest prawdziwy:
 
+\bnl{}
 \lstinputlisting[linerange=33-34]{python/zgadula.py}
 
-W tym bloku mówimy graczowi jaka była wylosowana liczba której nie udało mu się odgadnąć. Ale wpierw musimy zamienić ją na stringa, żeby dało się ją wydrukować na ekranie.
+W tym bloku mówimy graczowi jaka była wylosowana liczba której nie udało mu się odgadnąć. Ale wpierw musimy zamienić ją na~stringa, żeby dało się ją wydrukować na~ekranie.
 
-Dotarliśmy do miejsca w którym kończy się kod, a program przestaje się wykonywać.
+Dotarliśmy do~miejsca w~którym kończy się kod, a~program przestaje się wykonywać.
 
 Gratulacje! Napisaliśmy właśnie pierwszą prawdziwą grę!
 
@@ -1117,41 +1134,41 @@ Gratulacje! Napisaliśmy właśnie pierwszą prawdziwą grę!
 
 Jeśli ktoś spytałby cię czym jest programowanie, jak mógłbyś mu odpowiedzieć? Programowanie to wpisywanie kodu programów, to znaczy, tworzenie programów które są wykonywane przez komputer.
 
-"Ale czym właściwie jest program?" Jeśli widzisz kogoś kto używa programu na komputerze (na przykład, gra w naszą zgaduj-zgadulę), widzisz tylko tekst pojawiający się na ekranie. Program decyduje jaki dokładnie tekst ma pojawić się na ekranie (ten tekst to {\bf wyjście} programu). Decyzje są podejmowane na podstawie instrukcji (czyli programu) i tekstu który gracz wpisał na klawiaturze (ten tekst to \bf{wejście} programu). Program ma bardzo szczegółowe instrukcje mówiące o tym jaki tekst ma pokazywać użytkownikowi. Program jest po prostu zestawem instrukcji.
+,,Ale czym właściwie jest program?'' Jeśli widzisz kogoś kto używa programu na~komputerze (na~przykład, gra w~naszą zgaduj-zgadulę), widzisz tylko tekst pojawiający się na~ekranie. Program decyduje jaki dokładnie tekst ma pojawić się na~ekranie (ten tekst to {\bf wyjście} programu). Decyzje są podejmowane na~podstawie instrukcji (czyli programu) i~tekstu który gracz wpisał na~klawiaturze (ten tekst to \bf{wejście} programu). Program ma bardzo szczegółowe instrukcje mówiące o~tym jaki tekst ma pokazywać użytkownikowi. Program jest po prostu zestawem instrukcji.
 
-"Jakiego rodzaju instrukcji?" Jest kilka różnych rodzajów instrukcji.
+,,Jakiego rodzaju instrukcji?'' Jest kilka różnych rodzajów instrukcji.
 
 \begin{enumerate}
-\item Wyrażenia które składają sie z wartości połączonych operatorami. Wyrażenia są ewaluowane do pojedynczej wartości, tak jak \lstinline{2 + 2} jest ewaluowane do \lstinline{4}, albo \lstinline{'Witaj' + ' ' + 'świecie'} jest ewaluowane do \lstinline{'Witaj świecie'}. Wywołania funkcji mogą również być częścią wyrażeń ponieważ one też są ewaluowane do pojedynczej wartości, i ta wartość może być połączona operatorami z innymi wartościami. Kiedy wyrażenia znajdują się za słowami kluczowymi \lstinline{if} lub \lstinline{while}, nazywamy je warunkami.
-\item Instrukcje przypisania, które przechowują wartości w zmiennych żebyśmy mogli używać ich w dalszej części programu
-\item \lstinline{if}, \lstinline{while} i \lstinline{break} to {\bf instrukcje sterujące} ponieważ decydują o tym które linie programu zostaną wykonane, a które nie. Normalna kolejność wykonania programu jest taka że zaczyna się na górze ekranu i wykonuje linia po linii aż do końca. Ale instrukcje sterujące sprawiają że niektóre linie nie są wykonywane, a inne są wykonywane po kilka razy. Wywołania funkcji również zmieniają kolejność wykonania programu ponieważ skaczą do początku kodu funkcji.
-\item Funkcja \lstinline{print()}, która drukuje tekst na ekranie oraz funkcja \lstinline{input()} która pobiera tekst wpisany przez użytkownika. Funkcje tego typu nazywają {\bf wejściem/wyjściem} (I/O) poniewż kontrolują wejście oraz wyjście programu.
+\item Wyrażenia które składają sie z~wartości połączonych operatorami. Wyrażenia są ewaluowane do~pojedynczej wartości, tak jak \lstinline{2 + 2} jest ewaluowane do~\lstinline{4}, albo \lstinline{'Witaj' + ' ' + 'świecie'} jest ewaluowane do~\lstinline{'Witaj świecie'}. Wywołania funkcji mogą również być częścią wyrażeń ponieważ one też są ewaluowane do~pojedynczej wartości, i~ta wartość może być połączona operatorami z~innymi wartościami. Kiedy wyrażenia znajdują się za słowami kluczowymi \lstinline{if} lub \lstinline{while}, nazywamy je warunkami.
+\item Instrukcje przypisania, które przechowują wartości w~zmiennych żebyśmy mogli używać ich w~dalszej części programu
+\item \lstinline{if}, \lstinline{while} i~\lstinline{break} to {\bf instrukcje sterujące} ponieważ decydują o~tym które linie programu zostaną wykonane, a~które nie. Normalna kolejność wykonania programu jest taka że zaczyna się na~górze ekranu i~wykonuje linia po linii aż do~końca. Ale instrukcje sterujące sprawiają że niektóre linie nie są wykonywane, a~inne są wykonywane po kilka razy. Wywołania funkcji również zmieniają kolejność wykonania programu ponieważ skaczą do~początku kodu funkcji.
+\item Funkcja \lstinline{print()}, która drukuje tekst na~ekranie oraz funkcja \lstinline{input()} która pobiera tekst wpisany przez użytkownika. Funkcje tego typu nazywają {\bf wejściem/wyjściem} (I/O) poniewż kontrolują wejście oraz wyjście programu.
 \end{enumerate}
 
-To wszystko, tylko te cztery rzeczy. Oczywiście jest wiele szczegółów związanych z tymi czterema rodzajami instrukcji. W tej książce dowiesz się o nowych typach danych i operatorach, nowych instrukcjach sterujących innych niż \lstinline{if}, \lstinline{while} i \lstinline{break} i kilku nowych funkcjach. Są również różne rodzaje I/O (wejście: myszka, wyjście: dźwięk, grafika, obrazki).
+To wszystko, tylko te cztery rzeczy. Oczywiście jest wiele szczegółów związanych z~tymi czterema rodzajami instrukcji. W~tej książce dowiesz się o~nowych typach danych i~operatorach, nowych instrukcjach sterujących innych niż \lstinline{if}, \lstinline{while} i~\lstinline{break} i~kilku nowych funkcjach. Są również różne rodzaje I/O (wejście: myszka, wyjście: dźwięk, grafika, obrazki).
 
-Osobę korzystającą z naszych programów interesuje tylko ostatni rodzaj instrukcji - I/O. Użytkownik pisze na klawiaurze i widzi na ekranie odpowiedź lub słyszy coś w głośnikach. Ale żeby komputer wiedział jakie ma pokazywać znaki i odtwarzać dźwięki - potrzebuje programu, a program to lista instrukcji którą napisałeś ty - programista.
+Osobę korzystającą z~naszych programów interesuje tylko ostatni rodzaj instrukcji - I/O.~Użytkownik pisze na~klawiaurze i~widzi na~ekranie odpowiedź lub słyszy coś w~głośnikach. Ale żeby komputer wiedział jakie ma pokazywać znaki i~odtwarzać dźwięki - potrzebuje programu, a~program to lista instrukcji którą napisałeś ty - programista.
 
 \chapter{Dowcipy}
 \btopicscovered
-	\item Używanie nazwanego argumentu do pomijania nowych linii
+	\item Używanie nazwanego argumentu do~pomijania nowych linii
 	\item Sekwencje escape
-	\item Używanie pojedynczych i podwójnych cudzysłowiów w stringach
+	\item Używanie pojedynczych i~podwójnych cudzysłowiów w~stringach
 \etopicscovered
 
-\section{Poznaj print() na wylot}
+\section{Poznaj print() na~wylot}
 
-Większość gier w tej książce będzie miała proste wejście i wyjście tekstowe. Wejściem programu będzie tekst wpisany przez użytkownika na klawiaturze. Wyjściem będzie tekst wyświetlany na ekranie. W Pythonie można wyświetlać tekst na ekranie używając funkcji \lstinline{print()}. Nauczyliśmy się podstaw używania tej funkcji, ale jest jeszcze kilka rzeczy które powinniśmy wiedzieć o stringach i \lstinline{print()}.
+Większość gier w~tej książce będzie miała proste wejście i~wyjście tekstowe. Wejściem programu będzie tekst wpisany przez użytkownika na~klawiaturze. Wyjściem będzie tekst wyświetlany na~ekranie. W~Pythonie można wyświetlać tekst na~ekranie używając funkcji \lstinline{print()}. Nauczyliśmy się podstaw używania tej funkcji, ale jest jeszcze kilka rzeczy które powinniśmy wiedzieć o~stringach i~\lstinline{print()}.
 
 \section{Przykładowe uruchomienie programu Dowcipy}
 
 \begin{pseudolisting}
-Dwóch policjantów wchodzi do księgarni i pytają:\linebreak
+Dwóch policjantów wchodzi do~księgarni i~pytają:\linebreak
 Czy jest 'Pan Tadeusz'?\linebreak
 \linebreak
 Panie Tadziu, przyszli po pana! - woła ekspedientka\linebreak
 \linebreak
-Jak wygląda plaża z lotu ptaka?\linebreak
+Jak wygląda plaża z~lotu ptaka?\linebreak
 \linebreak
 O tak: \lstinline{''''''''''''}\linebreak
 \linebreak
