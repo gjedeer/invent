@@ -5,7 +5,7 @@
 
 \documentclass{book}
 
-%\renewcommand{\rmdefault}{FreeSerif}
+\renewcommand{\rmdefault}{FreeSerif}
 %\renewcommand{\sfdefault}{FreeSerif}
 %\renewcommand{\ttdefault}{Courier}
 % \setttfont{AndaleMono}
@@ -26,7 +26,7 @@
 
 \usepackage[T1]{fontenc}
 \usepackage{beramono}
-\usepackage{em}
+%\usepackage{em}
 %\renewcommand*\familydefault{\ttdefault}
 
 \onehalfspacing
@@ -111,7 +111,7 @@
 
 Cześć! Czytasz właśnie książkę która nauczy cię pisać programy pokazując ci jak tworzyć gry komputerowe. Kiedy dowiesz się jak działają gry z tej książki, będziesz też wiedział jak tworzyć własne. Potrzebujesz tylko komputera, programu nazywanego interpreterem Pythona i tej książki. Program którego będziesz potrzebował jest darmowy i można go ściągnąć z internetu.
 
-Kiedy byłem dzieckiem, znalazłem książkę podobną do tej i nauczyłem się z niej jak pisać pierwsze programy i gry. Bardzo mi się to podobało, a na dodatek było całkiem proste. Teraz, jako dorosły, ciągle lubię programować komputery, a na dodatek zarabiam na tym pieniądze. Ale nawet jeśli nie zostaniesz programistą komputerowym kiedy dorośniesz, warto jest umieć programować. Jest to przyjemne, ale i przydatne.
+Kiedy byłem dzieckiem, znalazłem książkę podobną do tej i nauczyłem się z niej jak pisać pierwsze programy i gry. Bardzo mi się to podobało, a na dodatek było całkiem proste. Teraz, jako dorosły, ciągle lubię programować komputery, a na dodatek zarabiam na tym pieniądze. Ale nawet jeśli nie zostaniesz programistą komputerowym kiedy dorośniesz, warto jest umieć programować. Programowanie nie dość że jest przyjemne, często przydaje się na codzień.
 
 Komputery to bardzo przydatne urządzenia. Na szczęście nauka programowania komputerów jest łatwa. Jeśli jesteś w stanie przeczytać książkę, jesteś też w stanie zaprogramować komputer. {\bf Program} komputerowy to zlepek instrukcji wykonywanych przez komputer, podobnie jak książka jest zlepkiem zdań czytanych przez czytelnika.
 
@@ -786,6 +786,7 @@ Losowa liczba zwrócona przez randint() jest zapamiętana w~zmiennej o~nazwie \l
 
 Przejdź na~chwilę do~okna shella i~wpisz \lstinline{import random} żeby zaimportować moduł \lstinline{random}. Potem wpisz \lstinline{random.randint(1,20)} żeby zobaczyć do~jakiej wartości funkcja jest ewaluowana. Powinna zwrócić liczbę pomiędzy 1 i~20. Teraz wpisz ten sam kod ponownie i~funkcja prawdopodobnie zwróci inną liczbę. Dzieje się tak dlatego, że za każdym razem kiedy funkcja \lstinline{randint()} jest wywoływana, zwraca jakąś liczbę losową, tak jakby rzucała kostką.
 
+%\lstset{title={Funkcja randint() losuje liczby}}
 \bl{}
 \begin{lstlisting}
 >>> import random
@@ -806,6 +807,7 @@ Kiedy tylko chcemy żeby nasza gra coś wylosowała, możemy użyć funkcji \lst
 
 Możemy też spróbować losowania liczb z~innych zakresów. Na przykład, jeśli wpiszesz \lstinline{random.randint(1,4)}, zobaczysz liczby losowane z~zakresu od 1 do~4 włącznie. Jeśli spróbujesz \lstinline{random.randint(1000, 2000)} - dostaniesz liczby pomiędzy 1000 i~2000. Poniżej jest przykład wywoływania funkcji \lstinline{random.randint()} z~różnymi argumentami i~sprawdzania jakie wartości zwróci. Twoje wyniki będą najprawdopodobniej inne (w~końcu to liczby losowe).
 
+%\lstset{title={Funkcja randint() i różne zakresy losowania}}
 \begin{lstlisting}
 >>> random.randint(1, 4)
 3
