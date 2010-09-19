@@ -1275,8 +1275,38 @@ Gra którą stworzymy żeby nauczyć się funkcji nazywa sie "Smocze Królrstwo"
 
 \section{Jak grać w "Smocze Królestwo"?}
 
-W tej grze gracz znajduje się w krainie pełnej smoków. Smoki żyją w jaskiniach razem ze stosami skarbów, które zebrały. Niektóre ze smoków są przyjacielskie i podzielą się z tobą skarbami. Inne są zachłanne i głodne, i zjedzą każdego kto wejdzie do ich jaskini. Gracz stoi przed wejsciem do dwóch jaskiń, jednej z przyjacielskim smokiem i drugiej, w której mieszka głodny smok. Gracz może wybrać pomiędzy
+W tej grze gracz znajduje się w krainie pełnej smoków. Smoki żyją w jaskiniach razem ze stosami skarbów, które zebrały. Niektóre ze smoków są przyjacielskie i podzielą się z tobą skarbami. Inne są zachłanne i głodne, i zjedzą każdego kto wejdzie do ich jaskini. Gracz stoi przed wejsciem do dwóch jaskiń, jednej z przyjacielskim smokiem i drugiej, w której mieszka głodny smok. Gracz może wybrać do której chce wejść.
 
+Otwórz nowe okno edytora klikając na menu File, a następnie na New Window. Pojawi się puste okno. Przepisz do niego kod źródłowy gry i zapisz go w pliku o nazwie \lstinline{dragon.py}. Następnie uruchom program wciskając przycisk F5.
+
+\section{Przykładowa rozgrywka}
+
+\begin{pseudolisting}
+Jesteś w krainie pełnej smoków. Widzisz przed sobą\linebreak
+dwie jaskinie. W jednej z nich mieszka przyjazny smok\linebreak
+który podzieli się z tobą swoimi skarbami. W drugiej\linebreak
+smok jest chciwy i głodny, zje cię od razu.\linebreak
+\linebreak
+Do ktorej jaskini wchodzisz? (1 lub 2)\linebreak
+{\bf 1}\linebreak
+Wchodzisz do jaskini...\linebreak
+Jest ciemna i straszna...\linebreak
+Wielki smok wyskakuje tuż przed tobą! Otwiera szczęki i...\linebreak
+\linebreak
+Pożera cię w całości!\linebreak
+Czy chcesz zagrać jeszcze raz? (tak lub nie)\linebreak
+{\bf nie}\linebreak                                                   
+\linebreak
+\end{pseudolisting}
+
+\section{Kod źródłowy Smoczego Królestwa}
+
+Poniżej znajduje się kod źródłowy gry Smocze Królestwo. Przepisywanie kodu to świetny sposób żeby przyzwyczaić się do niego, ale jeśli nie chcesz przepisywać, możesz ściągnąć go na stronie książki. %TODO
+Na stronie WWW znajdują się instrukcje które powiedzą ci jak ściągnąć i otworzyć plik z kodem źródłowym. %TODO diff
+
+Zanim zaczniesz czytać kod, musisz wiedzieć jedną rzecz: bloki za linią zaczynającą się od \lstinline{def} mówią o tym jak działa funkcja, a kod który tam się znajduje nie jest wykonywany do czasu kiedy ta funkcja jest wywołana. W tym programie, kod programu nie jest wykonywany od początku do końca linia po linii. Zostanie to wytłumaczone dokładniej w dalszej części tego rozdziału.
+
+{\bf Ważne!} Uruchom ten program w Pythonie w wersji 3, nie w Pythonie 2. Programy w tej książce używają Pythona 3 i jeśli spróbujesz uruchomić je w starszej wersji, pojawią się jedynie błędy. Żeby dowiedzieć się której wersji używasz kliknij w menu Help, a następnie About IDLE.
 
 
 \end{document}
