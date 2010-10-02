@@ -1318,5 +1318,41 @@ Spójrzmy na kod gry bardziej szczegółowo.
 \bnl{}
 \lstinputlisting[linerange=1-2]{python/smoki.py}
 
+Na początku mamy dwa wyrażenia \lstinline{import}. Importujemy moduł random (liczby losowe) tak, jak zrobiliśmy to wcześniej w Zgaduj-Zgaduli. W Smoczym Królestwie będziemy używać też funkcji związanych z czasem (ang. time), które dostarczane są przez moduł time - dlatego jego też importujemy.
+
+\subsection{Definiowanie funkcji pokazWstep()}
+
+\bnl{}
+\lstinputlisting[linerange=4-9]{python/smoki.py}
+
+%TODO rysunek 6.1
+
+Rysunek \ref{} pokazuje nowy typ instrukcji, {\bf instrukcję def}. Instrukcja def składa się ze słowa kluczowego \lstinline{def} oraz nazwy funkcji z nawiasami, oraz dwukropka (znaku : ). Za instrukcją znajduje się blok kodu nazywany {\bf ciałem funkcji}.
+
+\subsection{Instrukcjie def}
+
+Instrukcja def nie jest wywołaniem funkcji o nazwie \lstinline{pokazWstep()}. Oznacza ona że tworzymy, lub {\bf definiujemy} taką funkcję, którą możemy później wywołać w programie. Po tym jak zdefiniujemy funkcję, możemy ją wywoływać w ten sposób jak robimy to ze wszystkimi innymi funkcjami takimi, jak \lstinline{print()}. Kiedy wywołamy tą funkcję, wykona się kod z ciała funkcji.
+
+Podobnie, kiedy tworzymy zmienne, mówimy że je definiujemy. Kod  \lstinline{foo = 42} definiuje zmienną \lstinline{foo}.
+
+Pamiętaj że instrukcja \lstinline{def} nie sprawia że kod wykonuje się od razu. Mówi tylko jaki kod wykona się kiedy wywołamy funkcję \lstinline{pokazWstep()} w dalszej części programu. Kiedy wykonanie programu dojdzie do instrukcji  \lstinline{def}, program przeskakuje na koniec ciała funkcji. Wskoczymy do środka ciała funkcji kiedy wywołamy funkcję \lstinline{polazWstep()}. Spowoduje to że wszystkie instrukcje \lstinline{print()} wewnątrz ciała funkcji zostaną wykonane po kolei. Wywołujemy więc tą funkcję kiedy chcemy wyświetlić użytkownikowi wstęp "Jesteś w krainie pełnej smoków...".
+
+Kiedy wywołamy funkcję \lstinline{pokazWstep()}, wykonanie programu przeskoczy do początku funkcji w linii 5. Kiedy program dojdzie do końca ciała funkcji, program przeskoczy do linii w której funkcja została wykonana.
+
+Zanim wyjaśnimy główną część programu, dowiemy się co robią poszczególne funkcje które program wykonuje. Może być trochę trudno uczyć się programu w innej kolejności niż się wykonuje, ale pamiętaj że kiedy definiujemy funkcje, siedzą gdzieś z boku i czekają na wywołanie.
+
+\subsection{Funkcja wybierzJaskinie()}
+
+\bnl{}
+\lstinputlisting[linerange=11-11]{python/smoki.py}
+
+W tej linii definiujemy inną funkcję o nazwie \lstinline{wybierzJaskinie()}. Kod tej funkcji będzie pytał użytkownika o jaskinię do której chce wejść.
+
+\bnl{}
+\lstinputlisting[linerange=12-13]{python/smoki.py}
+
+W funkcji \lstinline{wybierzJaskinie()} tworzymy nową zmienną o nazwie \lstinline{jaskinia} i przechowujemy w niej pusty tekst. Później zaczynamy pętlę \lstinline{while}. 
+
+
 
 \end{document}
